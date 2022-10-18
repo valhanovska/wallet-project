@@ -1,13 +1,8 @@
-import LoginForm from "components/LoginForm/LoginForm";
+import {Titel} from "./LoginPage.styled"
+
 
 const LoginPage = () => {
-  return <>
-    <div><img src="./public/Main-IMG/Framemain-Img-Lg_x1.png" alt="" /><h1>Finance App</h1>
-  </div>
-    <div>
-    <LoginForm/>
-    </div>
-  </>;
+  return <Titel>LoginPage</Titel>;
 };
 
 export default LoginPage;
