@@ -1,5 +1,12 @@
+import LoginForm from "components/LoginForm/LoginForm";
+import {Titel} from "./LoginPage.styled"
+
+
 const LoginPage = () => {
-  return <h1>LoginPage</h1>;
-};
+  return <>
+    <Titel>LoginPage</Titel>;
+    <LoginForm />
+  </>;
+}
 
 export default LoginPage;
