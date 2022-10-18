@@ -1,36 +1,40 @@
-import Media from 'react-media';
-import { NavLink } from 'react-router-dom';
-import wallet from '../../../public/icons/icon-Wallet.svg'
+import Logo from 'components/Logo/Logo';
+import { Container, Div, Head, Img, Link, Text, TextExit, Wrapper } from './Header.styled';
+import logout from '../../icons/icon-Exit.svg';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = () => {
+  const isMobile = useMediaQuery({
+    query: '(max-width: 767px)',
+  });
+  const isTablet = useMediaQuery({ query: '(min-width:768px)' });
+  const isDesctop = useMediaQuery({ query: '(min-width:1280px)' });
   return (
-    <div>
-      <Media
-        queries={{
-          small: '(max-width: 479px)',
-          medium: '(min-width: 480px) and (max-width: 1279px)',
-          large: '(min-width: 1280px)',
-        }}
-      >
-        {mathes => (
-          <header>
-            {mathes.small && (
-              <div>
-                <NavLink to="/home">
-              <img src={wallet} alt="logo" />
-              {/* <svg>
-                <use href={wallet}></use>
-              </svg> */}
-                  <h1>Wallet</h1>
-                </NavLink>
-                <p>Name</p>
-                <button></button>
-              </div>
-            )}
-          </header>
-        )}
-      </Media>
-    </div>
+    <Container>
+      <Head>
+        <Logo />
+        <Wrapper>
+          <Text>Name</Text>
+
+          {/* <svg>
+                <use href={logout}></use>
+            </svg> */}
+          {isMobile && (
+            <Link to="/login">
+              <Img src={logout} alt="logout" width={21} height={21} />
+            </Link>
+          )}
+          {isTablet && (
+            <Link to="/login">
+              <Div>
+                <Img src={logout} alt="logout" width={21} height={21} />
+                <TextExit>Exit</TextExit>
+              </Div>
+            </Link>
+          )}
+        </Wrapper>
+      </Head>
+    </Container>
   );
 };
 
