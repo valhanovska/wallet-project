@@ -1,5 +1,4 @@
-import "./assets/style/fonts.css"
-
+import './assets/style/fonts.css';
 
 export const theme = {
   textColor: {
@@ -16,7 +15,7 @@ export const theme = {
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
     circe: 'Circe, sans-serif',
-    poppins: 'Poppins, sans-serif'
+    poppins: 'Poppins, sans-serif',
   },
   fontSizes: {
     xs: '12px',

@@ -1,5 +1,4 @@
-import { Form, Input, NavLink } from './LoginForm.styled';
-import React from 'react';
+import { Button, Form, Input, NavLink } from './LoginForm.styled';
 import { useFormik } from 'formik';
 // import { useDispatch } from 'react-redux';
 
@@ -9,7 +8,7 @@ const LoginForm = () => {
   const formik = useFormik({
     initialValues: {
       email: '',
-      password: '',
+          password: '',
     },
     onSubmit: values => {
       //   dispatch();
@@ -34,7 +33,15 @@ const LoginForm = () => {
           onChange={formik.handleChange}
           value={formik.values.password}
         />
-        <button type="submit">log in</button>
+        <Input
+          placeholder="Password"
+          id="password"
+          name="password"
+          type="password"
+          onChange={formik.handleChange}
+          value={formik.values.password}
+        />
+        <Button type="submit">log in</Button>
       </Form>
       <NavLink type="button" to="/register">register</NavLink>
     </>
