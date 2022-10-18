@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-axios.defaults.baseURL = 'https://goit-wallet-api.herokuapp.com/api';
+axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
 
 const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -9,9 +9,9 @@ const setAuthHeader = token => {
 
 export const register = createAsyncThunk(
   'auth/register',
-  async (dataUser, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-      const r = await axios.post('/auth/sign-up', dataUser);
+      const r = await axios.post('/auth/sign-up', credentials);
       setAuthHeader(r.data.token);
       return r.data;
     } catch (error) {
@@ -22,9 +22,9 @@ export const register = createAsyncThunk(
 
 export const logIn = createAsyncThunk(
   'auth/login',
-  async (dataUser, thunkAPI) => {
+  async (credentials, thunkAPI) => {
     try {
-      const r = await axios.post('/auth/sign-in', dataUser);
+      const r = await axios.post('/auth/sign-in', credentials);
       setAuthHeader(r.data.token);
       return r.data;
     } catch (error) {
