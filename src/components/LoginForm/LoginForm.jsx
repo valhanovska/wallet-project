@@ -8,12 +8,14 @@ const LoginForm = () => {
   const formik = useFormik({
     initialValues: {
       email: '',
-          password: '',
+      password: '',
     },
     onSubmit: values => {
+      console.log(values);
       //   dispatch();
     },
   });
+
   return (
     <>
       <Form onSubmit={formik.handleSubmit}>
@@ -43,23 +45,11 @@ const LoginForm = () => {
         />
         <Button type="submit">log in</Button>
       </Form>
-      <NavLink type="button" to="/register">register</NavLink>
+      <NavLink type="button" to="/register">
+        register
+      </NavLink>
     </>
   );
 };
-
-// const LoginForm = () => {
-//     return (<>
-//         <div>
-//             <h2>Wallet</h2>
-//             <Form action="">
-//                 <input placeholder="E-mail" type="text" />
-//                 <input placeholder="Password" type="text" />
-//                 <button type="button">Log in</button>
-//             </Form>
-//             <button>Register</button>
-//         </div>
-//     </>);
-// }
 
 export default LoginForm;

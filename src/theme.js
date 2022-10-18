@@ -12,7 +12,7 @@ export const theme = {
     black: '#000',
     white: '#fff',
     muted: '',
-    ping: "#FF6596",
+    ping: '#FF6596',
     accent: '#24CCA7',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
@@ -44,5 +44,4 @@ export const theme = {
     normal: '4px',
     round: '50%',
   },
-
 };
