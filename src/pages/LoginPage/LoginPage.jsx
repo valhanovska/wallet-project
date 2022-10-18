@@ -1,5 +1,8 @@
+import {Titel} from "./LoginPage.styled"
+
+
 const LoginPage = () => {
-  return <h1>LoginPage</h1>;
+  return <Titel>LoginPage</Titel>;
 };
 
 export default LoginPage;

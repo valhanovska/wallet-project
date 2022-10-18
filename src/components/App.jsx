@@ -11,10 +11,12 @@ const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 
 export const App = () => {
   return (
+    
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/transactions" element={<DashboardPage />} />
     </Routes>
+    
   );
 };
