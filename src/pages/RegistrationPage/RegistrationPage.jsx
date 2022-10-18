@@ -1,10 +1,17 @@
+
 import RegistrationForm from "components/RegistrationForm.jsx/RegistrationForm";
+import { Page, Title } from "./RegistrationPage.styled";
+
 
 const RegistrationPage = () => {
-  return <><h1>RegistrationPage</h1>
-    <RegistrationForm/>
-    </>;
+  return (
+    <Page>
+      <div>
+        <Title>Finance App</Title>
+        </div>
+        <RegistrationForm />
+    </Page>
+  )
 };
 
-export default RegistrationPage;
-
+export default RegistrationPage

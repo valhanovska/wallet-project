@@ -6,11 +6,14 @@ export const theme = {
     secondary: '#4A56E2',
     accent: '#24CCA7',
     white: '#fff',
+    placeholder: '#BDBDBD',
   },
   colors: {
     black: '#000',
     white: '#fff',
     muted: '',
+    ping: "#FF6596",
+    accent: '#24CCA7',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -41,4 +44,5 @@ export const theme = {
     normal: '4px',
     round: '50%',
   },
+
 };
