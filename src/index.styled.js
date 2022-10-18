@@ -1,8 +1,15 @@
-import  { createGlobalStyle } from 'styled-components';
+import  styled, { createGlobalStyle } from 'styled-components';
+
+const AppStyled = styled.div`
+   
+ `
 
 
 export const GlobalStyle = createGlobalStyle`
-  font-family: ${props => props.theme.fonts.circe};
+
+div${AppStyled}{
+    font-family: ${props => props.theme.fonts.circe};
   font-size: ${props => props.theme.fontWeights.normal};
+}
 
 `

@@ -1,5 +1,13 @@
+import { Page, Title } from './RegistrationPage.styled'
+
 const RegistrationPage = () => {
-  return <h1>RegistrationPage</h1>;
+  return (
+    <Page>
+      <div>
+        <Title>Finance App</Title>
+      </div>
+    </Page>
+  )
 };
 
 export default RegistrationPage;
