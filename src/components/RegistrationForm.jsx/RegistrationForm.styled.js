@@ -6,7 +6,6 @@ export const Div = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background-color: #fff;
 `;
 export const H2 = styled.h2`
   display: flex;
@@ -19,7 +18,6 @@ export const Form = styled.form`
   flex-direction: column;
   max-width: 350px;
   gap: 40px;
-  background-color: #fff;
   padding: 0 65px;
   @media screen and (min-width: 768px) {
     font-weight: 600;
@@ -53,7 +51,6 @@ export const NavLink = styled(Link)`
   width: 280px;
   height: 49px;
   margin-top: 20px;
-  background: #fff;
   border-radius: 20px;
   border: 1px solid #4a56e2;
   text-align: center;
