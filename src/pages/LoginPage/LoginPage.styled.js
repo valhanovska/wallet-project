@@ -1,12 +1,3 @@
-// import styled from 'styled-components';
-
-// export const Titel = styled.h1`
-// color: inherit;
-/* font-family:  ${props => props.theme.fonts.circe};
-font-size: ${props => props.theme.fontWeights.normal}; */
-
-// `
-
 import styled from 'styled-components';
 import GirlTablet from '../../assets/images/Main-IMG/Framemain-img-Md_x1.png';
 import GirlDesktop from '../../assets/images/Main-IMG/Framemain-Img-Lg_x1.png';
@@ -21,14 +12,34 @@ export const Container = styled.div`
 `;
 
 export const Blur = styled.div`
+  @media screen and (min-width: 768px) and (max-width: 1280px) {
+    display: flex;
+    justify-content: center;
+    margin-top: 360px;
+  }
+
   @media screen and (min-width: 1280px) {
-    padding: 220px;
+    padding: 100px;
     backdrop-filter: blur(25px);
     background: rgba(255, 255, 255, 0.4);
   }
 `;
 
 export const Title = styled.h1`
+  @media screen and (min-width: 320px) and (max-width: 768px) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+  }
+
   @media screen and (min-width: 768px) {
     position: absolute;
     top: 163px;

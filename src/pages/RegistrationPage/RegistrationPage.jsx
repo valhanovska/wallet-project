@@ -1,14 +1,14 @@
-// import RegistrationForm from 'components/RegistrationForm.jsx/RegistrationForm';
-import { Page, Title, Container } from './RegistrationPage.styled';
+import RegistrationForm from 'components/RegistrationForm.jsx/RegistrationForm';
+import { Page, Title, Container, Blur } from './RegistrationPage.styled';
 
 const RegistrationPage = () => {
   return (
     <Container>
       <Page>
         <Title>Finance App</Title>
-        {/* <Blur>
+        <Blur>
           <RegistrationForm />
-        </Blur> */}
+        </Blur>
       </Page>
     </Container>
   );
