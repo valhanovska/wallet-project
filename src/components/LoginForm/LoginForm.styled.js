@@ -6,21 +6,17 @@ export const Div = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  /* background: #ffffff; */
+  background: #ffffff;
 
   @media screen and (min-width: 768px) {
-    width: 533px;
+    padding: 40px 0 61px 0;
+    max-width: 533px;
+    border-radius: 20px;
   }
 
   @media screen and (min-width: 1280px) {
-    font-weight: 800;
-    font-size: 24px;
-    padding: 60px 114px 20px 114px;
+    padding: 61px 0 61px 0;
   }
-`;
-export const H2 = styled.h2`
-  display: flex;
-  justify-content: center;
 `;
 
 export const Form = styled.form`
@@ -32,23 +28,38 @@ export const Form = styled.form`
   padding: 60px 20px 20px 20px;
 
   @media screen and (min-width: 768px) {
-    font-weight: 600;
-    font-size: 18px;
+    max-width: 410px;
+
+    padding: 61.5px 61.5px 20px 60px;
   }
 
   @media screen and (min-width: 1280px) {
-    font-weight: 800;
-    font-size: 24px;
-    padding: 60px 114px 20px 114px;
+    /* padding: 60px 114px 20px 114px; */
   }
 `;
+export const Label = styled.label`
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  svg {
+    height: 24px;
+    width: 24px;
 
+    use {
+    }
+  }
+`;
 export const Input = styled.input`
   width: 280px;
-  height: 32px;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 0 12px;
+  outline: none;
+  margin-left: 22px;
+  color: ${props => props.theme.textColor.black};
+  font-size: ${props => props.theme.fontSizes.m};
+  font-weight: ${props => props.theme.fontWeights.normal};
+  line-height: ${props => props.theme.lineHeights.body};
+  font-family: ${props => props.theme.fonts.circe};
 
   ::placeholder {
     color: ${props => props.theme.textColor.placeholder};
@@ -58,13 +69,10 @@ export const Input = styled.input`
     font-family: ${props => props.theme.fonts.circe};
   }
   @media screen and (min-width: 768px) {
-    font-weight: 600;
-    font-size: 18px;
+    width: 410px;
   }
 
   @media screen and (min-width: 1280px) {
-    font-weight: 800;
-    font-size: 24px;
   }
 `;
 
@@ -73,7 +81,8 @@ export const NavLink = styled(Link)`
   border-radius: 20px;
   border: 1px solid #4a56e2;
   text-align: center;
-  padding: 13px 0;
+  padding: 12px 0;
+  margin: 0;
   text-decoration: none;
   text-transform: uppercase;
   color: ${props => props.theme.textColor.secondary};
@@ -87,13 +96,9 @@ export const NavLink = styled(Link)`
     border-color: ${props => props.theme.colors.accent};
   }
   @media screen and (min-width: 768px) {
-    font-weight: 600;
-    font-size: 18px;
   }
 
   @media screen and (min-width: 1280px) {
-    font-weight: 800;
-    font-size: 24px;
   }
 `;
 
@@ -120,10 +125,9 @@ export const Button = styled.button`
   @media screen and (min-width: 768px) {
     font-weight: 600;
     font-size: 18px;
+    height: 50px;
   }
 
   @media screen and (min-width: 1280px) {
-    font-weight: 800;
-    font-size: 24px;
   }
 `;
