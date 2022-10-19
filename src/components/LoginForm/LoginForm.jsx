@@ -1,15 +1,10 @@
-import {
-  Button,
-  Form,
-  Input,
-  NavLink,
-  Div,
-  Label, } from './LoginForm.styled';
+import { Button, Form, Input, NavLink, Div, Label } from './LoginForm.styled';
 import { useFormik } from 'formik';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logIn } from 'redux/auth/operationsAuth';
 import icon from '../../assets/icons/sprite.svg';
 const LoginForm = () => {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -18,7 +13,7 @@ const LoginForm = () => {
     },
     onSubmit: values => {
       console.log(values);
-      //   dispatch();
+      dispatch(logIn(values));
     },
   });
 

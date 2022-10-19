@@ -7,11 +7,12 @@ import {
   Div,
   Label,
 } from './RegistrationForm.styled';
-import icon from '../../assets/icons/sprite.svg';
-// import { useDispatch } from 'react-redux';
-const RegistrationForm = () => {
-  //   const dispatch = useDispatch();
 
+import icon from '../../assets/icons/sprite.svg';
+import { register } from 'redux/auth/operationsAuth';
+import { useDispatch } from 'react-redux';
+const RegistrationForm = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -20,10 +21,17 @@ const RegistrationForm = () => {
       firstName: '',
     },
     onSubmit: values => {
+      const user = {
+        username: values.firstName,
+        email: values.email,
+        password: values.confirmPassword,
+      };
+
       console.log(values);
+      dispatch(register(user));
     },
   });
-    
+
   return (
     <Div>
       <Form onSubmit={formik.handleSubmit}>
