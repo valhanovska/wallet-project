@@ -1,6 +1,6 @@
 import Logo from 'components/Logo/Logo';
 import { Container, Div, Head, Img, Link, Text, TextExit, Wrapper } from './Header.styled';
-import logout from '../../icons/icon-Exit.svg';
+import logout from '../../assets/icons/icon-Exit.svg';
 import { useMediaQuery } from 'react-responsive';
 
 const Header = () => {

@@ -10,10 +10,11 @@ import {
   DivInput,
 } from './LoginForm.styled';
 import { useFormik } from 'formik';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { logInUser } from '../../redux/auth/operationsAuth';
 import icon from '../../assets/icons/sprite.svg';
 const LoginForm = () => {
-  //   const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
   const schema = yup.object().shape({
   email: yup.string().email().required('enter your E-mail, please').matches("E-mail must be a valid E-mail"),
@@ -34,7 +35,7 @@ const LoginForm = () => {
 
     onSubmit: values => {
       console.log(values);
-      //   dispatch();
+      dispatch(logInUser(values));
     },
   });
    console.log(formik);
