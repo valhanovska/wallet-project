@@ -2,18 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from './index.styled';
-
-import { ThemeProvider } from 'styled-components';
-import { theme } from './theme';
 import { App } from 'components/App';
+import { ThemeWrapper } from './components/ThemeWrapper/ThemeWrapper';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <GlobalStyle/>
+    <Provider store={store}>
+      <ThemeWrapper>
+        <BrowserRouter>
+          <GlobalStyle />
           <App />
-      </BrowserRouter>
-    </ThemeProvider>
+        </BrowserRouter>
+      </ThemeWrapper>
+    </Provider>
   </React.StrictMode>
 );
