@@ -1,4 +1,4 @@
-import './assets/style/fonts.css';
+import '../assets/slyle/fonts.css';
 
 export const theme = {
   textColor: {
@@ -12,7 +12,8 @@ export const theme = {
     black: '#000',
     white: '#fff',
     muted: '',
-    ping: '#FF6596',
+    blue: '#4A56E2',
+    pink: '#FF6596',
     accent: '#24CCA7',
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
