@@ -6,9 +6,10 @@ export const Div = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  background: #ffffff;
+  /* background: #ffffff; */
+
   @media screen and (min-width: 768px) {
-    max-width: 533px;
+    width: 533px;
   }
 
   @media screen and (min-width: 1280px) {
