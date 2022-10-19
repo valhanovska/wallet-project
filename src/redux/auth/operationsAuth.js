@@ -35,7 +35,7 @@ export const logIn = createAsyncThunk(
 
 export const logOut = createAsyncThunk('auth/sign-out', async (_, thunkAPI) => {
   try {
-    await axios.post('/auth/sign-out');
+    await axios.delete('/auth/sign-out');
     const savedToken = '';
     axios.defaults.headers.common = {
       Authorization: `Bearer ${savedToken}`,
@@ -44,3 +44,19 @@ export const logOut = createAsyncThunk('auth/sign-out', async (_, thunkAPI) => {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const savedToken = state.auth.token;
+    if (!savedToken) return thunkAPI.rejectWithValue('token not found');
+    try {
+      setAuthHeader(savedToken);
+      const r = await axios.get('/users/current');
+      return r.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
