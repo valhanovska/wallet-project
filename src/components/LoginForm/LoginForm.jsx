@@ -18,11 +18,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const schema = yup.object().shape({
-    email: yup
-      .string()
-      .email()
-      .required('enter your E-mail, please')
-      .matches('E-mail must be a valid E-mail'),
+    email: yup.string().email().required('enter your E-mail, please'),
     password: yup
       .string()
       .min(6, 'min Password 6 simvols')
@@ -64,7 +60,7 @@ const LoginForm = () => {
             <Validation>{formik.errors.email}</Validation>
           ) : null}
         </DivInput>
-        <div>
+        <DivInput>
           <Label>
             <svg>
               <use href={icon + '#icon-icon-Lock'}></use>
@@ -81,7 +77,7 @@ const LoginForm = () => {
           {formik.errors.password && formik.touched.password ? (
             <Validation>{formik.errors.password}</Validation>
           ) : null}
-        </div>
+        </DivInput>
         <Button type="submit">log in</Button>
       </Form>
       <NavLink type="button" to="/register">

@@ -42,6 +42,7 @@ export const Label = styled.label`
   display: flex;
   align-items: center;
   padding: 8px;
+
   svg {
     height: 24px;
     width: 24px;
@@ -51,11 +52,11 @@ export const Label = styled.label`
   }
 `;
 export const Input = styled.input`
+  color: ${props => props.theme.textColor.secondary};
   width: 280px;
   border: none;
   outline: none;
   margin-left: 22px;
-  color: ${props => props.theme.textColor.black};
   font-size: ${props => props.theme.fontSizes.m};
   font-weight: ${props => props.theme.fontWeights.normal};
   line-height: ${props => props.theme.lineHeights.body};
@@ -130,4 +131,19 @@ export const Button = styled.button`
 
   @media screen and (min-width: 1280px) {
   }
+`;
+
+export const Validation = styled.p`
+  position: absolute;
+  margin: 5px 0 0 0;
+  color: #ff4747;
+  margin-left: 15px;
+  font-size: ${props => props.theme.fontSizes.s};
+  font-weight: ${props => props.theme.fontWeights.normal};
+  line-height: ${props => props.theme.lineHeights.body};
+  font-family: ${props => props.theme.fonts.circe};
+`;
+
+export const DivInput = styled.div`
+  position: relative;
 `;
