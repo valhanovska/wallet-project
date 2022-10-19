@@ -1,9 +1,21 @@
 import Logo from 'components/Logo/Logo';
-import { Container, Div, Head, Img, Link, Text, TextExit, Wrapper } from './Header.styled';
+import {
+  Container,
+  Div,
+  Head,
+  Img,
+  Link,
+  Text,
+  TextExit,
+  Wrapper,
+} from './Header.styled';
 import logout from '../../assets/icons/icon-Exit.svg';
 import { useMediaQuery } from 'react-responsive';
+import { useDispatch } from 'react-redux';
+import { logOutUser } from 'redux/auth/operationsAuth';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
@@ -26,7 +38,7 @@ const Header = () => {
           )}
           {isTablet && (
             <Link to="/login">
-              <Div>
+              <Div onClick={() => dispatch(logOutUser())}>
                 <Img src={logout} alt="logout" width={21} height={21} />
                 <TextExit>Exit</TextExit>
               </Div>
