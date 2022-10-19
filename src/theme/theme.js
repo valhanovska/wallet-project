@@ -11,10 +11,10 @@ export const theme = {
   colors: {
     black: '#000',
     white: '#fff',
+    muted: '',
     blue: '#4A56E2',
-    pink: "#FF6596",
+    pink: '#FF6596',
     accent: '#24CCA7',
-
   },
   space: [0, 2, 4, 8, 16, 32, 64, 128, 256],
   fonts: {
@@ -45,8 +45,4 @@ export const theme = {
     normal: '4px',
     round: '50%',
   },
-
 };
-
-
-

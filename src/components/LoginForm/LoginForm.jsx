@@ -1,8 +1,13 @@
-import { Form, Input, NavLink } from './LoginForm.styled';
-import React from 'react';
+import {
+  Button,
+  Form,
+  Input,
+  NavLink,
+  Div,
+  Label, } from './LoginForm.styled';
 import { useFormik } from 'formik';
 // import { useDispatch } from 'react-redux';
-
+import icon from '../../assets/icons/sprite.svg';
 const LoginForm = () => {
   //   const dispatch = useDispatch();
 
@@ -12,47 +17,47 @@ const LoginForm = () => {
       password: '',
     },
     onSubmit: values => {
+      console.log(values);
       //   dispatch();
     },
   });
+
   return (
-    <>
+    <Div>
       <Form onSubmit={formik.handleSubmit}>
-        <Input
-          placeholder="E-mail"
-          id="email"
-          name="email"
-          type="text"
-          onChange={formik.handleChange}
-          value={formik.values.email}
-        />
-        <Input
-          placeholder="Password"
-          id="password"
-          name="password"
-          type="password"
-          onChange={formik.handleChange}
-          value={formik.values.password}
-        />
-        <button type="submit">log in</button>
+        <Label>
+          <svg>
+            <use href={icon + '#icon-icon-Email'}></use>
+          </svg>
+          <Input
+            placeholder="E-mail"
+            id="email"
+            name="email"
+            type="text"
+            onChange={formik.handleChange}
+            value={formik.values.email}
+          />
+        </Label>
+        <Label>
+          <svg>
+            <use href={icon + '#icon-icon-Lock'}></use>
+          </svg>
+          <Input
+            placeholder="Password"
+            id="password"
+            name="password"
+            type="password"
+            onChange={formik.handleChange}
+            value={formik.values.confirmPassword}
+          />
+        </Label>
+        <Button type="submit">log in</Button>
       </Form>
-      <NavLink type="button" to="/register">register</NavLink>
-    </>
+      <NavLink type="button" to="/register">
+        register
+      </NavLink>
+    </Div>
   );
 };
-
-// const LoginForm = () => {
-//     return (<>
-//         <div>
-//             <h2>Wallet</h2>
-//             <Form action="">
-//                 <input placeholder="E-mail" type="text" />
-//                 <input placeholder="Password" type="text" />
-//                 <button type="button">Log in</button>
-//             </Form>
-//             <button>Register</button>
-//         </div>
-//     </>);
-// }
 
 export default LoginForm;
