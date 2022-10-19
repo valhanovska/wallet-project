@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from './index.styled';
-
-import { ThemeProvider } from 'styled-components';
-import { theme } from './assets/styles/theme.ts';
 import { App } from 'components/App';
+import { CurrencyExchange } from 'components/CurrencyExchange';
+import { ThemeWrapper } from 'components/ThemeWrapper/ThemeWrapper';
+
+
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
+    <ThemeWrapper>
       <BrowserRouter>
         <GlobalStyle />
         <App />
+        <CurrencyExchange/>
       </BrowserRouter>
-    </ThemeProvider>
+    </ThemeWrapper>
   </React.StrictMode>
 );

@@ -1,4 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 import {
   persistStore,
   persistReducer,
@@ -10,9 +11,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
-// import transactionsReducer from './transaction/sliceTransaction';
 import authReducer from './auth/sliceAuth';
+// import transactionsReducer from './transaction/sliceTransaction';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -28,13 +28,19 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const rootReducer = combineReducers({
+  test: (state = 9) => state,
+  test2: (state = 6) => state,
+  theme: (state = "ligth") => state,
+
+  auth: persistReducer(authPersistConfig, authReducer),
+});
+
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    // transactions: transactionsReducer,
-  },
+  reducer: rootReducer,
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);
+  // transactions: transactionsReducer,

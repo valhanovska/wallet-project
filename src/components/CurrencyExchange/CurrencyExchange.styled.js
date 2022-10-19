@@ -24,7 +24,7 @@ export const CurrencyWrap = styled.div`
   min-height: 350px;
   border-radius: 30px;
 
-  background-color: #4a56e2;
+  background-color: ${p=>p.theme.colors.blue};
   background-image: url(${illustration});
   background-size: contain;
   background-repeat: no-repeat;
