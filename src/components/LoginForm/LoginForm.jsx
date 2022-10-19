@@ -1,7 +1,7 @@
 import { Button, Form, Input, NavLink, Div, Label } from './LoginForm.styled';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { logIn } from 'redux/auth/operationsAuth';
+import { logInUser } from '../../redux/auth/operationsAuth';
 import icon from '../../assets/icons/sprite.svg';
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const LoginForm = () => {
     },
     onSubmit: values => {
       console.log(values);
-      dispatch(logIn(values));
+      dispatch(logInUser(values));
     },
   });
 

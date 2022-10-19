@@ -9,7 +9,7 @@ import {
 } from './RegistrationForm.styled';
 
 import icon from '../../assets/icons/sprite.svg';
-import { register } from 'redux/auth/operationsAuth';
+import { registerUser } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux';
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const RegistrationForm = () => {
       };
 
       console.log(values);
-      dispatch(register(user));
+      dispatch(registerUser(user));
     },
   });
 
