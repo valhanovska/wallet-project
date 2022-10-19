@@ -1,5 +1,5 @@
 import RegistrationForm from 'components/RegistrationForm.jsx/RegistrationForm';
-import { Blur, Page, Title, Container } from './RegistrationPage.styled';
+import { Page, Title, Container, Blur } from './RegistrationPage.styled';
 
 const RegistrationPage = () => {
   return (
