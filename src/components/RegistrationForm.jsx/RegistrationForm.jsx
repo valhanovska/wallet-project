@@ -23,6 +23,7 @@ const RegistrationForm = () => {
       console.log(values);
     },
   });
+    
   return (
     <Div>
       <Form onSubmit={formik.handleSubmit}>
