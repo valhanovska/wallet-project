@@ -5,6 +5,8 @@ import { GlobalStyle } from './index.styled';
 import { App } from 'components/App';
 import { CurrencyExchange } from 'components/CurrencyExchange';
 import { ThemeWrapper } from 'components/ThemeWrapper/ThemeWrapper';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 
 
@@ -12,6 +14,7 @@ import { ThemeWrapper } from 'components/ThemeWrapper/ThemeWrapper';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Provider store={store}>
     <ThemeWrapper>
       <BrowserRouter>
         <GlobalStyle />
@@ -19,5 +22,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <CurrencyExchange/>
       </BrowserRouter>
     </ThemeWrapper>
+    </Provider>
   </React.StrictMode>
 );

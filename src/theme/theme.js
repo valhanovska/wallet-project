@@ -1,4 +1,4 @@
-import './assets/style/fonts.css';
+import '../assets/slyle/fonts.css';
 
 export const theme = {
   textColor: {
