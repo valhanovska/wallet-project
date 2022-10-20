@@ -4,7 +4,7 @@ export const Container = styled.div`
   min-width: 280px;
   max-width: 350px;
   padding: 8px 30px;
-  background-color: blue;
+  background-color: ${props => props.theme.colors.white};
   border-radius: 30px;
   margin-bottom: 0px;
   margin-right: auto;
