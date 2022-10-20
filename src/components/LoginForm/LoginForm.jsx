@@ -16,31 +16,30 @@ import icon from '../../assets/icons/sprite.svg';
 import Logo from 'components/Logo/Logo';
 
 const LoginForm = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const schema = yup.object().shape({
-  email: yup.string().email().required('enter your E-mail, please'),
-  password: yup
-    .string().min(6, "min Password 6 simvols").max(12, "max Password 12 simvols")
-    .required('enter your Password, please'),
+    email: yup.string().email().required('enter your E-mail, please'),
+    password: yup
+      .string()
+      .min(6, 'min Password 6 simvols')
+      .max(12, 'max Password 12 simvols')
+      .required('enter your Password, please'),
   });
-  
+
   const formik = useFormik({
-    
     initialValues: {
       email: '',
       password: '',
-      
     },
     validationSchema: schema,
 
-
     onSubmit: values => {
-      console.log(values);
+      //console.log(values);
       dispatch(logInUser(values));
     },
   });
-   console.log(formik);
+  console.log(formik);
   return (
     <Div>
       <Logo/>
@@ -64,22 +63,22 @@ const LoginForm = () => {
           ) : null}
         </DivInput>
         <DivInput>
-        <Label>
-          <svg>
-            <use href={icon + '#icon-icon-Lock'}></use>
-          </svg>
-          <Input
-            placeholder="Password"
-            id="password"
-            name="password"
-            type="password"
-            onChange={formik.handleChange}
-            value={formik.values.confirmPassword}
-          />
-        </Label>
-        {formik.errors.password && formik.touched.password ? (
-          <Validation>{formik.errors.password}</Validation>
-        ) : null}
+          <Label>
+            <svg>
+              <use href={icon + '#icon-icon-Lock'}></use>
+            </svg>
+            <Input
+              placeholder="Password"
+              id="password"
+              name="password"
+              type="password"
+              onChange={formik.handleChange}
+              value={formik.values.confirmPassword}
+            />
+          </Label>
+          {formik.errors.password && formik.touched.password ? (
+            <Validation>{formik.errors.password}</Validation>
+          ) : null}
         </DivInput>
         <Button type="submit">log in</Button>
       </Form>
@@ -91,5 +90,3 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
-
-
