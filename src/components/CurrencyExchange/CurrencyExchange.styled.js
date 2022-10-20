@@ -34,6 +34,7 @@ export const CurrencyWrap = styled.div`
 
    @media screen and (min-width: 768px) and (max-width: 1279px) {
    margin-top: 32px;
+   max-width: 336px;
   }
 
   @media screen and (max-width: 1279px) {

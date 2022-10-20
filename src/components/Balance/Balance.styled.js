@@ -20,8 +20,7 @@ export const Container = styled.div`
     padding: 10px 40px;
     margin-right: 20px;
     max-width: 310px;
-
-   
+    
   }
 `
 
