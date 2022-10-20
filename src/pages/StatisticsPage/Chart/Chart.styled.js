@@ -8,7 +8,7 @@ export const ChartContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 288px;
     height: 288px;
-  } ;
+  }
 `;
 
 export const CountUpContainer = styled.div`
