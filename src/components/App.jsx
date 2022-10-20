@@ -2,7 +2,8 @@ import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { getCategories } from '../redux/transactions/operationsTransactions';
-import { SelectCategory } from '../components/SelectCategory/SelectCategory';
+import { SelectCategory } from './SelectCategory/SelectCategory';
+
 
 const DashboardPage = lazy(() =>
   import('../pages/DashboardPage/DashboardPage')
@@ -14,11 +15,11 @@ const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 
 export const App = () => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getCategories());
+  // }, [dispatch]);
 
   return (
     

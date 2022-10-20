@@ -1,17 +1,3 @@
-import styled from '@emotion/styled';
-
-export const SelectContainer = styled.div`
-  position: relative;
-  margin-top: 40px;
-  cursor: pointer;
-  input {
-    position: absolute;
-    top: 50%;
-    left: 30%;
-    z-index: -1;
-  }
-`;
-
 export const selectStyles = transactionType => {
   const optionColor = transactionType ? '#FF6596' : '#24CCA7';
   return {
