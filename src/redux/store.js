@@ -14,6 +14,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/sliceAuth';
+import { transactionCategoriesReducer } from './transactions/sliceTransaction';
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -33,6 +34,7 @@ const rootReducer = combineReducers({
   test: (state = 9) => state,
   test2: (state = 6) => state,
   theme: (state = themesOptions.LIGHT) => state,
+  transactionCategories: transactionCategoriesReducer,
   // transactions: transactionsReducer,
   auth: persistReducer(authPersistConfig, authReducer),
 });

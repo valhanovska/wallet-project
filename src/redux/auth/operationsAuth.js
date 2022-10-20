@@ -1,49 +1,47 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import {
+  register,
+  logIn,
+  logOut,
+  refresh,
+  setAuthHeader,
+} from '../../servises/usersApi';
 
-axios.defaults.baseURL = 'https://wallet.goit.ua/api/';
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-export const register = createAsyncThunk(
+export const registerUser = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      const r = await axios.post('/auth/sign-up', credentials);
-      setAuthHeader(r.data.token);
-      return r.data;
+      const data = await register(credentials);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logIn = createAsyncThunk(
-  'auth/login',
+export const logInUser = createAsyncThunk(
+  'auth/logIn',
   async (credentials, thunkAPI) => {
     try {
-      const r = await axios.post('/auth/sign-in', credentials);
-      setAuthHeader(r.data.token);
-      return r.data;
+      const data = await logIn(credentials);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-export const logOut = createAsyncThunk('auth/sign-out', async (_, thunkAPI) => {
-  try {
-    await axios.delete('/auth/sign-out');
-    const savedToken = '';
-    axios.defaults.headers.common = {
-      Authorization: `Bearer ${savedToken}`,
-    };
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+export const logOutUser = createAsyncThunk(
+  'auth/signOut',
+  async (credentials, thunkAPI) => {
+    try {
+      const data = await logOut(credentials);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
   }
-});
+);
 
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
@@ -53,8 +51,8 @@ export const refreshUser = createAsyncThunk(
     if (!savedToken) return thunkAPI.rejectWithValue('token not found');
     try {
       setAuthHeader(savedToken);
-      const r = await axios.get('/users/current');
-      return r.data;
+      const data = await refresh(savedToken);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
