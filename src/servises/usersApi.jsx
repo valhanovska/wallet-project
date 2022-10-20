@@ -7,27 +7,25 @@ export const setAuthHeader = token => {
 };
 
 export const register = async credentials => {
-  const r = await axios.post('/auth/sign-up', credentials);
+  const r = await axios.post('auth/sign-up', credentials);
   setAuthHeader(r.data.token);
   return r.data;
 };
 
 export const logIn = async credentials => {
-  const r = await axios.post('/auth/sign-in', credentials);
+  const r = await axios.post('auth/sign-in', credentials);
   setAuthHeader(r.data.token);
   return r.data;
 };
 
-export const logOut = async () => {
-  const r = await axios.delete('/auth/sign-out');
-  const savedToken = '';
-  axios.defaults.headers.common = {
-    Authorization: `Bearer ${savedToken}`,
-  };
-  return r.data;
+export const logOut = async token => {
+  axios.defaults.headers.common.Authorization = token;
+  await axios.delete('auth/sign-out');
+  axios.defaults.headers.common.Authorization = '';
 };
 
-export const refresh = async () => {
-  const r = await axios.get('/users/current');
+export const refresh = async token => {
+  axios.defaults.headers.common.Authorization = token;
+  const r = await axios.get('users/current');
   return r.data;
 };

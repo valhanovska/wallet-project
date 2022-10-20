@@ -1,11 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import {
-  register,
-  logIn,
-  logOut,
-  refresh,
-  setAuthHeader,
-} from '../../servises/usersApi';
+import { register, logIn, logOut, refresh } from '../../servises/usersApi';
 
 export const registerUser = createAsyncThunk(
   'auth/register',
@@ -23,6 +17,7 @@ export const logInUser = createAsyncThunk(
   'auth/logIn',
   async (credentials, thunkAPI) => {
     try {
+      console.log('credentials', credentials);
       const data = await logIn(credentials);
       return data;
     } catch (error) {
@@ -32,11 +27,11 @@ export const logInUser = createAsyncThunk(
 );
 
 export const logOutUser = createAsyncThunk(
-  'auth/signOut',
-  async (credentials, thunkAPI) => {
+  'auth/logOut',
+  async (_, thunkAPI) => {
     try {
-      const data = await logOut(credentials);
-      return data;
+      const token = thunkAPI.getState().auth.token;
+      await logOut(token);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -46,12 +41,10 @@ export const logOutUser = createAsyncThunk(
 export const refreshUser = createAsyncThunk(
   'auth/refresh',
   async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const savedToken = state.auth.token;
-    if (!savedToken) return thunkAPI.rejectWithValue('token not found');
     try {
-      setAuthHeader(savedToken);
-      const data = await refresh(savedToken);
+      const token = thunkAPI.getState().auth.token;
+      if (!token) return thunkAPI.rejectWithValue('token not found');
+      const data = await refresh(token);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

@@ -1,7 +1,5 @@
-import { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { getCategories } from '../redux/transactions/operationsTransactions';
 import { SelectCategory } from '../components/SelectCategory/SelectCategory';
 import { CurrencyExchange } from './CurrencyExchange';
 import DiagramTab from './DiagramTab/DiagramTab';
@@ -19,11 +17,6 @@ const StatisticsPage = lazy(() =>
 );
 
 export const App = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
 
   return (
     <Routes>
