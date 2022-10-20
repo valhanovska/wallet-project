@@ -20,10 +20,9 @@
 <path fill="#fff" style="fill: var(--color6, #fff)" d="M10.105 5.895h11.789c0.93 0 1.684 0.754 1.684 1.684v11.789c0 0.93-0.754 1.684-1.684 1.684h-11.789c-0.93 0-1.684-0.754-1.684-1.684v-11.789c0-0.93 0.754-1.684 1.684-1.684z"></path>
 <path fill="#4a56e2" style="fill: var(--color2, #4a56e2)" d="M10.105 5.895c-0.93 0-1.684 0.754-1.684 1.684v11.789c0 0.93 0.754 1.684 1.684 1.684h11.789c0.93 0 1.684-0.754 1.684-1.684v-11.789c0-0.93-0.754-1.684-1.684-1.684h-11.789zM14.989 14.415v3.269h-2.526v-4.359h-1.516l5.053-4.904 5.053 4.904h-1.516v4.359h-2.526v-3.269h-2.021z"></path>
 </symbol>
-<symbol id="icon-Icon-IncomeBtn" viewBox="0 0 32 32">
-<path fill="#24cca7" style="fill: var(--color7, #24cca7)" d="M25.514 13.405c0 5.254-4.259 9.513-9.514 9.513s-9.514-4.259-9.514-9.514c0-5.254 4.259-9.514 9.514-9.514s9.514 4.259 9.514 9.514z"></path>
-<path fill="none" stroke="#fff" style="stroke: var(--color6, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="0.8649" d="M16 9.081v8.649"></path>
-<path fill="none" stroke="#fff" style="stroke: var(--color6, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="0.8649" d="M11.676 13.405h8.649"></path>
+<symbol id="icon-icon-IncomeBtn" viewBox="0 0 32 32">
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M16 0v32"></path>
+<path fill="none" stroke="#fff" style="stroke: var(--color1, #fff)" stroke-linejoin="miter" stroke-linecap="butt" stroke-miterlimit="4" stroke-width="3.2" d="M0 16h32"></path>
 </symbol>
 <symbol id="icon-icon-Lock" viewBox="0 0 32 32">
 <path fill="#e0e0e0" style="fill: var(--color3, #e0e0e0)" d="M25.143 10.667h-1.524v-3.048c0-4.206-3.413-7.619-7.619-7.619s-7.619 3.413-7.619 7.619v3.048h-1.524c-1.676 0-3.048 1.371-3.048 3.048v15.238c0 1.676 1.371 3.048 3.048 3.048h18.286c1.676 0 3.048-1.371 3.048-3.048v-15.238c0-1.676-1.371-3.048-3.048-3.048zM16 24.381c-1.676 0-3.048-1.371-3.048-3.048s1.371-3.048 3.048-3.048c1.676 0 3.048 1.371 3.048 3.048s-1.371 3.048-3.048 3.048zM20.724 10.667h-9.448v-3.048c0-2.606 2.118-4.724 4.724-4.724s4.724 2.118 4.724 4.724v3.048z"></path>
