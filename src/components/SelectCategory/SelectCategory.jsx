@@ -8,17 +8,14 @@ import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 export function SelectCategory() {
   
   const selects = useSelector(getSelects)
-
+  console.log(selects);
   return (
         <SelectContainer >
           <Select
             key={true}
             styles={selectStyles(true)}
             components={{ DropdownIndicator }}
-            options={(true
-              ? selects?.expense
-              : selects?.income
-            )?.map(option => ({ value: option, label: option }))}
+            options={(selects.filter(option =>  option.name !== "Income"  ).map(option=>{return { value: option.name, label: option.name}} ))}
             placeholder="Select a category"
             isSearchable={false}
           />

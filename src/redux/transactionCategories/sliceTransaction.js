@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {getCategories} from "./operationsTransactions"
-import { categories } from 'db';
+
 
 const initialState = {
-    categories: categories
+    categories: []
 };
 
 const transactionCategories = createSlice({

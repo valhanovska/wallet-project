@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const SelectContainer = styled.div`
   position: relative;
-  margin-top: 40px;
+  /* margin-top: 40px; */
   cursor: pointer;
   input {
     position: absolute;

@@ -12,6 +12,9 @@ import Header from '../../components/Header/Header';
 import { Div, Wrapper, Blur } from './DashboardPage.styled';
 
 const DashboardPage = () => {
+
+ 
+
   const isTabletOrDesctop = useMediaQuery({ query: '(min-width:768px)' });
   const isMobile = useMediaQuery({ query: '(max-width:767px)' });
   console.log(isTabletOrDesctop);
