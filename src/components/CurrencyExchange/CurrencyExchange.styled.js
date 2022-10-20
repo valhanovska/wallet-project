@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import illustration from '../../img/currency-illustration.svg';
+import illustration from '../../assets/images/currency-illustration.svg';
 
 export const SpinnerWrap = styled.div`
   position: absolute;
