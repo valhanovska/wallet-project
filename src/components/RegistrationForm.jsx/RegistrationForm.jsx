@@ -1,5 +1,7 @@
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { styled } from '@mui/material/styles';
+// import Box from '@mui/material/Box';
 import {
   Button,
   Form,
@@ -10,26 +12,53 @@ import {
   Validation,
   DivInput,
 } from './RegistrationForm.styled';
+import LinearProgress, {
+  linearProgressClasses,
+} from '@mui/material/LinearProgress';
 
 import icon from '../../assets/icons/sprite.svg';
 import { registerUser } from '../../redux/auth/operationsAuth';
-import { useDispatch } from 'react-redux';
-const RegistrationForm = () => {
-  const dispatch = useDispatch();
+import { useDispatch } from 'react-redux'
 
+
+const RegistrationForm = () => {
+
+  const dispatch = useDispatch();
+ 
+  const progresLine = () => {
+    const configPass = formik.values.confirmPassword;
+    const pass = formik.values.password;
+    const sum = pass.includes(configPass) && configPass !== "" ? (configPass === pass ? 100: 30)  : 0 
+    // const sum = pass.includes(configPass) && configPass !== "" ? 30 && (configPass > 6 ? 60 && (configPass === pass ? 100: 60): 30 ) : 0 
+    return sum
+  }
   const schema = yup.object().shape({
-  email: yup.string().email().required('enter your E-mail, please'),
-  password: yup
-    .string().min(6, "min Password 6 simvols").max(12, "max Password 12 simvols")
+    email: yup.string().email().required('enter your E-mail, please'),
+    password: yup
+      .string()
+      .min(6, 'min Password 6 simvols')
+      .max(12, 'max Password 12 simvols')
       .required('enter your Password, please'),
-  confirmPassword: yup
-    .string().min(6, "min Password 6 simvols").max(12, "max Password 12 simvols")
-      .required('enter your Password, please'),
-  firstName:yup
-    .string().min(6, "min Password 6 simvols").max(12, "max Password 12 simvols")
-      .required('enter your Password, please'),
+    firstName: yup.string().required('enter your First Name, please'),
+    confirmPassword: yup.string()
+     .oneOf([yup.ref('password'), null], 'Passwords must match')
   });
 
+  const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+    height: 5,
+    borderRadius: 4,
+    marginTop: 8,
+    [`&.${linearProgressClasses.colorPrimary}`]: {
+      backgroundColor:
+        theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
+    },
+    [`& .${linearProgressClasses.bar}`]: {
+      borderRadius: 5,
+      backgroundColor:formik.errors.confirmPassword && formik.touched.confirmPassword ? (
+            theme.palette.mode === 'light' ? '#ff4747;' : '#ff4747;'
+          ) : null || theme.palette.mode === 'light' ? '#24CCA7' : '#24CCA7',
+    },
+  }));
 
   const formik = useFormik({
     initialValues: {
@@ -45,12 +74,10 @@ const RegistrationForm = () => {
         email: values.email,
         password: values.confirmPassword,
       };
-
-      console.log(values);
       dispatch(registerUser(user));
     },
   });
-
+  
   return (
     <Div>
       <Form onSubmit={formik.handleSubmit}>
@@ -76,7 +103,7 @@ const RegistrationForm = () => {
         <DivInput>
           <Label>
             <svg>
-              <use href={icon + "#icon-icon-Lock"}></use>
+              <use href={icon + '#icon-icon-Lock'}></use>
             </svg>
             <Input
               placeholder="Password"
@@ -91,7 +118,7 @@ const RegistrationForm = () => {
             <Validation>{formik.errors.password}</Validation>
           ) : null}
         </DivInput>
-        
+
         <DivInput>
           <Label>
             <svg>
@@ -99,13 +126,14 @@ const RegistrationForm = () => {
             </svg>
             <Input
               placeholder="Confirm password"
-              id="email"
-              name="email"
-              type="text"
+              id="confirmPassword"
+              name="confirmPassword"
+              type="password"
               onChange={formik.handleChange}
-              value={formik.values.confirmPassword}
+              value={ formik.values.confirmPassword}
             />
           </Label>
+            <BorderLinearProgress variant="determinate" value={progresLine()} />
         </DivInput>
         <DivInput>
           <Label>
@@ -135,3 +163,5 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
+
+
