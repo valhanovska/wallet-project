@@ -32,9 +32,18 @@ export const CurrencyWrap = styled.div`
 
   overflow: hidden;
 
+   @media screen and (min-width: 768px) and (max-width: 1279px) {
+   margin-top: 32px;
+   max-width: 336px;
+  }
+
   @media screen and (max-width: 1279px) {
     margin-left: auto;
     margin-right: auto;
+  }
+
+  @media screen and (min-width: 1280px) {
+margin-left: 16px;
   }
 `;
 

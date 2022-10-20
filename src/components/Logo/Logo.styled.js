@@ -11,13 +11,15 @@ export const Title = styled.h1`
   padding-left: ${p=>p.theme.space[4]}px;
   font-family: ${p => p.theme.fonts.poppins};
   font-weight: ${p => p.theme.fontWeights.bolt};
-  font-size: ${p => p.theme.fontSizes.l};
+  font-size: 25px;
   color: ${p => p.theme.colors.black};
   @media screen and (min-width: 768px) {
     padding-left: ${p=>p.theme.space[9]}px;
+    font-size: ${p=>p.theme.fontSizes.l};
   }
   @media screen and (min-width: 1280px) {
     padding-left: ${p=>p.theme.space[9]}px;
+    font-size: ${p=>p.theme.fontSizes.l};
   }
 `;
 export const Svg = styled.svg`
