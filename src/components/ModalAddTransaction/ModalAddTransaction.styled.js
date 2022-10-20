@@ -9,7 +9,7 @@ export const Form = styled.form`
   justify-content: center;
 
   max-width: 320px;
-  max-height: 600px;
+  min-height: 600px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
@@ -20,7 +20,7 @@ export const Form = styled.form`
 
   @media screen and (min-width: 768px) {
     padding: 40px 70px;
-    max-width: 540px;
+    min-width: 540px;
     border-radius: 20px;
   }
 `;
@@ -154,13 +154,10 @@ export const Sum = styled.input`
   height: 32px;
 
   ::placeholder {
-    font-family: 'Circe';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 27px;
-
-    /* Gray 4 */
+    font-family: ${props => props.theme.fonts.circe};
+    font-weight: ${props => props.theme.fontWeights.normal};
+    font-size: ${props => props.theme.fontSizes.ml};
+    line-height: ${props => props.theme.lineHeights.body};
 
     color: #bdbdbd;
   }
@@ -209,11 +206,10 @@ export const Comment = styled.input`
   min-height: 84px;
 
   ::placeholder {
-    font-family: 'Circe';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 27px;
+    font-family: ${props => props.theme.fonts.circe};
+    font-weight: ${props => props.theme.fontWeights.normal};
+    font-size: ${props => props.theme.fontSizes.ml};
+    line-height: ${props => props.theme.lineHeights.body};
 
     color: #bdbdbd;
   }

@@ -22,6 +22,7 @@ import { ReactComponent as Calendar } from '../../assets/icons/icon-Calendar.svg
 import close from '../../assets/icons/sprite.svg';
 import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
+import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 
 const ModalAddTransaction = () => {
   const formik = useFormik({
@@ -75,6 +76,8 @@ const ModalAddTransaction = () => {
           Expense
         </TextType>
       </TransactionType>
+
+      {formik.values.transactionType === 'expense' && <SelectCategory />}
 
       <ContainerSumData>
         <Sum
