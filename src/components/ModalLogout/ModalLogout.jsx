@@ -11,7 +11,7 @@ const {
 } = require('./ModalLogout.styled');
 
 const ModalLogout = () => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
   const handleClose = () => {
     setOpen(false);
   };
