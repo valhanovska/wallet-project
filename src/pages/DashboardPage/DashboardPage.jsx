@@ -9,7 +9,7 @@ import { Suspense } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../../components/Header/Header';
-import { Div } from './DashboardPage.styled';
+import { Div, Wrapper, Blur } from './DashboardPage.styled';
 
 const DashboardPage = () => {
   const isTabletOrDesctop = useMediaQuery({ query: '(min-width:768px)' });
@@ -18,16 +18,23 @@ const DashboardPage = () => {
   const location = useLocation();
   return (
     <Div>
-      <Header />
-      <Navigations />
-      {(isMobile && location.pathname === '/transactions/diagram') ||
-      (isMobile && location.pathname === '/transactions/currency') ? null : (
-        <Balance />
-      )}
-      {isTabletOrDesctop && <CurrencyExchange />}
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <Blur>
+        <Header />
+        <Wrapper>
+          <div>
+            <Navigations />
+            {(isMobile && location.pathname === '/transactions/diagram') ||
+            (isMobile &&
+              location.pathname === '/transactions/currency') ? null : (
+              <Balance />
+            )}
+          </div>
+          {isTabletOrDesctop && <CurrencyExchange />}
+        </Wrapper>
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </Blur>
     </Div>
   );
 };
