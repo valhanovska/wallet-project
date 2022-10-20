@@ -13,6 +13,7 @@ import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { logInUser } from '../../redux/auth/operationsAuth';
 import icon from '../../assets/icons/sprite.svg';
+import Logo from 'components/Logo/Logo';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const LoginForm = () => {
    console.log(formik);
   return (
     <Div>
+      <Logo/>
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>

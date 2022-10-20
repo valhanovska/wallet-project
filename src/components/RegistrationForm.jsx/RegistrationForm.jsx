@@ -19,6 +19,8 @@ import LinearProgress, {
 import icon from '../../assets/icons/sprite.svg';
 import { registerUser } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux'
+import Logo from 'components/Logo/Logo';
+import ModalLogout from 'components/ModalLogout/ModalLogout';
 
 
 const RegistrationForm = () => {
@@ -72,7 +74,7 @@ const RegistrationForm = () => {
       const user = {
         username: values.firstName,
         email: values.email,
-        password: values.confirmPassword,
+        password: values.password,
       };
       dispatch(registerUser(user));
     },
@@ -80,6 +82,7 @@ const RegistrationForm = () => {
   
   return (
     <Div>
+      <Logo />
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>
