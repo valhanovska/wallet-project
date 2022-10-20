@@ -10,6 +10,7 @@ export const Head = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px;
+  background-color: ${p=>p.theme.colors.white};
 
   @media screen and (min-width: 768px) {
     padding: 20px 32px;
@@ -64,6 +65,7 @@ export const TextExit = styled.p`
   font-family: ${p => p.theme.fonts.circe};
   font-weight: ${p => p.theme.fontWeights.normal};
   line-height: ${p => p.theme.lineHeights.body};
+  margin: 0;
 `;
 export const Link = styled(NavLink)`
   text-decoration: none;
