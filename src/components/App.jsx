@@ -19,11 +19,13 @@ const StatisticsPage = lazy(() =>
 );
 
 export const App = () => {
-  const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+
+
+  // useEffect(() => {
+  //   dispatch(getCategories());
+  // }, [dispatch]);
 
   return (
     <Routes>
