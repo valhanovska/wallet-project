@@ -42,7 +42,7 @@ const LoginForm = () => {
   console.log(formik);
   return (
     <Div>
-      <Logo/>
+      <Logo />
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>

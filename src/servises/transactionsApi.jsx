@@ -18,3 +18,15 @@
 //     throw error;
 //   }
 // };
+
+import axios from 'axios';
+
+export const addTransaction = async data => {
+  const r = await axios.post('transactions', data);
+  return r.data;
+};
+
+export const getAllTransactions = async () => {
+  const r = await axios.get('transactions');
+  return r.data;
+};
