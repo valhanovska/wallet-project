@@ -3,12 +3,11 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { addTransaction } from 'servises/transactionsApi';
 
 export const addTransactionUser = createAsyncThunk(
-  'transactions/addTransaction',
-  async (_, thunkApi) => {
-    const token = thunkApi.getState().auth.token;
+  'transactionsControllers/addTransactionUser',
+  async (transaction, thunkApi) => {
     try {
-      const transaction = await addTransaction(token);
-      return transaction;
+      const r = await addTransaction(transaction);
+      return r.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

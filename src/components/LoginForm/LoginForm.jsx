@@ -35,11 +35,10 @@ const LoginForm = () => {
     validationSchema: schema,
 
     onSubmit: values => {
-      //console.log(values);
       dispatch(logInUser(values));
     },
   });
-  console.log(formik);
+
   return (
     <Div>
       <Logo />
