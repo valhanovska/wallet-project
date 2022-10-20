@@ -12,9 +12,8 @@ const DashboardPage = () => {
     <>
       <Header />
       <Navigations />
-      <Outlet/>
-      {isTabletOrDesctop && <CurrencyExchange/>}
-      
+      <Outlet />
+      {isTabletOrDesctop && <CurrencyExchange />}
     </>
   );
 };
