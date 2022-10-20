@@ -3,7 +3,7 @@ import {
   Container,
   Div,
   Head,
-  Img,
+  Svg,
   Link,
   Text,
   TextExit,
@@ -11,7 +11,7 @@ import {
 } from './Header.styled';
 import { useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operationsAuth';
-import logout from '../../assets/icons/icon-Exit.svg';
+import logout from '../../assets/icons/sprite.svg';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from 'redux/auth/operationsAuth';
@@ -28,27 +28,27 @@ const Header = () => {
     query: '(max-width: 767px)',
   });
   const isTablet = useMediaQuery({ query: '(min-width:768px)' });
-  const isDesctop = useMediaQuery({ query: '(min-width:1280px)' });
   return (
     <Container>
       <Head>
-        <Logo />
+        <Logo width="30" height="30" />
         <Wrapper>
           <Text>{user ? user[0].toUpperCase() + user.slice(1) : 'Name'}</Text>
-          {/* <svg>
-                <use href={logout}></use>
-            </svg> */}
           {isMobile && (
             <Link>
               <div onClick={() => dispatch(logOutUser())}>
-                <Img src={logout} alt="logout" width={21} height={21} />
+                <Svg>
+                  <use href={logout + '#icon-icon-Exit'}></use>
+                </Svg>
               </div>
             </Link>
           )}
           {isTablet && (
             <Link>
               <Div onClick={() => dispatch(logOutUser())}>
-                <Img src={logout} alt="logout" width={21} height={21} />
+                <Svg>
+                  <use href={logout + '#icon-icon-Exit'}></use>
+                </Svg>
                 <TextExit>Exit</TextExit>
               </Div>
             </Link>
