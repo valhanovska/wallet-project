@@ -2,10 +2,12 @@ import React from 'react';
 import Select from 'react-select';
 import { SelectContainer, selectStyles } from './selectStyles';
 import DropdownIndicator from './DropdownIndicator';
-import { categories } from 'db';
+import { useSelector } from 'react-redux';
+import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 
 export function SelectCategory() {
   
+  const selects = useSelector(getSelects)
 
   return (
         <SelectContainer >
@@ -14,8 +16,8 @@ export function SelectCategory() {
             styles={selectStyles(true)}
             components={{ DropdownIndicator }}
             options={(true
-              ? categories?.expense
-              : categories?.income
+              ? selects?.expense
+              : selects?.income
             )?.map(option => ({ value: option, label: option }))}
             placeholder="Select a category"
             isSearchable={false}

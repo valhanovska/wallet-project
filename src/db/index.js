@@ -1,6 +1,6 @@
 export const categories ={
     expense
     : 
-   ['basic expenses', 'food', 'car', 'personal growth', 'self care', 'child care', 'household products', 'education', 'leisure', 'other expenses'],
+   ['Basic expenses', 'Food', 'Car', 'Personal growth', 'Self care', 'Child care', 'Household products', 'Education', 'Leisure', 'Other expenses'],
     income:  ['regular income', 'irregular income'],
   }
