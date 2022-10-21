@@ -61,10 +61,10 @@ export const TextType = styled.p`
   line-height: 1.47;
   color: #e0e0e0;
   color: ${p => {
-    if (p.ownType === 'expense') {
+    if (p.ownType === 'EXPENSE') {
       return p.type === p.ownType ? p.theme.colors.pink : 'grey';
     }
-    if (p.ownType === 'income') {
+    if (p.ownType === 'INCOME') {
       return p.type === p.ownType ? p.theme.colors.accent : 'grey';
     }
   }};

@@ -14,6 +14,7 @@ export const transactionCategories = async token => {
 export const addTransaction = async data => {
   try {
     const r = await axios.post('transactions', data);
+    console.log('data', data);
     return r.data;
   } catch (error) {
     throw error;
