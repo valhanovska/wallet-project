@@ -21,6 +21,7 @@ import { registerUser } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux';
 import Logo from 'components/Logo/Logo';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
+import HomeTab from 'components/HomeTab/HomeTab';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -94,10 +95,11 @@ const RegistrationForm = () => {
     },
   });
 
-  return (
+  
+  return (<>
     <Div>
       <Logo />
-      <ModalLogout />
+
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>
@@ -177,6 +179,7 @@ const RegistrationForm = () => {
         log in
       </NavLink>
     </Div>
+    </>
   );
 };
 
