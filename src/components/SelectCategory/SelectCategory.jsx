@@ -5,23 +5,28 @@ import DropdownIndicator from './DropdownIndicator';
 import { useSelector } from 'react-redux';
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 
-export function SelectCategory() {
-  
-  const selects = useSelector(getSelects)
+export function SelectCategory({ setCategory }) {
+  const selects = useSelector(getSelects);
 
   return (
-        <SelectContainer >
-          <Select
-            key={true}
-            styles={selectStyles(true)}
-            components={{ DropdownIndicator }}
-            options={(true
-              ? selects?.expense
-              : selects?.income
-            )?.map(option => ({ value: option, label: option }))}
-            placeholder="Select a category"
-            isSearchable={false}
-          />
-        </SelectContainer>
+    <SelectContainer>
+      <Select
+        onChange={e => setCategory(e.categoryId)}
+        key={true}
+        styles={selectStyles(true)}
+        components={{ DropdownIndicator }}
+        options={selects
+          .filter(option => option.name !== 'Income')
+          .map(option => {
+            return {
+              categoryId: option.id,
+              label: option.name,
+              type: option.type,
+            };
+          })}
+        placeholder="Select a category"
+        isSearchable={false}
+      />
+    </SelectContainer>
   );
 }

@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const SelectContainer = styled.div`
   position: relative;
-  margin-top: 40px;
+  width: 280px;
   cursor: pointer;
   input {
     position: absolute;
@@ -10,6 +10,10 @@ export const SelectContainer = styled.div`
     left: 30%;
     z-index: -1;
   }
+  @media screen and (min-width: 768px) {
+    width: 394px;
+  }
+
 `;
 
 export const selectStyles = transactionType => {
