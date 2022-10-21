@@ -21,6 +21,7 @@ import { registerUser } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux'
 import Logo from 'components/Logo/Logo';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
+import HomeTab from 'components/HomeTab/HomeTab';
 
 
 const RegistrationForm = () => {
@@ -85,7 +86,8 @@ const RegistrationForm = () => {
     },
   });
   
-  return (
+  return (<>
+    <HomeTab/>
     <Div>
       <Logo />
       <ModalLogout/>
@@ -168,6 +170,7 @@ const RegistrationForm = () => {
         log in
       </NavLink>
     </Div>
+    </>
   );
 };
 

@@ -46,6 +46,8 @@ const ModalAddTransaction = () => {
     }));
   };
 
+  
+
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Title>Add transaction</Title>
