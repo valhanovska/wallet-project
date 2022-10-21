@@ -40,6 +40,7 @@ const ModalAddTransaction = ({ handleClick }) => {
     onSubmit: values => {
       console.log(values);
       dispatch(addTransactionUser(values));
+      handleClick();
     },
   });
 
