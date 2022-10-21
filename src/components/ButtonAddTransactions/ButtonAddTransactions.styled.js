@@ -1,8 +1,9 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const Link = styled(NavLink)`
-  position: absolute;
+export const Button = styled.button`
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
   margin-top: auto;
   margin-bottom: 40px;
   margin-left: auto;
@@ -15,17 +16,6 @@ export const Link = styled(NavLink)`
   background: #24cca7;
   border-radius: 50%;
   font-size: 44px;
-  /* color: #ffff; */
   line-height: 0px;
   border: 0;
-
-  svg {
-    margin: 0;
-    height: 20px;
-    width: 20px;
-    use {
-      height: 20px;
-      width: 20px;
-    }
-  }
 `;
