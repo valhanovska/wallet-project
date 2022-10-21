@@ -87,10 +87,8 @@ const RegistrationForm = () => {
   });
   
   return (<>
-    <HomeTab/>
     <Div>
       <Logo />
-      <ModalLogout/>
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>
