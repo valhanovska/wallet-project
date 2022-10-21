@@ -6,8 +6,8 @@ export const getAllTransactionsForPeriodUser = createAsyncThunk(
   'transactionsSummary/getAllTransactionsForPeriodUser',
   async ({ month, year }, thunkApi) => {
     try {
-      const r = await getAllTransactionsForPeriod(month, year);
-      return r;
+      const {data} = await getAllTransactionsForPeriod(month, year);
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

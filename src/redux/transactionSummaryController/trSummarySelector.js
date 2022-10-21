@@ -4,7 +4,7 @@ import { getAllTransactionsForPeriodUser } from './trSummaryOperation';
 
 const transactionsSummary = createSlice({
   name: 'transactionsSummary',
-  intialState: {
+  initialState: {
     transactionsForPeriod: [],
     isLoading: false,
     error: null,

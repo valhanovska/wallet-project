@@ -38,14 +38,11 @@ const ModalAddTransaction = ({ handleClick }) => {
       categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
     },
     onSubmit: values => {
-      console.log(values);
       dispatch(addTransactionUser(values));
       dispatch(getTransactionUser())
       handleClick();
     },
   });
-
-  console.log('formik', formik.values);
 
   const setDate = date => {
     formik.setValues(prev => ({
@@ -58,7 +55,6 @@ const ModalAddTransaction = ({ handleClick }) => {
       ...prev,
       categoryId: category,
     }));
-    console.log('category', category);
     return category;
   };
 
