@@ -8,7 +8,6 @@ export const ChartContainer = styled.div`
   @media screen and (min-width: 768px) {
     width: 288px;
     height: 288px;
-    margin-left: ${p=>p.theme.space[9]}px;
   } ;
 `;
 
