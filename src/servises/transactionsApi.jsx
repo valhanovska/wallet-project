@@ -29,3 +29,14 @@ export const getAllTransactions = async () => {
     return error;
   }
 };
+
+export const getAllTransactionsForPeriod = async (month, year) => {
+  try {
+    const r = await axios.get(
+      `transactions-summary?month=${month}&year=${year}`
+    );
+    return r;
+  } catch (error) {
+    throw error;
+  }
+};
