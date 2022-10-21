@@ -105,15 +105,12 @@ const Chart = () => {
   };
 
   return (
-    <Container>
-      <TitleStatistic>Statistics</TitleStatistic>
       <ChartContainer>
         <Doughnut data={data} />
         <CountUpContainer>
           ₴ <CountUp end={10000} duration={2} />
         </CountUpContainer>
       </ChartContainer>
-    </Container>
   );
 };
 
