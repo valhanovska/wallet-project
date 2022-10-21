@@ -12,11 +12,19 @@ export const transactionCategories = async token => {
 };
 
 export const addTransaction = async data => {
-  const r = await axios.post('transactions', data);
-  return r.data;
+  try {
+    const r = await axios.post('transactions', data);
+    return r.data;
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const getAllTransactions = async () => {
-  const r = await axios.get('transactions');
-  return r.data;
+  try {
+    const r = await axios.get('transactions');
+    return r.data;
+  } catch (error) {
+    throw error;
+  }
 };
