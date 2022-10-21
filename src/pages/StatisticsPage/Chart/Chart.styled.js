@@ -23,4 +23,5 @@ export const CountUpContainer = styled.div`
   font-family: ${({ theme }) => theme.fonts.circe};
   font-size: 18px;
   font-weight: ${({ theme }) => theme.fontWeights.bold};
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

@@ -99,6 +99,10 @@
       <path
         d="M30.355 32c-.422 0-.843-.16-1.163-.483L.483 2.811C-.16 2.168-.16 1.125.483.482s1.685-.643 2.329 0l28.707 28.707c.643.643.643 1.685 0 2.328-.323.321-.744.483-1.163.483z" />
     </symbol>
+    <svg id='dropdown-arrow' width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 1L10 10L19 1" stroke="black"/>
+</svg>
+
   </defs>
 </svg>
 <!-- fill-rule="evenodd"

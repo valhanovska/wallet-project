@@ -1,7 +1,7 @@
 import React from 'react';
 import StatisticsChart from './Chart/Chart';
 import StatisticsTable from './Table/Table';
-import { Container } from './StatisticsPage.styled';
+import { Container, Title } from './StatisticsPage.styled';
 
 const getCategoriesSummaryMock = {
   categoriesSummary: [
@@ -74,13 +74,15 @@ const StatisticsPage = () => {
 
   return (
     <>
-      <h2>Statistics</h2>
+      <Title>Statistics</Title>
       <Container>
         <StatisticsChart categoriesSummary={categoriesSummary} />
         <StatisticsTable
           categoriesSummary={categoriesSummary}
           incomeSummary={incomeSummary}
           expenseSummary={expenseSummary}
+          // year={year}
+          // month={month}
         />
       </Container>
     </>

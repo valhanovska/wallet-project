@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import CountUp from 'react-countup';
 import { categoryColorMap } from '../categoryColorMap';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import arrow from 'assets/icons/sprite.svg';
+
 import {
+  Svg,
   CategoryColor,
   CellContent,
   TableHeader,
@@ -22,9 +29,43 @@ const StatisticsTable = ({
   const expenseCategoriesSummary = categoriesSummary.filter(
     x => x.type !== 'INCOME'
   );
+  const [age, setAge] = React.useState('');
+
+  const selectRef = useRef(null);
+
+  const handleChange = event => {
+    console.log(event.target.value);
+    setAge(event.target.value);
+  };
 
   return (
     <TableContainer>
+      <FormControl fullWidth>
+        <InputLabel ref={selectRef} id="demo-simple-select-label">
+          Month
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          label="Month"
+          onChange={handleChange}
+          IconComponent={props => (
+            <Svg {...props}>
+              <use href={arrow + '#dropdown-arrow'}></use>
+            </Svg>
+          )}
+          sx={{
+            width: 181,
+            height: 50,
+            borderRadius: 30,
+          }}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={20}>Twenty</MenuItem>
+          <MenuItem value={30}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
       <Table>
         <TableHeader>
           <tr>

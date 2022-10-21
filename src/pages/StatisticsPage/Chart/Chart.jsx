@@ -22,7 +22,6 @@ const StatisticsChart = ({ categoriesSummary }) => {
         ),
         borderWidth: 0,
         cutout: '70%',
-        hoverOffset: 20,
       },
     ],
   };

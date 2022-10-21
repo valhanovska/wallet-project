@@ -17,16 +17,15 @@ const StatisticsPage = lazy(() =>
 );
 
 export const App = () => {
-
   return (
     <Routes>
       <Route path="/" element={<SelectCategory />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/transactions" element={<DashboardPage />} >
-        <Route path='home' element={<HomeTab/>}/>
-        <Route path='diagram' element={<DiagramTab/>}/>
-        <Route path='currency' element={<CurrencyExchange/>}/>
+      <Route path="/transactions" element={<DashboardPage />}>
+        <Route path="home" element={<HomeTab />} />
+        <Route path="diagram" element={<DiagramTab />} />
+        <Route path="currency" element={<CurrencyExchange />} />
       </Route>
       <Route path="/statistics" element={<StatisticsPage />} />
 

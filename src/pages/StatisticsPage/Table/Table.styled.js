@@ -61,3 +61,12 @@ export const SummaryItemValue = styled.div`
   color: ${({ theme, isIncome }) =>
     isIncome ? theme.colors.accent : theme.colors.pink};
 `;
+
+export const Svg = styled.svg`
+  width: 37px !important;
+  height: 13px !important;
+
+  &:active {
+    padding-right: 10px !important;
+  }
+`;
