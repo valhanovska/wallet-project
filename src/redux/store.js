@@ -38,7 +38,7 @@ const rootReducer = combineReducers({
   theme: (state = themesOptions.LIGHT) => state,
   transactionCategories: transactionCategoriesReducer,
   transactionsControllers: transactionsControllersReducer,
-  //transactionsSummary: transactionsSummaryReducer,
+  // transactionsSummary: transactionsSummaryReducer,
   // transactions: transactionsReducer,
   auth: persistReducer(authPersistConfig, authReducer),
 });

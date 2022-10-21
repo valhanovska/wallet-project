@@ -14,9 +14,7 @@ const RegisterPage = lazy(() =>
   import('../pages/RegistrationPage/RegistrationPage')
 );
 const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
-const StatisticsPage = lazy(() =>
-  import('pages/StatisticsPage/StatisticsPage')
-);
+const DiagramTab = lazy(() => import('pages/StatisticsPage/StatisticsPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -37,8 +35,7 @@ export const App = () => {
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/transactions" element={<DashboardPage />}>
         <Route path="home" element={<HomeTab />} />
-        {/* <Route path='diagram' element={<DiagramTab/>}/> */}
-        <Route path="diagram" element={<StatisticsPage />} />
+        <Route path="diagram" element={<DiagramTab />} />
         <Route path="currency" element={<CurrencyExchange />} />
       </Route>
       <Route path="*" element={<LoginPage />} />

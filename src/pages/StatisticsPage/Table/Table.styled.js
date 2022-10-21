@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 export const TableContainer = styled.div`
   width: 100%;
   max-width: 395px;
   font-family: ${({ theme }) => theme.fonts.circe};
+
+  @media screen and (min-width: 768px) {
+    width: 395px;
+  }
 `;
 
 export const Table = styled.table`
@@ -22,6 +27,8 @@ export const TableHeaderCell = styled.th`
   font-size: 18px;
   padding: 0 28px;
   text-align: ${props => props.textAlign};
+  border-radius: ${({ textAlign }) =>
+    textAlign === 'right' ? '0 30px 30px 0' : '30px 0 0 30px'};
 `;
 
 export const TableRow = styled.tr`
@@ -62,11 +69,6 @@ export const SummaryItemValue = styled.div`
     isIncome ? theme.colors.accent : theme.colors.pink};
 `;
 
-export const Svg = styled.svg`
-  width: 37px !important;
-  height: 13px !important;
-
-  &:active {
-    padding-right: 10px !important;
-  }
+export const ArrowDownIcon = styled(KeyboardArrowDownIcon)`
+  scale: 1.3 !important;
 `;

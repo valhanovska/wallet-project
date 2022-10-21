@@ -1,7 +1,8 @@
 import React from 'react';
-import StatisticsChart from './Chart/Chart';
+import StatisticsChart from '../../components/Chart/Chart';
 import StatisticsTable from './Table/Table';
 import { Container, Title } from './StatisticsPage.styled';
+import { Stack, useMediaQuery } from '@mui/material';
 
 const getCategoriesSummaryMock = {
   categoriesSummary: [
@@ -68,12 +69,16 @@ const getCategoriesSummaryMock = {
   month: 0,
 };
 
-const StatisticsPage = () => {
+const DiagramTab = () => {
   const { categoriesSummary, expenseSummary, incomeSummary } =
     getCategoriesSummaryMock;
+  const matches = useMediaQuery('(min-width:1280px)');
 
   return (
-    <>
+    <Stack
+      sx={{ px: '20px', pl: matches ? '69px' : undefined }}
+      alignItems="center"
+    >
       <Title>Statistics</Title>
       <Container>
         <StatisticsChart categoriesSummary={categoriesSummary} />
@@ -81,12 +86,10 @@ const StatisticsPage = () => {
           categoriesSummary={categoriesSummary}
           incomeSummary={incomeSummary}
           expenseSummary={expenseSummary}
-          // year={year}
-          // month={month}
         />
       </Container>
-    </>
+    </Stack>
   );
 };
 
-export default StatisticsPage;
+export default DiagramTab;

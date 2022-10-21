@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import CountUp from 'react-countup';
 import { ChartContainer, CountUpContainer } from './Chart.styled';
-import { categoryColorMap } from '../categoryColorMap';
+import { categoryColorMap } from '../../pages/StatisticsPage/categoryColorMap';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -22,13 +22,21 @@ const StatisticsChart = ({ categoriesSummary }) => {
         ),
         borderWidth: 0,
         cutout: '70%',
+        hoverOffset: 20,
       },
     ],
   };
 
   return (
     <ChartContainer>
-      <Doughnut data={data} />
+      <Doughnut
+        data={data}
+        options={{
+          layout: {
+            padding: 20,
+          },
+        }}
+      />
       <CountUpContainer>
         ₴ <CountUp end={10000} duration={1} />
       </CountUpContainer>

@@ -1,12 +1,8 @@
-import React, { useRef } from 'react';
+import { Stack } from '@mui/material';
+import React, { useRef, useState } from 'react';
 import CountUp from 'react-countup';
 import { categoryColorMap } from '../categoryColorMap';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import arrow from 'assets/icons/sprite.svg';
-
+import DateSelect from './DateSelect/DateSelect';
 import {
   Svg,
   CategoryColor,
@@ -19,7 +15,29 @@ import {
   TableContainer,
   SummaryItem,
   SummaryItemValue,
+  ArrowDownIcon,
 } from './Table.styled';
+
+const months = [
+  { value: 1, name: 'January' },
+  { value: 2, name: 'Febuary' },
+  { value: 3, name: 'March' },
+  { value: 4, name: 'April' },
+  { value: 5, name: 'May' },
+  { value: 6, name: 'June' },
+  { value: 7, name: 'July' },
+  { value: 8, name: 'August' },
+  { value: 9, name: 'September' },
+  { value: 10, name: 'October' },
+  { value: 11, name: 'November' },
+  { value: 12, name: 'December' },
+];
+
+const currentYear = new Date().getFullYear();
+const years = new Array(40)
+  .fill(null)
+  .map((_, index) => currentYear - index)
+  .map(x => ({ value: x, name: x }));
 
 const StatisticsTable = ({
   categoriesSummary,
@@ -29,43 +47,30 @@ const StatisticsTable = ({
   const expenseCategoriesSummary = categoriesSummary.filter(
     x => x.type !== 'INCOME'
   );
-  const [age, setAge] = React.useState('');
-
-  const selectRef = useRef(null);
-
-  const handleChange = event => {
-    console.log(event.target.value);
-    setAge(event.target.value);
-  };
+  const [year, setYear] = useState('');
+  const [month, setMonth] = useState('');
 
   return (
     <TableContainer>
-      <FormControl fullWidth>
-        <InputLabel ref={selectRef} id="demo-simple-select-label">
-          Month
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
+      <Stack
+        direction={{ xs: 'column', sm: 'row' }}
+        justifyContent="space-between"
+        spacing={2}
+        mb="20px"
+      >
+        <DateSelect
           label="Month"
-          onChange={handleChange}
-          IconComponent={props => (
-            <Svg {...props}>
-              <use href={arrow + '#dropdown-arrow'}></use>
-            </Svg>
-          )}
-          sx={{
-            width: 181,
-            height: 50,
-            borderRadius: 30,
-          }}
-        >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
-        </Select>
-      </FormControl>
+          value={month}
+          onChange={e => setMonth(e.target.value)}
+          options={months}
+        />
+        <DateSelect
+          label="Year"
+          value={year}
+          onChange={e => setYear(e.target.value)}
+          options={years}
+        />
+      </Stack>
       <Table>
         <TableHeader>
           <tr>

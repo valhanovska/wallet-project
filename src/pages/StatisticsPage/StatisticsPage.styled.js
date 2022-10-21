@@ -4,7 +4,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 20px;
   gap: 32px;
 
   @media screen and (min-width: 768px) {
@@ -14,6 +13,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
+  width: 100%;
   font-family: ${({ theme }) => theme.fonts.poppins};
   font-weight: 400;
   font-size: 30px;
