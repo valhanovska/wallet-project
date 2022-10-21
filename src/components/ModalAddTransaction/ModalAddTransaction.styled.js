@@ -9,17 +9,19 @@ export const Form = styled.form`
   justify-content: center;
 
   max-width: 320px;
-  min-height: 600px;
+  max-height: 600px;
   margin-left: auto;
   margin-right: auto;
-  padding: 20px;
+  padding: 20px 73px;
 
   gap: 40px;
 
   border: 1px solid blue;
 
   @media screen and (min-width: 768px) {
-    padding: 40px 70px;
+    /* padding: 40px 70px; */
+    padding-top: 20px;
+
     min-width: 540px;
     border-radius: 20px;
   }
