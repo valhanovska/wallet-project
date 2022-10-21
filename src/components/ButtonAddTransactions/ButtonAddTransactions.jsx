@@ -1,14 +1,21 @@
-import { Link } from './ButtonAddTransactions.styled';
-import icon from '../../assets/icons/sprite.svg';
+import { Button } from './ButtonAddTransactions.styled';
+import { useState } from 'react';
+import ModalAddTransaction from 'components/ModalAddTransaction';
+import { ReactComponent as Plus } from '../../assets/icons/Plus.svg';
 
 const ButtonAddTransactions = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
   return (
     <>
-      <Link to="">
-        <svg>
-          <use href={icon + '#icon-icon-IncomeBtn'}></use>
-        </svg>
-      </Link>
+      <Button type="button" onClick={handleClick}>
+        <Plus />
+      </Button>
+      {isModalOpen && <ModalAddTransaction handleClick={handleClick} />}
     </>
   );
 };
