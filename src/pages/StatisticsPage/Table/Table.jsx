@@ -1,6 +1,9 @@
 import { Stack } from '@mui/material';
 import React, { useRef, useState } from 'react';
 import CountUp from 'react-countup';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getAllTransactionsForPeriodUser } from 'redux/transactionSummaryController/trSummaryOperation';
 import { categoryColorMap } from '../categoryColorMap';
 import DateSelect from './DateSelect/DateSelect';
 import {
@@ -49,6 +52,21 @@ const StatisticsTable = ({
   );
   const [year, setYear] = useState('');
   const [month, setMonth] = useState('');
+  const dispatch = useDispatch();
+
+  console.log('year', year);
+  console.log('month', month);
+
+  useEffect(() => {
+    if (year && month) {
+      dispatch(
+        getAllTransactionsForPeriodUser({
+          month: Number(month),
+          year: Number(year),
+        })
+      );
+    }
+  }, [year, month]);
 
   return (
     <TableContainer>
