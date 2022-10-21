@@ -1,12 +1,10 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { SelectCategory } from '../components/SelectCategory/SelectCategory';
 import { CurrencyExchange } from './CurrencyExchange';
-// import DiagramTab from './DiagramTab/DiagramTab';
 import HomeTab from './HomeTab/HomeTab';
-import {getCategories} from "../redux/transactionCategories/operationsTransactions.js"
-
+import { getCategories } from '../redux/transactionCategories/operationsTransactions.js';
+import ModalAddTransaction from './ModalAddTransaction';
 
 const DashboardPage = lazy(() =>
   import('../pages/DashboardPage/DashboardPage')
@@ -19,11 +17,7 @@ const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
 
-
-;
-
 export const App = () => {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,7 +26,7 @@ export const App = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<SelectCategory />} />
+      <Route path="/" element={<ModalAddTransaction />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/transactions" element={<DashboardPage />}>

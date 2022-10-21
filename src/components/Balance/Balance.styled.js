@@ -9,9 +9,11 @@ export const Container = styled.div`
   margin-bottom: 0px;
   margin-right: auto;
   margin-left: auto;
+  margin-top: ${p=>p.theme.space[4]}px;
 
    @media screen and (min-width: 768px) and (max-width: 1280px){
       margin-left: 30px;
+      margin-top: ${p=>p.theme.space[10]}px;
     }
 
   @media screen and (min-width: 1280px) {
