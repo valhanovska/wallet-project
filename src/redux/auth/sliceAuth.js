@@ -15,6 +15,7 @@ const authSlice = createSlice({
     error: null,
     balance: null,
     isLoading: false,
+    isRefreshing: false,
   },
   extraReducers: {
     [registerUser.pending]: state => {
@@ -63,14 +64,17 @@ const authSlice = createSlice({
     [refreshUser.pending]: state => {
       state.isLoading = true;
       state.error = null;
+      state.isRefreshing = false;
     },
     [refreshUser.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.user = action.payload;
       state.isAuth = true;
+      state.isRefreshing = true;
     },
     [refreshUser.rejected]: (state, action) => {
       state.error = action.payload;
+      state.isRefreshing = false;
     },
   },
 });
