@@ -2,6 +2,11 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Link = styled(NavLink)`
+  position: absolute;
+  margin-top: auto;
+  margin-bottom: 40px;
+  margin-left: auto;
+  margin-right: 40px;
   height: 44px;
   width: 44px;
   display: flex;
