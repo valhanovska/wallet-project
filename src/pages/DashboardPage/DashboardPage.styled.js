@@ -7,12 +7,19 @@ import splashOrangeDesktop from '../../assets/images/BG/Ellipse-dbx1-desktop.png
 import splashBlueDesktop from '../../assets/images/BG/Ellipse-db-bluex1-desktop.png';
 
 export const Blur = styled.div`
-  height: 1024px;
+  /* height: 1024px; */
+  /* width: 100vw; */
+  /* backdrop-filter: blur(25px); */
+  @media screen and (min-width: 768px) {
+    /* height: 1300px */
+    height: 1024px;
   /* width: 100vw; */
   backdrop-filter: blur(25px);
+  }
 
   @media screen and (min-width: 1280px) {
-    /* height: 1300px */
+    height: 1300px;
+    backdrop-filter: blur(25px);
   }
 
 `
@@ -52,6 +59,11 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     display: flex;
 /* filter: blur(20px); */
+@media screen and (min-width: 1280px){
+  /* position: relative; */
+  /* display: flex; */
+    
+}
   }
 
   @media screen and (min-width: 1280px) {
@@ -65,3 +77,7 @@ export const Wrapper = styled.div`
     background-repeat: no-repeat;
     backdrop-filter: blur(25px); */
 /* } */
+ export const Container = styled.div`
+ display: flex;
+ justify-content: center;
+ `

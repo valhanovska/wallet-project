@@ -1,9 +1,7 @@
 import { lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-//import { SelectCategory } from '../components/SelectCategory/SelectCategory';
 import { CurrencyExchange } from './CurrencyExchange';
-// import DiagramTab from './DiagramTab/DiagramTab';
 import HomeTab from './HomeTab/HomeTab';
 import { getCategories } from '../redux/transactionCategories/operationsTransactions.js';
 import ModalAddTransaction from './ModalAddTransaction';

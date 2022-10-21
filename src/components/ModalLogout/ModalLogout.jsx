@@ -11,7 +11,7 @@ const {
 } = require('./ModalLogout.styled');
 
 const ModalLogout = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const handleClose = () => {
     setOpen(false);
   };
@@ -31,8 +31,8 @@ const ModalLogout = () => {
         <Logo />
         <Title>Do you really want to leave your personal account?</Title>
         <DivButton>
-           <ButtonYes>Yes</ButtonYes> {/* Link from 'react-router-dom'; /// */}
-          <ButtonNo>No</ButtonNo>
+           <ButtonYes>Log out</ButtonYes> {/* Link from 'react-router-dom'; /// */}
+          <ButtonNo onClick={handleClose}>Close</ButtonNo>
         </DivButton>
       </Div>
     </Backdrop>
