@@ -30,9 +30,14 @@ const RegistrationForm = () => {
   const progresLine = () => {
     const configPass = formik.values.confirmPassword;
     const pass = formik.values.password;
-    const sum = pass.includes(configPass) && configPass !== "" ? (configPass === pass ? 100: 30)  : 0 
+
+    if (configPass === "") { return 0 }
+    else if (configPass === pass) { return 100 }
+      else if (configPass.length >= 6) { return 60 }
+    else if (pass.includes(configPass)) { return 30 }
+    // pass.includes(configPass) && configPass !== "" ? (configPass === pass ? 100 : 30) : 0 
     // const sum = pass.includes(configPass) && configPass !== "" ? 30 && (configPass > 6 ? 60 && (configPass === pass ? 100: 60): 30 ) : 0 
-    return sum
+    // return sum
   }
   const schema = yup.object().shape({
     email: yup.string().email().required('enter your E-mail, please'),
@@ -83,6 +88,7 @@ const RegistrationForm = () => {
   return (
     <Div>
       <Logo />
+      <ModalLogout/>
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>
