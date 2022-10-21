@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import DataModal from 'components/DataModal/DataModal';
 import {
@@ -11,6 +11,7 @@ import {
   TextType,
   TransactionType,
   NavLink,
+  Overlay,
 } from './ModalAddTransaction.styled';
 
 import { ReactComponent as Plus } from '../../assets/icons/Plus.svg';
@@ -24,8 +25,10 @@ import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
-import { addTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+import { addTransactionUser, getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 const ModalAddTransaction = () => {
+import { addTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -38,6 +41,8 @@ const ModalAddTransaction = () => {
     onSubmit: values => {
       console.log(values);
       dispatch(addTransactionUser(values));
+      dispatch(getTransactionUser())
+      handleClick();
     },
   });
 
@@ -58,75 +63,98 @@ const ModalAddTransaction = () => {
     return category;
   };
 
+  const handleKeyDown = e => {
+    if (e.code === 'Escape') {
+      handleClick();
+    }
+  };
+
+  const handleBackdropClick = e => {
+    if (e.currentTarget === e.target) {
+      handleClick();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+    // eslint-disable-next-line
+  }, []);
+
   return (
-    <Form onSubmit={formik.handleSubmit}>
-      <Title>Add transaction</Title>
-      <TransactionType>
-        <TextType type={formik.values.type} ownType="INCOME">
-          Income
-        </TextType>
-        <Toggle>
-          <input
-            type="checkbox"
-            name="transactionType"
-            checked={formik.values.type === 'EXPENSE'}
-            onChange={e => {
-              formik.setValues(prev => ({
-                ...prev,
-                type: e.target.checked ? 'EXPENSE' : 'INCOME',
-              }));
-            }}
-          />
-          <div className="thumb">
-            <div className="indicator">
-              <Plus />
+    <Overlay onClick={handleBackdropClick}>
+      <Form onSubmit={formik.handleSubmit}>
+        <Title>Add transaction</Title>
+        <TransactionType>
+          <TextType type={formik.values.type} ownType="INCOME">
+            Income
+          </TextType>
+          <Toggle>
+            <input
+              type="checkbox"
+              name="transactionType"
+              checked={formik.values.type === 'EXPENSE'}
+              onChange={e => {
+                formik.setValues(prev => ({
+                  ...prev,
+                  type: e.target.checked ? 'EXPENSE' : 'INCOME',
+                }));
+              }}
+            />
+            <div className="thumb">
+              <div className="indicator">
+                <Plus />
+              </div>
             </div>
-          </div>
-        </Toggle>
+          </Toggle>
 
-        <TextType type={formik.values.type} ownType="EXPENSE">
-          Expense
-        </TextType>
-      </TransactionType>
+          <TextType type={formik.values.type} ownType="EXPENSE">
+            Expense
+          </TextType>
+        </TransactionType>
 
-      {formik.values.type === 'EXPENSE' && (
-        <SelectCategory setCategory={setCategory} />
-      )}
+        {formik.values.type === 'EXPENSE' && (
+          <SelectCategory setCategory={setCategory} />
+        )}
 
-      <ContainerSumData>
-        <Sum
-          name="amount"
-          type="number"
+        <ContainerSumData>
+          <Sum
+            name="amount"
+            type="number"
+            onChange={formik.handleChange}
+            placeholder="0.00"
+            required
+          />
+          <ContainerDate>
+            <DataModal setDate={setDate} />
+            <Calendar />
+          </ContainerDate>
+        </ContainerSumData>
+
+        <Comment
+          name="comment"
+          rows="5"
+          cols="10"
+          placeholder="Comment"
           onChange={formik.handleChange}
-          placeholder="0.00"
-          required
-        />
-        <ContainerDate>
-          <DataModal setDate={setDate} />
-          <Calendar />
-        </ContainerDate>
-      </ContainerSumData>
+        ></Comment>
 
-      <Comment
-        name="comment"
-        rows="5"
-        cols="10"
-        placeholder="Comment"
-        onChange={formik.handleChange}
-      ></Comment>
-      <ContainerBtn>
-        <Button type="submit">Add</Button>
-        <NavLink type="button" to="/transactions">
-          Cancel
-        </NavLink>
-      </ContainerBtn>
+        <ContainerBtn>
+          <Button type="submit">Add</Button>
+          <NavLink type="button" to="/transactions" onClick={handleClick}>
+            Cancel
+          </NavLink>
+        </ContainerBtn>
 
-      <CloseBtn>
-        <Svg width="16" height="16">
-          <use href={close + '#icon-close'}></use>
-        </Svg>
-      </CloseBtn>
-    </Form>
+        <CloseBtn type="button" onClick={handleClick}>
+          <Svg width="16" height="16">
+            <use href={close + '#icon-close'}></use>
+          </Svg>
+        </CloseBtn>
+      </Form>
+    </Overlay>
   );
 };
 

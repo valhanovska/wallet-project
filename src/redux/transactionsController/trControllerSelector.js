@@ -1,2 +1,1 @@
-export const getAlltransactions = state =>
-  state.transactionsControllers.allTransactions;
+export const getTransaction = state => state.transaction.allTransactions;
