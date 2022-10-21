@@ -67,7 +67,7 @@ export const App = () => {
         <Route path="diagram" element={<PrivateRoute><StatisticsPage /></PrivateRoute>} />
         <Route path="currency" element={<PrivateRoute><CurrencyExchange /></PrivateRoute>} />
       </Route>
-      <Route path="*" element={<Navigate to="/transactions" />} />
+      <Route path="*" element={<Navigate to="/transactions/home" />} />
     </Routes>
     </Suspense>
   );
