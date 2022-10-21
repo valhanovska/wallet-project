@@ -16,6 +16,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from 'redux/auth/operationsAuth';
 import { getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+import { getAllTransactionsForPeriodUser } from 'redux/transactionSummaryController/trSummaryOperation';
 const Header = () => {
   const user = useSelector(state => state.auth.user.username);
 
@@ -26,6 +27,9 @@ const Header = () => {
   useEffect(() => {
     dispatch(getTransactionUser());
   }, [dispatch]);
+  useEffect(() => {
+    dispatch(getAllTransactionsForPeriodUser({ month: 10, year: 2022 }));
+  }, []);
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });
