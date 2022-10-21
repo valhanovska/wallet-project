@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import EllipsisText from "react-ellipsis-text";
 import {
 	MobileTransactions,
@@ -12,8 +12,8 @@ import {
 } from './MobileTab.styled';
 import spaceCreator from 'servises/spaceCreator';
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
-// import trashSvg from '../../icons/trash.svg';
-// import noTransactionsImg from '../../images/no-record-available.png';
+import trashSvg from '../../assets/icons/trash.svg';
+import noTransactionsImg from '../../assets/images/no-record-available.png';
 
 
 
@@ -42,16 +42,16 @@ export const MobileTab = ({ items }) => {
 		return `${day}.${month}.${year}`;
 	};
 
-	// const onDelete = _id => {
-	// 	dispatch(transactionsOperation.deleteTransactions(_id));
-	// };
+	const onDelete = _id => {
+		// dispatch(transactionsOperation.deleteTransactions(_id));
+	};
 
 	return (
 		<>
 			{items?.length === 0
 				? <div style={styles}>
 					<h2>Sorry, you don't have any transactions yet</h2>
-					{/* <img src={noTransactionsImg} alt="no record available" width='250px' /> */}
+					<img src={noTransactionsImg} alt="no record available" width='250px' />
 				</div> :
 				<MobileTransactions>
 					{items?.map(
@@ -105,9 +105,9 @@ export const MobileTab = ({ items }) => {
 									</RowValue>
 								</Row>
 
-								{/* <MobileButtonDelete onClick={() => onDelete(_id)}>
+								<MobileButtonDelete onClick={() => onDelete(id)}>
 									<Trash src={trashSvg} alt="trash" />
-								</MobileButtonDelete> */}
+								</MobileButtonDelete>
 							</MobileTableBox>
 						)
 					)}

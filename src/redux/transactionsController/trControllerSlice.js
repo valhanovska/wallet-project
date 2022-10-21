@@ -35,7 +35,7 @@ const transactionsControllers = createSlice({
       state.error = null;
     },
     [getTransactionUser.fulfilled]: (state, action) => {
-      state.allTransactions = action.payload;
+      state.allTransactions = action.payload.reverse();
     },
   },
 });
