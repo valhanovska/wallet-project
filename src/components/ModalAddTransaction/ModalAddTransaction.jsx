@@ -27,7 +27,6 @@ import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
 import { addTransactionUser, getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 
-  
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
   const formik = useFormik({
