@@ -31,6 +31,7 @@ const ModalAddTransaction = () => {
       transactionType: 'expense',
       date: '',
       comment: '',
+      category: '',
     },
     onSubmit: values => {
       console.log(values);
@@ -86,6 +87,7 @@ const ModalAddTransaction = () => {
           onChange={formik.handleChange}
           // value={formik.values.sum}
           placeholder="0.00"
+          required
         />
         <ContainerDate>
           <DataModal setDate={setDate} />
