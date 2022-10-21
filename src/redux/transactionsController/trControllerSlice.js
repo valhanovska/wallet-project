@@ -25,7 +25,6 @@ const transactionsControllers = createSlice({
       state.error = null;
     },
     [addTransactionUser.fulfilled]: (state, action) => {
-      console.log('action.payload', action.payload);
       state.isLoading = true;
       state.error = null;
       state.transactionsControllers = action.payload;

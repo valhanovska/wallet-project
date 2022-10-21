@@ -27,9 +27,9 @@ const Header = () => {
   useEffect(() => {
     dispatch(getTransactionUser());
   }, [dispatch]);
-  useEffect(() => {
-    dispatch(getAllTransactionsForPeriodUser({ month: 10, year: 2022 }));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getAllTransactionsForPeriodUser({ month: 10, year: 2022 }));
+  // }, []);
   const isMobile = useMediaQuery({
     query: '(max-width: 767px)',
   });

@@ -34,7 +34,6 @@ export const CurrencyExchange = () => {
 
         const data = await res.json();
         data.forEach(item => {
-          console.log(item.ccy);
           item.buy = Number(item.buy).toFixed(2);
           item.sale = Number(item.sale).toFixed(2);
         });
@@ -42,7 +41,6 @@ export const CurrencyExchange = () => {
         setCurrency(data);
         setActiveCcy(data[0]);
       } catch (e) {
-        console.log(e);
         setError(e);
       } finally {
         setIsLoading(false);

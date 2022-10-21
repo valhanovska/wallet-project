@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import {  useSelector } from 'react-redux';
 import EllipsisText from 'react-ellipsis-text';
 import {
   TableMain,
@@ -13,12 +13,12 @@ import {
   Trash,
 } from './Table.styled';
 
-// import trashSvg from '../../icons/trash.svg';
-// import transactionsOperation from '../../redux/transaction/transaction-operation';
+import trashSvg from '../../assets/icons/trash.svg';
+import noTransactionsImg from '../../assets/images/no-record-available.png';
 import spaceCreator from 'servises/spaceCreator';
 
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
-// import noTransactionsImg from '../../images/no-record-available.png';
+
 
 export const Table = ({ items }) => {
   const category = useSelector(getSelects);
@@ -50,7 +50,7 @@ export const Table = ({ items }) => {
       {items?.length === 0 ? (
         <div style={styles}>
           <h2>Sorry, you don't have any transactions yet</h2>
-          {/* <img src={noTransactionsImg} alt="no record available" width='400px' /> */}
+          <img src={noTransactionsImg} alt="no record available" width='400px' />
         </div>
       ) : (
         <TableMain>
@@ -82,7 +82,7 @@ export const Table = ({ items }) => {
                   </TableCell>
                   <TableCell>{type !== 'EXPENSE' ? '+' : '-'}</TableCell>
                   <TableCell>
-                    {category.find(item => item.id === categoryId).name}
+                    {category?.find(item => item.id === categoryId)?.name}
                   </TableCell>
                   <TableCell>
                     {comment && <EllipsisText length={10} text={comment} />}
@@ -114,6 +114,7 @@ export const Table = ({ items }) => {
                       <p>...</p>
                     )}
                   </TableCell>
+                  
                   {/* <TableCell>
 										<ButtonDelete onClick={() => onDelete(_id)}>
 											<Trash src={trashSvg} alt="trash" />

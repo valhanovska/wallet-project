@@ -1,11 +1,18 @@
-import { lazy, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Routes } from 'react-router-dom';
-import { CurrencyExchange } from './CurrencyExchange';
-import HomeTab from './HomeTab/HomeTab';
-import { getCategories } from '../redux/transactionCategories/operationsTransactions.js';
-import ModalAddTransaction from './ModalAddTransaction';
-import { getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+import { lazy, Suspense, useEffect } from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+
+import { PublicRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import { isValidTokin } from 'redux/auth/sliceAuth';
+import { isToken } from 'redux/auth/selectorsAuth';
+
+const CurrencyExchange = lazy(() =>
+import('./CurrencyExchange'))
+
+const HomeTab = lazy(() =>
+import('./HomeTab/HomeTab'))
 
 const DashboardPage = lazy(() =>
   import('../pages/DashboardPage/DashboardPage')
@@ -18,31 +25,50 @@ const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
 
-
 export const App = () => {
+  const token = useSelector(isToken);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getTransactionUser());
-  }, [dispatch]);
+    dispatch(isValidTokin(token?true:false));
+    // eslint-disable-next-line
+  }, []);
 
   return (
+    <Suspense fallback={null}>
     <Routes>
-      <Route path="/" element={<HomeTab />} />
-      <Route path="/modal" element={<ModalAddTransaction />} />
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
-      <Route path="/transactions" element={<DashboardPage />}>
-        <Route path="home" element={<HomeTab />} />
-        {/* <Route path='diagram' element={<DiagramTab/>}/> */}
-        <Route path="diagram" element={<StatisticsPage />} />
-        <Route path="currency" element={<CurrencyExchange />} />
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <LoginPage />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <RegisterPage />
+          </PublicRoute>
+        }
+      />
+
+      <Route
+        path="/transactions"
+        element={
+          <PrivateRoute>
+            <DashboardPage />
+          </PrivateRoute>
+        }
+      >
+        <Route path="home" element={ <PrivateRoute><HomeTab /></PrivateRoute>} />
+        <Route path="diagram" element={<PrivateRoute><StatisticsPage /></PrivateRoute>} />
+        <Route path="currency" element={<PrivateRoute><CurrencyExchange /></PrivateRoute>} />
       </Route>
-      <Route path="*" element={<LoginPage />} />
+      <Route path="*" element={<Navigate to="/transactions" />} />
     </Routes>
+    </Suspense>
   );
 };

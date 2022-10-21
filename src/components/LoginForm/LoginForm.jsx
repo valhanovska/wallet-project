@@ -81,7 +81,7 @@ const LoginForm = () => {
         </DivInput>
         <Button type="submit">log in</Button>
       </Form>
-      <NavLink type="button" to="/register">
+      <NavLink  to="/register">
         register
       </NavLink>
     </Div>
