@@ -5,6 +5,7 @@ import { CurrencyExchange } from './CurrencyExchange';
 import HomeTab from './HomeTab/HomeTab';
 import { getCategories } from '../redux/transactionCategories/operationsTransactions.js';
 import ModalAddTransaction from './ModalAddTransaction';
+import { getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 
 const DashboardPage = lazy(() =>
   import('../pages/DashboardPage/DashboardPage')
@@ -17,6 +18,7 @@ const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
 
+
 export const App = () => {
   const dispatch = useDispatch();
 
@@ -24,9 +26,14 @@ export const App = () => {
     dispatch(getCategories());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(getTransactionUser());
+  }, [dispatch]);
+
   return (
     <Routes>
-      <Route path="/" element={<ModalAddTransaction />} />
+      <Route path="/" element={<HomeTab />} />
+      <Route path="/modal" element={<ModalAddTransaction />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/transactions" element={<DashboardPage />}>

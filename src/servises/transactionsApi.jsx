@@ -17,7 +17,7 @@ export const addTransaction = async data => {
     console.log('data', data);
     return r.data;
   } catch (error) {
-    throw error;
+    return error;
   }
 };
 
@@ -26,7 +26,7 @@ export const getAllTransactions = async () => {
     const r = await axios.get('transactions');
     return r.data;
   } catch (error) {
-    throw error;
+    return error;
   }
 };
 

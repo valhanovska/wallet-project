@@ -25,8 +25,9 @@ import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
+import { addTransactionUser, getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+const ModalAddTransaction = () => {
 import { addTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
-
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
   const formik = useFormik({
@@ -40,6 +41,7 @@ const ModalAddTransaction = ({ handleClick }) => {
     onSubmit: values => {
       console.log(values);
       dispatch(addTransactionUser(values));
+      dispatch(getTransactionUser())
       handleClick();
     },
   });

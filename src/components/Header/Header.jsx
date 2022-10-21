@@ -10,11 +10,11 @@ import {
   Wrapper,
 } from './Header.styled';
 import { useEffect } from 'react';
-import { refreshUser } from 'redux/auth/operationsAuth';
 import logout from '../../assets/icons/sprite.svg';
 import { useMediaQuery } from 'react-responsive';
 import { useDispatch, useSelector } from 'react-redux';
-import { logOutUser } from 'redux/auth/operationsAuth';
+import { logOutUser, refreshUser } from 'redux/auth/operationsAuth';
+// import { getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 import { getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 import { getAllTransactionsForPeriodUser } from 'redux/transactionSummaryController/trSummaryOperation';
 const Header = () => {
