@@ -23,48 +23,60 @@ import close from '../../assets/icons/sprite.svg';
 import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
-
+import { useDispatch } from 'react-redux';
+import { addTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 const ModalAddTransaction = () => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
-      sum: '',
-      transactionType: 'expense',
-      date: '',
+      amount: '',
+      type: 'EXPENSE',
+      transactionDate: '',
       comment: '',
-      category: '',
+      categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
     },
     onSubmit: values => {
       console.log(values);
-      // alert(JSON.stringify(values, null, 2));
+      dispatch(addTransactionUser(values));
     },
   });
+
+  console.log('formik', formik.values);
 
   const setDate = date => {
     formik.setValues(prev => ({
       ...prev,
-      date: moment(date).format('DD.MM.YYYY'),
+      transactionDate: moment(date).format('YYYY-MM-DD'),
     }));
+  };
+
+  const setCategory = category => {
+    formik.setValues(prev => ({
+      ...prev,
+      categoryId: category,
+    }));
+    console.log('category', category);
+    return category;
   };
 
   return (
     <Form onSubmit={formik.handleSubmit}>
       <Title>Add transaction</Title>
       <TransactionType>
-        <TextType type={formik.values.transactionType} ownType="income">
+        <TextType type={formik.values.type} ownType="INCOME">
           Income
         </TextType>
         <Toggle>
           <input
             type="checkbox"
             name="transactionType"
-            checked={formik.values.transactionType === 'expense'}
+            checked={formik.values.type === 'EXPENSE'}
             onChange={e => {
               formik.setValues(prev => ({
                 ...prev,
-                transactionType: e.target.checked ? 'expense' : 'income',
+                type: e.target.checked ? 'EXPENSE' : 'INCOME',
               }));
             }}
-            // value={formik.values.transactionType}
           />
           <div className="thumb">
             <div className="indicator">
@@ -73,19 +85,20 @@ const ModalAddTransaction = () => {
           </div>
         </Toggle>
 
-        <TextType type={formik.values.transactionType} ownType="expense">
+        <TextType type={formik.values.type} ownType="EXPENSE">
           Expense
         </TextType>
       </TransactionType>
 
-      {formik.values.transactionType === 'expense' && <SelectCategory />}
+      {formik.values.type === 'EXPENSE' && (
+        <SelectCategory setCategory={setCategory} />
+      )}
 
       <ContainerSumData>
         <Sum
-          name="sum"
+          name="amount"
           type="number"
           onChange={formik.handleChange}
-          // value={formik.values.sum}
           placeholder="0.00"
           required
         />
