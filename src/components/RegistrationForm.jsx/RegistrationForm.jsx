@@ -18,27 +18,30 @@ import LinearProgress, {
 
 import icon from '../../assets/icons/sprite.svg';
 import { registerUser } from '../../redux/auth/operationsAuth';
-import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux';
 import Logo from 'components/Logo/Logo';
 import ModalLogout from 'components/ModalLogout/ModalLogout';
 
-
 const RegistrationForm = () => {
-
   const dispatch = useDispatch();
- 
+
   const progresLine = () => {
     const configPass = formik.values.confirmPassword;
     const pass = formik.values.password;
 
-    if (configPass === "") { return 0 }
-    else if (configPass === pass) { return 100 }
-      else if (configPass.length >= 6) { return 60 }
-    else if (pass.includes(configPass)) { return 30 }
-    // pass.includes(configPass) && configPass !== "" ? (configPass === pass ? 100 : 30) : 0 
-    // const sum = pass.includes(configPass) && configPass !== "" ? 30 && (configPass > 6 ? 60 && (configPass === pass ? 100: 60): 30 ) : 0 
+    if (configPass === '') {
+      return 0;
+    } else if (configPass === pass) {
+      return 100;
+    } else if (configPass.length >= 6) {
+      return 60;
+    } else if (pass.includes(configPass)) {
+      return 30;
+    }
+    // pass.includes(configPass) && configPass !== "" ? (configPass === pass ? 100 : 30) : 0
+    // const sum = pass.includes(configPass) && configPass !== "" ? 30 && (configPass > 6 ? 60 && (configPass === pass ? 100: 60): 30 ) : 0
     // return sum
-  }
+  };
   const schema = yup.object().shape({
     email: yup.string().email().required('enter your E-mail, please'),
     password: yup
@@ -47,8 +50,9 @@ const RegistrationForm = () => {
       .max(12, 'max Password 12 simvols')
       .required('enter your Password, please'),
     firstName: yup.string().required('enter your First Name, please'),
-    confirmPassword: yup.string()
-     .oneOf([yup.ref('password'), null], 'Passwords must match')
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password'), null], 'Passwords must match'),
   });
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
@@ -61,9 +65,14 @@ const RegistrationForm = () => {
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
-      backgroundColor:formik.errors.confirmPassword && formik.touched.confirmPassword ? (
-            theme.palette.mode === 'light' ? '#ff4747;' : '#ff4747;'
-          ) : null || theme.palette.mode === 'light' ? '#24CCA7' : '#24CCA7',
+      backgroundColor:
+        formik.errors.confirmPassword && formik.touched.confirmPassword
+          ? theme.palette.mode === 'light'
+            ? '#ff4747;'
+            : '#ff4747;'
+          : null || theme.palette.mode === 'light'
+          ? '#24CCA7'
+          : '#24CCA7',
     },
   }));
 
@@ -84,11 +93,11 @@ const RegistrationForm = () => {
       dispatch(registerUser(user));
     },
   });
-  
+
   return (
     <Div>
       <Logo />
-      <ModalLogout/>
+      <ModalLogout />
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>
@@ -139,10 +148,10 @@ const RegistrationForm = () => {
               name="confirmPassword"
               type="password"
               onChange={formik.handleChange}
-              value={ formik.values.confirmPassword}
+              value={formik.values.confirmPassword}
             />
           </Label>
-            <BorderLinearProgress variant="determinate" value={progresLine()} />
+          <BorderLinearProgress variant="determinate" value={progresLine()} />
         </DivInput>
         <DivInput>
           <Label>
@@ -172,5 +181,3 @@ const RegistrationForm = () => {
 };
 
 export default RegistrationForm;
-
-
