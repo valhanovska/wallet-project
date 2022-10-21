@@ -7,6 +7,7 @@ export const List = styled.ul`
   gap: ${p => p.theme.space[11]}px;
   align-items: center;
   margin-top: ${p => p.theme.space[4]}px;
+  padding-left: ${p=>p.theme.space[0]}px;
   @media screen and (min-width: 768px) {
     padding-left: ${p=>p.theme.space[0]}px;
     margin-top: ${p=>p.theme.space[12]}px;
@@ -16,6 +17,8 @@ export const List = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    /* display: inline-block; */
+
   }
   @media screen and (min-width: 1280px) {
     margin-left: ${p=>p.theme.space[4]}px;
@@ -33,6 +36,7 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   &.active > svg {
     fill: ${p=>p.theme.colors.blue};
+    box-shadow:rgb(74 86 226 / 50%) 0px 3px 10px;
   }
   &.active > span {
     font-weight: ${p => p.theme.fontWeights.bold};
@@ -48,8 +52,11 @@ export const Span = styled.span`
 `;
 
 export const Svg = styled.svg`
-  width: ${p=>p.theme.space[13]}px;
-  height: ${p=>p.theme.space[13]}px;
+  /* width: ${p=>p.theme.space[13]}px;
+  height: ${p=>p.theme.space[13]}px; */
+  width: 44px;
+  height: 44px;
+  border-radius: 6px;
   fill: ${p=>p.theme.colors.darkBlue};
   @media screen and (min-width: 768px) {
     width: ${p=>p.theme.space[14]}px;
