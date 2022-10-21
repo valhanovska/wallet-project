@@ -3,9 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { CurrencyExchange } from './CurrencyExchange';
 import HomeTab from './HomeTab/HomeTab';
-import {getCategories} from "../redux/transactionCategories/operationsTransactions.js"
+import { getCategories } from '../redux/transactionCategories/operationsTransactions.js';
 import ModalAddTransaction from './ModalAddTransaction';
-
 
 const DashboardPage = lazy(() =>
   import('../pages/DashboardPage/DashboardPage')
@@ -18,11 +17,7 @@ const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
 
-
-;
-
 export const App = () => {
-
   const dispatch = useDispatch();
 
   useEffect(() => {

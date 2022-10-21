@@ -2,7 +2,7 @@ import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import CountUp from 'react-countup';
-import { ChartContainer, CountUpContainer } from './Chart.styled';
+import { ChartContainer, Container, CountUpContainer,TitleStatistic } from './Chart.styled';
 
 ChartJS.register(ArcElement, Tooltip);
 
@@ -105,12 +105,15 @@ const Chart = () => {
   };
 
   return (
-    <ChartContainer>
-      <Doughnut data={data} />
-      <CountUpContainer>
-        ₴ <CountUp end={10000} duration={2} />
-      </CountUpContainer>
-    </ChartContainer>
+    <Container>
+      <TitleStatistic>Statistics</TitleStatistic>
+      <ChartContainer>
+        <Doughnut data={data} />
+        <CountUpContainer>
+          ₴ <CountUp end={10000} duration={2} />
+        </CountUpContainer>
+      </ChartContainer>
+    </Container>
   );
 };
 

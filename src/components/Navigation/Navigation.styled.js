@@ -8,10 +8,11 @@ export const List = styled.ul`
   align-items: center;
   margin-top: ${p => p.theme.space[4]}px;
   padding-left: ${p=>p.theme.space[0]}px;
+  margin-bottom: ${p=>p.theme.space[0]};
   @media screen and (min-width: 768px) {
     padding-left: ${p=>p.theme.space[0]}px;
     margin-top: ${p=>p.theme.space[12]}px;
-    margin-bottom: ${p=>p.theme.space[10]}px;
+    margin-bottom: ${p=>p.theme.space[0]};
     margin-left: ${p=>p.theme.space[10]}px;
     gap: ${p=>p.theme.space[9]}px;
     display: flex;
@@ -23,6 +24,7 @@ export const List = styled.ul`
   @media screen and (min-width: 1280px) {
     margin-left: ${p=>p.theme.space[4]}px;
     padding-left: ${p=>p.theme.space[0]}px;
+    margin-bottom: ${p=>p.theme.space[0]};
   }
 `;
 
