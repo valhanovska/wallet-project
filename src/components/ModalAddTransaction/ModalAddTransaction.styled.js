@@ -2,46 +2,51 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.25);
-  z-index: 1200;
+  @media screen and (min-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    z-index: 1200;
+  }
 `;
 
 export const Form = styled.form`
   background-color: #fff;
-  /* max-width: calc(100vw - 48px); */
-  /* max-height: calc(100vh - 24px); */
-  position: relative;
+  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  max-width: 320px;
+  top: 60px;
+  width: 100%;
   max-height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 20px 73px;
+  padding: 20px 0;
+  z-index: 15;
 
   gap: 40px;
 
-  border: 1px solid blue;
-
   @media screen and (min-width: 768px) {
-    /* padding: 40px 70px; */
-    max-width: calc(100vw - 48px);
     max-height: calc(100vh - 24px);
-    padding-top: 20px;
-
-    min-width: 540px;
+    top: auto;
+    max-width: 540px;
     border-radius: 20px;
+
+    animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+
+    @keyframes scale-up-center {
+      0% {
+        transform: scale(0.5);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
   }
 `;
 
@@ -63,7 +68,6 @@ export const Title = styled.h1`
   }
 `;
 
-///////////////////////////////////
 export const TransactionType = styled.div`
   display: flex;
   justify-content: center;
@@ -148,8 +152,6 @@ export const Toggle = styled.label`
     }
   }
 `;
-
-//////////////////////
 
 export const ContainerSumData = styled.div`
   display: flex;
@@ -306,17 +308,16 @@ export const CloseBtn = styled.button`
     &:focus {
       animation: rotate-center 500ms ease-in-out 50ms both;
     }
+    @keyframes rotate-center {
+      0% {
+        transform: rotate(0);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
   }
 `;
-
-// @keyframes rotate-center {
-//   0% {
-//     transform: rotate(0);
-//   }
-//   100% {
-//     transform: rotate(360deg);
-//   }
-// }
 
 export const Svg = styled.svg`
   @media screen and (min-width: 768px) {
