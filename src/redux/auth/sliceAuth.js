@@ -17,6 +17,11 @@ const authSlice = createSlice({
     isLoading: false,
     isRefreshing: false,
   },
+  reducers: {
+    isValidTokin: (state, action) => {
+      state.isAuth = action.payload;
+    },
+  },
   extraReducers: {
     [registerUser.pending]: state => {
       state.isLoading = true;
@@ -64,19 +69,22 @@ const authSlice = createSlice({
     [refreshUser.pending]: state => {
       state.isLoading = true;
       state.error = null;
-      state.isRefreshing = false;
+      // state.isRefreshing = false;
     },
     [refreshUser.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.user = action.payload;
       state.isAuth = true;
-      state.isRefreshing = true;
+      // state.isRefreshing = true;
     },
     [refreshUser.rejected]: (state, action) => {
       state.error = action.payload;
-      state.isRefreshing = false;
+      // state.isRefreshing = false;
     },
+    ////////////////////
   },
 });
+
+export const { isValidTokin } = authSlice.actions;
 
 export const authReducer = authSlice.reducer;

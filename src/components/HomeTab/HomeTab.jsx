@@ -3,8 +3,6 @@ import { useSelector } from 'react-redux';
 import { MobileTab } from './MobileTab';
 import { Table } from './Table';
 
-// import transactionSelectors from 'redux/transaction/transaction-selectors';
-// import transactionsOperation from 'redux/transaction/transaction-operation';
 
 import Balance from '../Balance/Balance';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';

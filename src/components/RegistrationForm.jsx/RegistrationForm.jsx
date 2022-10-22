@@ -20,8 +20,6 @@ import icon from '../../assets/icons/sprite.svg';
 import { registerUser } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux';
 import Logo from 'components/Logo/Logo';
-import ModalLogout from 'components/ModalLogout/ModalLogout';
-import HomeTab from 'components/HomeTab/HomeTab';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -95,11 +93,9 @@ const RegistrationForm = () => {
     },
   });
 
-  
   return (<>
     <Div>
       <Logo />
-
       <Form onSubmit={formik.handleSubmit}>
         <DivInput>
           <Label>

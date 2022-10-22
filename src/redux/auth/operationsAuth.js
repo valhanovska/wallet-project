@@ -17,7 +17,6 @@ export const logInUser = createAsyncThunk(
   'auth/logIn',
   async (credentials, thunkAPI) => {
     try {
-      console.log('credentials', credentials);
       const data = await logIn(credentials);
       return data;
     } catch (error) {

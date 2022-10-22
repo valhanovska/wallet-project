@@ -72,8 +72,7 @@ export const getAllTransactionsForPeriodUser = createAsyncThunk(
   async ({ month, year }, thunkApi) => {
     try {
       const { data } = await getAllTransactionsForPeriod(month, year);
-
-      return data.categoriesSummary.length ? data : getCategoriesSummaryMock;
+      return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
