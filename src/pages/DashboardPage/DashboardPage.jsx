@@ -20,11 +20,8 @@ const DashboardPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
-
-  useEffect(() => {
     dispatch(getTransactionUser());
+    dispatch(getCategories());
   }, [dispatch]);
 
   useEffect(() => {
