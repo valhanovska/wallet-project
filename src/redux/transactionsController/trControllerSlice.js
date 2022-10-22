@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import {
   addTransactionUser,
   getTransactionUser,
+  removeTransactionUser,
 } from './trControllerOpertaion';
 const transactionsControllers = createSlice({
   name: 'transactionsControllers',
@@ -43,6 +44,20 @@ const transactionsControllers = createSlice({
       state.allTransactions = action.payload.reverse();
     },
     [getTransactionUser.rejected]: state => {
+      state.error = null;
+    },
+    [removeTransactionUser.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [removeTransactionUser.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.allTransactions = state.allTransactions.filter(
+        allTransactions => allTransactions.id !== action.payload
+      );
+    },
+    [removeTransactionUser.rejected]: state => {
       state.error = null;
     },
   },
