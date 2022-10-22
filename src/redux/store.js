@@ -33,13 +33,10 @@ const authPersistConfig = {
 };
 
 const rootReducer = combineReducers({
-  test: (state = 9) => state,
-  test2: (state = 6) => state,
   theme: (state = themesOptions.LIGHT) => state,
   transactionCategories: transactionCategoriesReducer,
   transactionsControllers: transactionsControllersReducer,
   transactionsSummary: transactionsSummaryReducer,
-  // transactions: transactionsReducer,
   auth: persistReducer(authPersistConfig, authReducer),
 });
 
