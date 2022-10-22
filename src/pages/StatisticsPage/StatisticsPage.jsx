@@ -1,10 +1,11 @@
-import React from 'react';
+import { useEffect } from 'react';
 import StatisticsChart from '../../components/Chart/Chart';
 import StatisticsTable from './Table/Table';
 import { Container, Title } from './StatisticsPage.styled';
 import { Stack, useMediaQuery } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getAllTransactionsForPeriod } from 'redux/transactionSummaryController/trSummarySelector';
+import { getAllTransactionsForPeriodUser } from 'redux/transactionSummaryController/trSummaryOperation';
 
 const DiagramTab = () => {
   const allTransationsForPeriod = useSelector(getAllTransactionsForPeriod);
@@ -12,12 +13,12 @@ const DiagramTab = () => {
     allTransationsForPeriod;
   const matches = useMediaQuery('(min-width:1280px)');
   const showStatistics = Boolean(expenseSummary && incomeSummary);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllTransactionsForPeriodUser({ month: 10, year: 2022 }));
+  }, [dispatch]);
 
-  if (!categoriesSummary) {
-    return null;
-  }
-
-  return (
+  return categoriesSummary ? (
     <Stack
       sx={{ px: '20px', pl: matches ? '69px' : undefined }}
       alignItems="center"
@@ -40,7 +41,7 @@ const DiagramTab = () => {
         />
       </Container>
     </Stack>
-  );
+  ) : null;
 };
 
 export default DiagramTab;

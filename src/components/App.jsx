@@ -7,7 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { isValidTokin } from 'redux/auth/sliceAuth';
 import { isToken } from 'redux/auth/selectorsAuth';
 
-const CurrencyExchange = lazy(() => import('./CurrencyExchange'));
+const CurrencyExchange = lazy(() =>
+import('./CurrencyExchange/CurrencyExchange'))
 
 const HomeTab = lazy(() => import('./HomeTab/HomeTab'));
 
