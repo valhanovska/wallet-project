@@ -13,11 +13,11 @@ export const theme = {
     white: '#fff',
     muted: '',
     blue: '#4A56E2',
-    darkBlue:'#6e78e8',
+    darkBlue: '#6e78e8',
     pink: '#FF6596',
     accent: '#24CCA7',
   },
-  space: [0, 2, 4, 8, 16, 32, 64, 128, 256, 20, 30, 35, 40, 38, 18,],
+  space: [0, 2, 4, 8, 16, 32, 64, 128, 256, 20, 30, 35, 40, 38, 18],
   fonts: {
     circe: 'Circe, sans-serif',
     poppins: 'Poppins, sans-serif',
@@ -41,6 +41,10 @@ export const theme = {
   borders: {
     none: 'none',
     normal: '1px solid',
+    colors: {
+      main: '#E7E5F2',
+      secondary: '#DCDCDF',
+    },
   },
   radii: {
     none: '0',

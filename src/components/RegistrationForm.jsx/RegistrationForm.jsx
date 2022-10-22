@@ -95,91 +95,88 @@ const RegistrationForm = () => {
     },
   });
 
-  return (<>
-    <Div>
-      <Logo />
-      <Form onSubmit={formik.handleSubmit}>
-        <DivInput>
-          <Label>
-            <svg>
-              <use href={icon + '#icon-icon-Email'}></use>
-            </svg>
-            <Input
-              placeholder="E-mail"
-              id="email"
-              name="email"
-              type="text"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-            />
-          </Label>
-          {formik.errors.email && formik.touched.email ? (
-            <Validation>{formik.errors.email}</Validation>
-          ) : null}
-        </DivInput>
+return (
+    <>
+      <Div>
+        <Logo />
 
-        <DivInput>
-          <Label>
-            <svg>
-              <use href={icon + '#icon-icon-Lock'}></use>
-            </svg>
-            <Input
-              placeholder="Password"
-              id="password"
-              name="password"
-              type="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-            />
-          </Label>
-          {formik.errors.password && formik.touched.password ? (
-            <Validation>{formik.errors.password}</Validation>
-          ) : null}
-        </DivInput>
-
-        <DivInput>
-          <Label>
-            <svg>
-              <use href={icon + '#icon-icon-Lock'}></use>
-            </svg>
-            <Input
-              placeholder="Confirm password"
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              onChange={formik.handleChange}
-              value={formik.values.confirmPassword}
-            />
-          </Label>
-          <BorderProgress>
+        <Form onSubmit={formik.handleSubmit}>
+          <DivInput>
+            <Label>
+              <svg>
+                <use href={icon + '#icon-icon-Email'}></use>
+              </svg>
+              <Input
+                placeholder="E-mail"
+                id="email"
+                name="email"
+                type="text"
+                onChange={formik.handleChange}
+                value={formik.values.email}
+              />
+            </Label>
+            {formik.errors.email && formik.touched.email ? (
+              <Validation>{formik.errors.email}</Validation>
+            ) : null}
+          </DivInput>
+          <DivInput>
+            <Label>
+              <svg>
+                <use href={icon + '#icon-icon-Lock'}></use>
+              </svg>
+              <Input
+                placeholder="Password"
+                id="password"
+                name="password"
+                type="password"
+                onChange={formik.handleChange}
+                value={formik.values.password}
+              />
+            </Label>
+            {formik.errors.password && formik.touched.password ? (
+              <Validation>{formik.errors.password}</Validation>
+            ) : null}
+          </DivInput>
+          <DivInput>
+            <Label>
+              <svg>
+                <use href={icon + '#icon-icon-Lock'}></use>
+              </svg>
+              <Input
+                placeholder="Confirm password"
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                onChange={formik.handleChange}
+                value={formik.values.confirmPassword}
+              />
+            </Label>
             <BorderLinearProgress variant="determinate" value={progresLine()} />
-            </BorderProgress>
-        </DivInput>
-        
-        <DivInput>
-          <Label>
-            <svg>
-              <use href={icon + '#icon-icon-Profile'}></use>
-            </svg>
-            <Input
-              placeholder="First Name"
-              id="firstName"
-              name="firstName"
-              type="firstName"
-              onChange={formik.handleChange}
-              value={formik.values.firstName}
-            />
-          </Label>
-          {formik.errors.firstName && formik.touched.firstName ? (
-            <Validation>{formik.errors.firstName}</Validation>
-          ) : null}
-        </DivInput>
-        <Button type="submit">register</Button>
-      </Form>
-      <NavLink type="button" to="/login">
-        log in
-      </NavLink>
-    </Div>
+          </DivInput>
+          <DivInput>
+            <Label>
+              <svg>
+                <use href={icon + '#icon-icon-Profile'}></use>
+              </svg>
+              <Input
+                placeholder="First Name"
+                id="firstName"
+                name="firstName"
+                type="firstName"
+                onChange={formik.handleChange}
+                value={formik.values.firstName}
+              />
+            </Label>
+            {formik.errors.firstName && formik.touched.firstName ? (
+              <Validation>{formik.errors.firstName}</Validation>
+            ) : null}
+          </DivInput>
+          <Button type="submit">register</Button>
+        </Form>
+        <NavLink type="button" to="/login">
+          log in
+        </NavLink>
+      </Div>
     </>
   );
 };
