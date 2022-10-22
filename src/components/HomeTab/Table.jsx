@@ -51,6 +51,7 @@ export const Table = () => {
   //   if (input === "Date") filterTogle ? SetFiltered([...items].sort((a, b) => a.transactionDate.split("-").join("")  - b.transactionDate.split("-").join("") )) : SetFiltered([...items].sort((a, b) => b.transactionDate.split("-").join("") - a.transactionDate.split("-").join("") ))
   //   if (input === "Type") filterTogle ? SetFiltered([...items].sort((a, b) => a.type.localeCompare(b.type) )) : SetFiltered([...items].sort((a, b) => b.type.localeCompare(a.type)))
   //  if (input === "") {return items}
+    
 
   }
   console.log(SortTransaction())
