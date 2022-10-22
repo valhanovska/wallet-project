@@ -6,11 +6,18 @@ import { Table } from './Table';
 
 import Balance from '../Balance/Balance';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
+import ModalAddTransaction from 'components/ModalAddTransaction';
+import { useState } from 'react';
 
 const HomeTab = () => {
   const allTransaction = useSelector(
     state => state.transactionsControllers.allTransactions
   );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleClick = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
   return (
     <>
@@ -26,8 +33,8 @@ const HomeTab = () => {
           )
         }
       </Media>
-
-      <ButtonAddTransactions />
+      {isModalOpen && <ModalAddTransaction handleClick={handleClick} />}
+      <ButtonAddTransactions handleClick={handleClick} />
     </>
   );
 };

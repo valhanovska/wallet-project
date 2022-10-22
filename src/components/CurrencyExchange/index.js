@@ -1,1 +1,1 @@
-export { CurrencyExchange } from './CurrencyExchange';
+export { default} from './CurrencyExchange';

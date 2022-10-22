@@ -19,18 +19,23 @@ export const Blur = styled.div`
 
 export const Div = styled.div`
   background-color: #e7eaf2;
-  height: 100vw;
-  width: 100vw;
+  /* padding: 15px 20px; */
+  min-height: 1024px;
 
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (min-width: 768px)  {
     position: relative;
-    min-width: 768px;
-    height: 1024px;
+    /* min-width: 768px; */
+    height: 100vh;
     background-color: #e7eaf2;
 
     background-image: url(${splashBlueTablet}), url(${splashOrangeTablet});
     background-repeat: no-repeat;
     background-position: bottom 0 left 0, top 0 right 0;
+
+    /* padding: 32px; */
+    /* margin: 0 auto; */
+
+  
   }
 
   @media screen and (min-width: 1280px) {
@@ -45,20 +50,41 @@ export const Div = styled.div`
   }
 `;
 
+
+
 export const Box = styled.div`
+ padding: 15px 20px;
   @media screen and (min-width: 768px) {
     display: flex;
+    padding: 32px;
     flex-direction: column;
+    align-items: center;
+    gap: 20px;
   }
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: row;
   }
 `;
+export const BoxAsaid = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* gap: 32px; */
+  @media screen and (min-width: 768px) {
+    justify-content: space-between;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 20px;
+  }
+`;
 
 export const Wrapper = styled.div`
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  padding-bottom: 15px;
+  @media screen and (min-width: 768px) {
     display: flex;
+    gap: 32px;
+    padding: 0;
   }
 
   @media screen and (min-width: 1280px) {
@@ -70,13 +96,6 @@ export const Wrapper = styled.div`
     border-bottom: none;
     box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
       1px 0px 0px rgba(255, 255, 255, 0.6);
-    box  
-  }
-`;
-
-export const BoxAsaid = styled.div`
-  @media screen and (min-width: 1280px) {
-    margin-top: 20px;
   }
 `;
 
@@ -84,3 +103,5 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+// export
