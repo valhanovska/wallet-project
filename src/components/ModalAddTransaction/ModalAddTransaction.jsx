@@ -120,7 +120,6 @@ const ModalAddTransaction = ({ handleClick }) => {
             value={positiveSum(formik)}
             onChange={formik.handleChange}
             placeholder="0.00"
-            required
           />
           <ContainerDate>
             <DataModal setDate={setDate} />

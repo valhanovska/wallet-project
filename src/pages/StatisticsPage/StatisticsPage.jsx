@@ -11,7 +11,7 @@ const DiagramTab = () => {
   const allTransationsForPeriod = useSelector(getAllTransactionsForPeriod);
   const { categoriesSummary, expenseSummary, incomeSummary, periodTotal } =
     allTransationsForPeriod;
-  const matches = useMediaQuery('(min-width:1280px)');
+  // const matches = useMediaQuery('(min-width:1280px)');
   const showStatistics = Boolean(expenseSummary && incomeSummary);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -20,7 +20,7 @@ const DiagramTab = () => {
 
   return categoriesSummary ? (
     <Stack
-      sx={{ px: '20px', pl: matches ? '69px' : undefined }}
+      // sx={{ px: '20px', pl: matches ? '69px' : undefined }}
       alignItems="center"
     >
       <Title>Statistics</Title>

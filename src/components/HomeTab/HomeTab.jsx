@@ -9,9 +9,7 @@ import { useState } from 'react';
 import { getAllTransactions } from 'redux/transactionsController/trControllerSelector';
 
 const HomeTab = () => {
-  const allTransaction = useSelector(
-    getAllTransactions
-  );
+  const allTransaction = useSelector(getAllTransactions);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleClick = () => {
