@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { MobileTab } from './MobileTab';
 import { Table } from './Table';
 
-
 import Balance from '../Balance/Balance';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import ModalAddTransaction from 'components/ModalAddTransaction';

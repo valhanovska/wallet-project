@@ -6,27 +6,16 @@ import splashBlueTablet from '../../assets/images/BG/Ellipse-db-bluex1.png';
 import splashOrangeDesktop from '../../assets/images/BG/Ellipse-dbx1-desktop.png';
 import splashBlueDesktop from '../../assets/images/BG/Ellipse-db-bluex1-desktop.png';
 
-export const Blur = styled.div`
-  @media screen and (min-width: 768px) {
-    height: 1024px;
-    backdrop-filter: blur(25px);
-  }
-  @media screen and (min-width: 1280px) {
-    height: 1300px;
-    backdrop-filter: blur(25px);
-  }
-`;
-
 export const Div = styled.div`
   background-color: #e7eaf2;
   /* padding: 15px 20px; */
   min-height: 1024px;
 
-  @media screen and (min-width: 768px)  {
+  @media screen and (min-width: 768px) {
     position: relative;
     /* min-width: 768px; */
     height: 100vh;
-    background-color: #e7eaf2;
+    /* background-color: #e7eaf2; */
 
     background-image: url(${splashBlueTablet}), url(${splashOrangeTablet});
     background-repeat: no-repeat;
@@ -34,15 +23,15 @@ export const Div = styled.div`
 
     /* padding: 32px; */
     /* margin: 0 auto; */
-
-  
   }
 
   @media screen and (min-width: 1280px) {
     position: relative;
     min-width: 768px;
-    height: 1024px;
-    background-color: #e7eaf2;
+    min-height: 720px;
+
+    /* height: 1024px; */
+    /* background-color: #e7eaf2; */
 
     background-image: url(${splashBlueDesktop}), url(${splashOrangeDesktop});
     background-repeat: no-repeat;
@@ -50,10 +39,22 @@ export const Div = styled.div`
   }
 `;
 
+export const Blur = styled.div`
+  @media screen and (min-width: 768px) {
+    height: 1024px;
+    backdrop-filter: blur(25px);
+  }
+  @media screen and (min-width: 1280px) {
+    /* height: 1300px; */
+    /* height: 100vh; */
 
+    backdrop-filter: blur(25px);
+  }
+`;
 
 export const Box = styled.div`
- padding: 15px 20px;
+  padding: 15px 20px;
+
   @media screen and (min-width: 768px) {
     display: flex;
     padding: 32px;
@@ -61,9 +62,13 @@ export const Box = styled.div`
     align-items: center;
     gap: 20px;
   }
+
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 46px 16px;
   }
 `;
 export const BoxAsaid = styled.div`
@@ -75,7 +80,8 @@ export const BoxAsaid = styled.div`
     justify-content: space-between;
   }
   @media screen and (min-width: 1280px) {
-    margin-top: 20px;
+    /* margin-top: 20px; */
+    gap: 28px;
   }
 `;
 
@@ -90,12 +96,14 @@ export const Wrapper = styled.div`
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: column;
-    padding-right: 70px;
-    min-height: calc(100vh - 80px);
+    /* padding-right: 70px; */
+    /* min-height: calc(100vh - 80px); */
+    border: none;
     border-right: 1px solid #e7e5f2;
-    border-bottom: none;
-    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
-      1px 0px 0px rgba(255, 255, 255, 0.6);
+    /* box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6); */
+
+    box-shadow: rgba(0, 0, 0, 0.05) 1px 0px 0px 0px;
   }
 `;
 
@@ -104,4 +112,12 @@ export const Container = styled.div`
   justify-content: center;
 `;
 
-// export
+export const WrapperOutlet = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media screen and (min-width: 768px) {
+    position: relative;
+  }
+`;

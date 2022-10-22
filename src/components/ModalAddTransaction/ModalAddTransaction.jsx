@@ -23,7 +23,10 @@ import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
-import { addTransactionUser, getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+import {
+  addTransactionUser,
+  getTransactionUser,
+} from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
 
 const ModalAddTransaction = ({ handleClick }) => {
@@ -38,7 +41,7 @@ const ModalAddTransaction = ({ handleClick }) => {
     },
     onSubmit: values => {
       dispatch(addTransactionUser(values));
-      dispatch(getTransactionUser())
+      dispatch(getTransactionUser());
       handleClick();
     },
   });
@@ -56,8 +59,6 @@ const ModalAddTransaction = ({ handleClick }) => {
     }));
     return category;
   };
-
-
 
   return (
     <ModalWrapper handleClick={handleClick}>
@@ -101,7 +102,6 @@ const ModalAddTransaction = ({ handleClick }) => {
             type="number"
             onChange={formik.handleChange}
             placeholder="0.00"
-            required
           />
           <ContainerDate>
             <DataModal setDate={setDate} />
@@ -130,7 +130,7 @@ const ModalAddTransaction = ({ handleClick }) => {
           </Svg>
         </CloseBtn>
       </Form>
-      </ModalWrapper>
+    </ModalWrapper>
   );
 };
 
