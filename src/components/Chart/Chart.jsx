@@ -4,10 +4,18 @@ import { Doughnut } from 'react-chartjs-2';
 import CountUp from 'react-countup';
 import { ChartContainer, CountUpContainer } from './Chart.styled';
 import { categoryColorMap } from '../../pages/StatisticsPage/categoryColorMap';
+import { useSelector } from 'react-redux';
+import { getAllTransactionsForPeriod } from 'redux/transactionSummaryController/trSummarySelector';
+
 
 ChartJS.register(ArcElement, Tooltip);
 
 const StatisticsChart = ({ categoriesSummary, periodTotal }) => {
+
+  const allTransationsForPeriod = useSelector(getAllTransactionsForPeriod);
+  const { expenseSummary } =
+    allTransationsForPeriod;
+
   const expenseCategoriesSummary = categoriesSummary.filter(
     x => x.type !== 'INCOME'
   );
@@ -38,7 +46,7 @@ const StatisticsChart = ({ categoriesSummary, periodTotal }) => {
         }}
       />
       <CountUpContainer>
-        ₴ <CountUp end={periodTotal} duration={1} />
+        ₴ <CountUp end={expenseSummary} duration={1} />
       </CountUpContainer>
     </ChartContainer>
   );

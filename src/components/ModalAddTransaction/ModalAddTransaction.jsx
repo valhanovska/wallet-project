@@ -60,6 +60,23 @@ const ModalAddTransaction = ({ handleClick }) => {
     return category;
   };
 
+  const positiveSum = formik => {
+    if (formik.values.type === 'EXPENSE') {
+      if (formik.values.amount > 0) {
+        return formik.values.amount * -1;
+      } else {
+        return formik.values.amount;
+      }
+    }
+    if (formik.values.type === 'INCOME') {
+      if (formik.values.amount < 0) {
+        return formik.values.amount * -1;
+      }
+    } else {
+      return formik.values.amount;
+    }
+  };
+
   return (
     <ModalWrapper handleClick={handleClick}>
       <Form onSubmit={formik.handleSubmit}>
@@ -93,13 +110,14 @@ const ModalAddTransaction = ({ handleClick }) => {
         </TransactionType>
 
         {formik.values.type === 'EXPENSE' && (
-          <SelectCategory setCategory={setCategory} />
+          <SelectCategory setCategory={setCategory} type={formik.values.type} />
         )}
 
         <ContainerSumData>
           <Sum
             name="amount"
             type="number"
+            value={positiveSum(formik)}
             onChange={formik.handleChange}
             placeholder="0.00"
           />
