@@ -11,6 +11,7 @@ import {
   Label,
   Validation,
   DivInput,
+  BorderProgress,
 } from './RegistrationForm.styled';
 import LinearProgress, {
   linearProgressClasses,
@@ -55,6 +56,7 @@ const RegistrationForm = () => {
   });
 
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+    
     height: 5,
     borderRadius: 4,
     marginTop: 8,
@@ -135,7 +137,6 @@ return (
               <Validation>{formik.errors.password}</Validation>
             ) : null}
           </DivInput>
-
           <DivInput>
             <Label>
               <svg>
