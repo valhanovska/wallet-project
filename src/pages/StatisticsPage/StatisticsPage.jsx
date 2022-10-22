@@ -1,10 +1,12 @@
-import React from 'react';
+
 import StatisticsChart from '../../components/Chart/Chart';
 import StatisticsTable from './Table/Table';
 import { Container, Title } from './StatisticsPage.styled';
 import { Stack, useMediaQuery } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { getAllTransactionsForPeriod } from 'redux/transactionSummaryController/trSummarySelector';
+import {  useEffect } from 'react';
+
 
 const DiagramTab = () => {
   const allTransationsForPeriod = useSelector(getAllTransactionsForPeriod);
@@ -16,6 +18,7 @@ const DiagramTab = () => {
   if (!categoriesSummary) {
     return null;
   }
+
 
   return (
     <Stack
