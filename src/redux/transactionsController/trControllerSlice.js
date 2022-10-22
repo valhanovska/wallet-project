@@ -18,7 +18,10 @@ const transactionsControllers = createSlice({
     isLoading: false,
     error: null,
     allTransactions: [],
+    // allFilteredTransaction: [],
+    // filterFlag: "",
   },
+  reducers: {},
   extraReducers: {
     [addTransactionUser.pending]: state => {
       state.isLoading = true;

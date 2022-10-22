@@ -41,7 +41,7 @@ export const Label = styled.label`
   border-bottom: 1px solid #e0e0e0;
   display: flex;
   align-items: center;
-  padding: 8px;
+  padding-bottom: 8px;
 
   svg {
     height: 24px;
@@ -134,7 +134,6 @@ export const Button = styled.button`
 `;
 
 export const Validation = styled.p`
-  position: absolute;
   margin: 5px 0 0 0;
   color: #ff4747;
   margin-left: 15px;
@@ -144,6 +143,6 @@ export const Validation = styled.p`
   font-family: ${props => props.theme.fonts.circe};
 `;
 
-export const DivInput = styled.div`
-  position: relative;
-`;
+export const DivInput = styled.div``;
+
+export const BorderProgress = styled.div``;
