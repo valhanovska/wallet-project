@@ -22,7 +22,7 @@ const HomeTab = () => {
               {allTransaction && <MobileTab items={allTransaction} />}
             </>
           ) : (
-            allTransaction && <Table items={allTransaction} />
+            allTransaction && <Table />
           )
         }
       </Media>

@@ -19,25 +19,41 @@ import spaceCreator from 'servises/spaceCreator';
 
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 import { useState } from 'react';
+// import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
-export const Table = ({ items }) => {
+export const Table = () => {
+  const items = useSelector(
+    state => state.transactionsControllers.allTransactions
+  );
   const [filtered, SetFiltered] = useState([])
+  const [filterFlag, setFilterFlag] =  useState("")
+  const [filterTogle, SetfilterTogle] = useState(true)
   console.log(items);
   const category = useSelector(getSelects);
-
   
-  function SortTransaction(item) {
-    
-    if (item === "Sum") { SetFiltered([...items].sort((a, b) => b.amount - a.amount)) }
+  
+  function SortTransaction(input) {
+    SetfilterTogle(!filterTogle)
 
+    // if (filterFlag === "Sum") filterTogle ? [...items].sort((a, b) => b.amount - a.amount) : [...items].sort((a, b) => a.amount - b.amount)
+    // if (filterFlag === "Balance") filterTogle ? [...items].sort((a, b) => b.balanceAfter - a.balanceAfter) : [...items].sort((a, b) => a.balanceAfter - b.balanceAfter)
+    // if (filterFlag === "Comment") filterTogle ? [...items].sort((a, b) => b.comment - a.comment) : [...items].sort((a, b) => a.comment - b.comment)
+    // // if (item === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
+    // if (filterFlag === "Category") filterTogle ? [...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) ) : [...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId))
+    // if (filterFlag === "Data") filterTogle ? [...items].sort((a, b) => a.transactionDate - b.transactionDate ) : [...items].sort((a, b) => b.transactionDate - a.transactionDate)
+    // if (filterFlag === "Type") filterTogle ? [...items].sort((a, b) => a.type.localeCompare(b.type) ) : [...items].sort((a, b) => b.type.localeCompare(a.type))
     
-
+    if (input === "Sum") filterTogle ? SetFiltered([...items].sort((a, b) => b.amount - a.amount)) : SetFiltered([...items].sort((a, b) => a.amount - b.amount))
+    if (input === "Balance") filterTogle ? SetFiltered([...items].sort((a, b) => b.balanceAfter - a.balanceAfter)) : SetFiltered([...items].sort((a, b) => a.balanceAfter - b.balanceAfter))
+    if (input === "Comment") filterTogle ? SetFiltered([...items].sort((a, b) => b.comment - a.comment)) : SetFiltered([...items].sort((a, b) => a.comment - b.comment))
+    // if (item === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
+    if (input === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) )) : SetFiltered([...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId)))
+    if (input === "Data") filterTogle ? SetFiltered([...items].sort((a, b) => a.transactionDate - b.transactionDate )) : SetFiltered([...items].sort((a, b) => b.transactionDate - a.transactionDate))
+    if (input === "Type") filterTogle ? SetFiltered([...items].sort((a, b) => a.type.localeCompare(b.type) )) : SetFiltered([...items].sort((a, b) => b.type.localeCompare(a.type)))
+   if (input === "") {return items}
 
   }
-
   
-
-  SortTransaction();
   const styles = {
     display: 'flex',
     flexDirection: 'column',
@@ -86,7 +102,10 @@ export const Table = ({ items }) => {
             </TableHeaderRow>
           </TableHeader>
           <TableBody>
-            {(filtered.length !== 0 ? filtered : items).map(
+              {
+                (filtered.length !== 0 ? filtered : items)
+                // SortTransaction(filterFlag, items)
+                  .map(
               ({
                 id,
                 transactionDate,
