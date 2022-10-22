@@ -105,9 +105,11 @@ export const MobileTab = ({ items }) => {
 									</RowValue>
 								</Row>
 
-								{/* <MobileButtonDelete onClick={() => onDelete(id)}>
+								<MobileButtonDelete 
+								// onClick={() => onDelete(id)}
+								>
 									<Trash src={trashSvg} alt="trash" />
-								</MobileButtonDelete> */}
+								</MobileButtonDelete>
 							</MobileTableBox>
 						)
 					)}
