@@ -14,7 +14,7 @@ import {
   Tr,
 } from './CurrencyExchange.styled';
 
-export const CurrencyExchange = () => {
+ const CurrencyExchange = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [currency, setCurrency] = useState([]);
   const [error, setError] = useState(null);
@@ -121,3 +121,4 @@ export const CurrencyExchange = () => {
     </CurrencyWrap>
   );
 };
+export default CurrencyExchange

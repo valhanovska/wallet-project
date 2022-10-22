@@ -1,11 +1,10 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
   @media screen and (min-width: 768px) {
     position: fixed;
-    top: 0;
-    left: 0;
+    /* top: 0; */
+    /* left: 0; */
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -13,6 +12,9 @@ export const Overlay = styled.div`
     align-items: center;
     background-color: rgba(0, 0, 0, 0.25);
     z-index: 1200;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -24,6 +26,7 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
   top: 60px;
+  left: 0;
   width: 100%;
   max-height: 100vh;
   padding: 20px 0;
@@ -33,9 +36,12 @@ export const Form = styled.form`
 
   @media screen and (min-width: 768px) {
     max-height: calc(100vh - 24px);
+    left: auto;
     top: auto;
     max-width: 540px;
     border-radius: 20px;
+ 
+
 
     animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
@@ -267,7 +273,7 @@ export const Button = styled.button`
   }
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.button`
   width: 300px;
   border-radius: 20px;
   border: 1px solid #4a56e2;

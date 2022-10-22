@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
   position: fixed;
-  bottom: 40px;
-  right: 40px;
+  bottom: 175px;
+  right: 250px;
   /* margin-top: auto;
   margin-bottom: 40px;
   margin-left: auto;

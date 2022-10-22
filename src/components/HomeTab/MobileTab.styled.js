@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 
 export const MobileTransactions = styled.ul`
-  margin-top: 32px;
-  margin-bottom: 48px;
+  /* margin-top: 32px;
+  margin-bottom: 48px; */
+  margin: 0;
+  padding: 0;
 `;
 
 export const MobileTableBox = styled.li`
