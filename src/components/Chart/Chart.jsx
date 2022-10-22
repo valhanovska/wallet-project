@@ -7,7 +7,7 @@ import { categoryColorMap } from '../../pages/StatisticsPage/categoryColorMap';
 
 ChartJS.register(ArcElement, Tooltip);
 
-const StatisticsChart = ({ categoriesSummary }) => {
+const StatisticsChart = ({ categoriesSummary, periodTotal }) => {
   const expenseCategoriesSummary = categoriesSummary.filter(
     x => x.type !== 'INCOME'
   );
@@ -38,7 +38,7 @@ const StatisticsChart = ({ categoriesSummary }) => {
         }}
       />
       <CountUpContainer>
-        ₴ <CountUp end={10000} duration={1} />
+        ₴ <CountUp end={periodTotal} duration={1} />
       </CountUpContainer>
     </ChartContainer>
   );

@@ -8,9 +8,10 @@ import { getAllTransactionsForPeriod } from 'redux/transactionSummaryController/
 
 const DiagramTab = () => {
   const allTransationsForPeriod = useSelector(getAllTransactionsForPeriod);
-  const { categoriesSummary, expenseSummary, incomeSummary } =
+  const { categoriesSummary, expenseSummary, incomeSummary, periodTotal } =
     allTransationsForPeriod;
   const matches = useMediaQuery('(min-width:1280px)');
+  const showStatistics = Boolean(expenseSummary && incomeSummary);
 
   if (!categoriesSummary) {
     return null;
@@ -23,8 +24,16 @@ const DiagramTab = () => {
     >
       <Title>Statistics</Title>
       <Container>
-        <StatisticsChart categoriesSummary={categoriesSummary} />
+        {showStatistics ? (
+          <StatisticsChart
+            periodTotal={periodTotal}
+            categoriesSummary={categoriesSummary}
+          />
+        ) : (
+          <h3>You have no operations for this period</h3>
+        )}
         <StatisticsTable
+          showStatistics={showStatistics}
           categoriesSummary={categoriesSummary}
           incomeSummary={incomeSummary}
           expenseSummary={expenseSummary}
