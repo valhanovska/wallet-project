@@ -16,7 +16,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/sliceAuth';
 import { transactionCategoriesReducer } from './transactionCategories/sliceTransaction';
 import { transactionsControllersReducer } from './transactionsController/trControllerSlice';
-import { transactionsSummaryReducer } from './transactionSummaryController/trSummarySelector';
+import { transactionsSummaryReducer } from './transactionSummaryController/trSummarySlice';
 
 const middleware = [
   ...getDefaultMiddleware({
