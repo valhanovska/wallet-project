@@ -5,7 +5,7 @@ import DropdownIndicator from './DropdownIndicator';
 import { useSelector } from 'react-redux';
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 
-export function SelectCategory({ setCategory }) {
+export function SelectCategory({ setCategory, type }) {
   const selects = useSelector(getSelects);
 
   return (
@@ -13,7 +13,7 @@ export function SelectCategory({ setCategory }) {
       <Select
         onChange={e => setCategory(e.categoryId)}
         key={true}
-        styles={selectStyles(true)}
+        styles={selectStyles(type=== 'EXPENSE')}
         components={{ DropdownIndicator }}
         options={selects
           .filter(option => option.name !== 'Income')
