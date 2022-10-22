@@ -9,6 +9,8 @@ const ButtonAddTransactions = () => {
   const handleClick = () => {
     setIsModalOpen(!isModalOpen);
   };
+  isModalOpen ? (document.body.style.overflow = 'hidden') : document.body.style.overflow = 'visible';
+  console.log(isModalOpen);
 
   return (
     <>

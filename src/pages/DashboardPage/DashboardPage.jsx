@@ -1,6 +1,7 @@
 import Balance from 'components/Balance/Balance';
-import { CurrencyExchange } from 'components/CurrencyExchange';
+import CurrencyExchange from 'components/CurrencyExchange';
 import Loader from 'components/Loader/Loader';
+// import ModalAddTransaction from 'components/ModalAddTransaction';
 import Navigations from 'components/Navigation/Navigation';
 import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
@@ -34,34 +35,37 @@ const DashboardPage = () => {
       navigate('/transactions/home');
   }, [isTabletOrDesctop, location, navigate]);
 
-    useEffect(() => {
+  useEffect(() => {
     dispatch(getAllTransactionsForPeriodUser({ month: 10, year: 2022 }));
   }, []);
 
   return (
-    <Div>
-      <Blur>
-        <Header />
-        <Box>
-          <Wrapper>
+    <>
+      <Header />
+      <Div>
+        <Blur>
+          <Box>
+            <Wrapper>
+              {/* <BoxAsaid> */}
+                <Navigations />
+                {(isMobile && location.pathname === '/transactions/diagram') ||
+                (isMobile && location.pathname === '/transactions/currency') ||
+                (isMobile &&
+                  location.pathname === '/transactions/home') ? null : (
+                  <Balance />
+                )}
+              {/* </BoxAsaid> */}
+              {isTabletOrDesctop && <CurrencyExchange />}
+            </Wrapper>
             <BoxAsaid>
-              <Navigations />
-              {(isMobile && location.pathname === '/transactions/diagram') ||
-              (isMobile &&
-                location.pathname === '/transactions/currency') ? null : (
-                <Balance />
-              )}
+              <Suspense fallback={<Loader />}>
+                <Outlet />
+              </Suspense>
             </BoxAsaid>
-            {isTabletOrDesctop && <CurrencyExchange />}
-          </Wrapper>
-          <BoxAsaid>
-            <Suspense fallback={<Loader />}>
-              <Outlet />
-            </Suspense>
-          </BoxAsaid>
-        </Box>
-      </Blur>
-    </Div>
+          </Box>
+        </Blur>
+      </Div>
+    </>
   );
 };
 

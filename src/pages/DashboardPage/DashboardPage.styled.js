@@ -6,21 +6,12 @@ import splashBlueTablet from '../../assets/images/BG/Ellipse-db-bluex1.png';
 import splashOrangeDesktop from '../../assets/images/BG/Ellipse-dbx1-desktop.png';
 import splashBlueDesktop from '../../assets/images/BG/Ellipse-db-bluex1-desktop.png';
 
-export const Blur = styled.div`
-  @media screen and (min-width: 768px) {
-    height: 1024px;
-    backdrop-filter: blur(25px);
-  }
-  @media screen and (min-width: 1280px) {
-    height: 1300px;
-    backdrop-filter: blur(25px);
-  }
-`;
 
 export const Div = styled.div`
-  background-color: #e7eaf2;
-  height: 100vw;
-  width: 100vw;
+  /* background-color: #e7eaf2; */
+  background-color: red;
+  padding: 15px 20px;
+  
 
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     position: relative;
@@ -45,6 +36,19 @@ export const Div = styled.div`
   }
 `;
 
+export const Blur = styled.div`
+  /* @media screen and (min-width: 768px) {
+    height: 1024px;
+    backdrop-filter: blur(25px);
+  }
+  @media screen and (min-width: 1280px) {
+    height: 1300px;
+    backdrop-filter: blur(25px);
+  } */
+`;
+
+
+
 export const Box = styled.div`
   @media screen and (min-width: 768px) {
     display: flex;
@@ -55,12 +59,21 @@ export const Box = styled.div`
     flex-direction: row;
   }
 `;
+export const BoxAsaid = styled.div`
+display: flex;
+flex-direction: column;
+gap: 32px;
+  @media screen and (min-width: 1280px) {
+    margin-top: 20px;
+  }
+`;
 
 export const Wrapper = styled.div`
+padding-bottom: 15px;
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     display: flex;
   }
-
+  
   @media screen and (min-width: 1280px) {
     display: flex;
     flex-direction: column;
@@ -74,11 +87,6 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const BoxAsaid = styled.div`
-  @media screen and (min-width: 1280px) {
-    margin-top: 20px;
-  }
-`;
 
 export const Container = styled.div`
   display: flex;

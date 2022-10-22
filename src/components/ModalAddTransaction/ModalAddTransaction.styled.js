@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
@@ -24,6 +23,7 @@ export const Form = styled.form`
   align-items: center;
   justify-content: center;
   top: 60px;
+  left: 0;
   width: 100%;
   max-height: 100vh;
   padding: 20px 0;
@@ -267,7 +267,7 @@ export const Button = styled.button`
   }
 `;
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.button`
   width: 300px;
   border-radius: 20px;
   border: 1px solid #4a56e2;

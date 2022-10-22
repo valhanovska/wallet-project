@@ -138,7 +138,7 @@ const ModalAddTransaction = ({ handleClick }) => {
 
         <ContainerBtn>
           <Button type="submit">Add</Button>
-          <NavLink type="button" to="/transactions" onClick={handleClick}>
+          <NavLink type="button" to="/transactions/home" onClick={handleClick}>
             Cancel
           </NavLink>
         </ContainerBtn>
