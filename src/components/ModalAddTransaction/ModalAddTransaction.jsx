@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { useFormik } from 'formik';
 import DataModal from 'components/DataModal/DataModal';
 import {
@@ -11,7 +10,6 @@ import {
   TextType,
   TransactionType,
   NavLink,
-  Overlay,
 } from './ModalAddTransaction.styled';
 
 import { ReactComponent as Plus } from '../../assets/icons/Plus.svg';
@@ -26,6 +24,7 @@ import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
 import { addTransactionUser, getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+import ModalWrapper from './ModalWrapper';
 
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
@@ -58,28 +57,10 @@ const ModalAddTransaction = ({ handleClick }) => {
     return category;
   };
 
-  const handleKeyDown = e => {
-    if (e.code === 'Escape') {
-      handleClick();
-    }
-  };
 
-  const handleBackdropClick = e => {
-    if (e.currentTarget === e.target) {
-      handleClick();
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-    // eslint-disable-next-line
-  }, []);
 
   return (
-    <Overlay onClick={handleBackdropClick}>
+    <ModalWrapper handleClick={handleClick}>
       <Form onSubmit={formik.handleSubmit}>
         <Title>Add transaction</Title>
         <TransactionType>
@@ -149,7 +130,7 @@ const ModalAddTransaction = ({ handleClick }) => {
           </Svg>
         </CloseBtn>
       </Form>
-    </Overlay>
+      </ModalWrapper>
   );
 };
 

@@ -10,9 +10,9 @@ export const List = styled.ul`
   margin: ${p=>p.theme.space[0]};
   @media screen and (min-width: 768px) {
     padding-left: ${p=>p.theme.space[0]}px;
-    margin-top: ${p=>p.theme.space[12]}px;
+    /* margin-top: ${p=>p.theme.space[12]}px; */
     margin-bottom: ${p=>p.theme.space[0]};
-    margin-left: ${p=>p.theme.space[10]}px;
+    /* margin-left: ${p=>p.theme.space[10]}px; */
     gap: ${p=>p.theme.space[9]}px;
     display: flex;
     flex-direction: column;

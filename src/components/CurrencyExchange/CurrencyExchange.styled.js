@@ -15,9 +15,10 @@ export const SpinnerWrap = styled.div`
 
 export const CurrencyWrap = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  /* display: flex; */
+  /* flex-direction: column;
+  align-items: center;
+  justify-content: space-between; */
   margin-top: ${p=>p.theme.space[10]}px;
 
   max-width: ${({ w }) => (w ? w : '390px')};
@@ -32,16 +33,17 @@ export const CurrencyWrap = styled.div`
   background-position: bottom center;
 
   overflow: hidden;
-
+  margin: 15px auto 0 auto ;
    @media screen and (min-width: 768px) and (max-width: 1279px) {
-   margin-top: 32px;
+   /* margin-top: 32px; */
    max-width: 336px;
-   margin-top: ${p=>p.theme.space[5]}px;
+   margin: 0;
+   /* margin-top: ${p=>p.theme.space[5]}px; */
   }
 
   @media screen and (max-width: 1279px) {
-    margin-left: auto;
-    margin-right: auto;
+    /* margin-left: auto;
+    margin-right: auto; */
   }
 
   @media screen and (min-width: 1280px) {
