@@ -1,4 +1,4 @@
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import EllipsisText from 'react-ellipsis-text';
 import {
   TableMain,
@@ -18,11 +18,26 @@ import noTransactionsImg from '../../assets/images/no-record-available.png';
 import spaceCreator from 'servises/spaceCreator';
 
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
-
+import { useState } from 'react';
 
 export const Table = ({ items }) => {
+  const [filtered, SetFiltered] = useState([])
+  console.log(items);
   const category = useSelector(getSelects);
 
+  
+  function SortTransaction(item) {
+    
+    if (item === "Sum") { SetFiltered([...items].sort((a, b) => b.amount - a.amount)) }
+
+    
+
+
+  }
+
+  
+
+  SortTransaction();
   const styles = {
     display: 'flex',
     flexDirection: 'column',
@@ -50,23 +65,28 @@ export const Table = ({ items }) => {
       {items?.length === 0 ? (
         <div style={styles}>
           <h2>Sorry, you don't have any transactions yet</h2>
-          <img src={noTransactionsImg} alt="no record available" width='400px' />
+          <img
+            src={noTransactionsImg}
+            alt="no record available"
+            width="400px"
+          />
         </div>
       ) : (
         <TableMain>
           <TableHeader>
-            <TableHeaderRow>
+            <TableHeaderRow onClick={(e)=> SortTransaction(e.target.innerText)}>
+              <TableHeadCell> </TableHeadCell>
               <TableHeadCell>date</TableHeadCell>
               <TableHeadCell>type</TableHeadCell>
               <TableHeadCell>category</TableHeadCell>
               <TableHeadCell>comment</TableHeadCell>
               <TableHeadCell>sum</TableHeadCell>
               <TableHeadCell>balance</TableHeadCell>
-              <TableHeadCell> </TableHeadCell>
+              {/* <TableHeadCell> </TableHeadCell> */}
             </TableHeaderRow>
           </TableHeader>
           <TableBody>
-            {items.map(
+            {(filtered.length !== 0 ? filtered : items).map(
               ({
                 id,
                 transactionDate,
@@ -114,7 +134,7 @@ export const Table = ({ items }) => {
                       <p>...</p>
                     )}
                   </TableCell>
-                  
+
                   {/* <TableCell>
 										<ButtonDelete onClick={() => onDelete(_id)}>
 											<Trash src={trashSvg} alt="trash" />

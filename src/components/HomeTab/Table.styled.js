@@ -17,7 +17,6 @@ export const TableMain = styled.table`
 export const TableHeader = styled.thead`
   position: sticky;
   display: block;
-  padding: 16px 20px 14px;
   height: 58px;
   font-size: 18px;
   background-color: #fff;
@@ -27,20 +26,31 @@ export const TableHeader = styled.thead`
 export const TableHeaderRow = styled.tr`
   display: flex;
   justify-content: space-between;
+  height: 100%;
+
+  align-items: center;
 `;
 
 export const TableHeadCell = styled.th`
   text-transform: capitalize;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+
+  color: #000000;
   &:first-of-type {
-    width: 80px;
     text-align: start;
   }
+
   &:nth-of-type(2) {
-    width: 40px;
+    width: 60px;
     text-align: start;
   }
   &:nth-of-type(3) {
-    width: 90px;
+    width: 40px;
     text-align: start;
   }
   &:nth-of-type(4) {
@@ -51,7 +61,11 @@ export const TableHeadCell = styled.th`
     width: 100px;
     text-align: start;
   }
-   &:nth-of-type(6) {
+  &:nth-of-type(6) {
+    width: 70px;
+    text-align: start;
+  }
+  &:nth-of-type(7) {
     width: 100px;
     text-align: start;
   }
@@ -66,7 +80,14 @@ export const TableBody = styled.tbody`
   overflow-y: auto;
   max-height: 60vh;
   padding: 5px 20px 15px 20px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
   font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  color: #000000;
   &::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0px 6px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -118,8 +139,8 @@ export const TableCell = styled.td`
     width: 100px;
     text-align: center;
   }
-   &:nth-of-type(6) {
-    width: 100px;
+  &:nth-of-type(6) {
+    width: 60px;
     text-align: center;
   }
   &:last-of-type {

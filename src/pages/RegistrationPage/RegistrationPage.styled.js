@@ -19,7 +19,7 @@ export const Blur = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 40px 100px 20px 100px;
+    padding: 52px 100px 52px 100px;
     backdrop-filter: blur(25px);
     background: rgba(255, 255, 255, 0.4);
   }
@@ -69,7 +69,6 @@ export const Page = styled.div`
   @media screen and (min-width: 768px) and (max-width: 1280px) {
     position: relative;
     min-width: 768px;
-    height: 1024px;
     background-color: #e7eaf2;
 
     background-image: url(${GirlTablet}), url(${splashBlue}),
@@ -83,7 +82,6 @@ export const Page = styled.div`
     display: flex;
     justify-content: flex-end;
     width: 1280px;
-    height: 720px;
     background-color: #e7eaf2;
 
     background-image: url(${GirlDesktop}), url(${splashOrangeBlur}),
