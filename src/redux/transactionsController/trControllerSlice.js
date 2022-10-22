@@ -32,12 +32,18 @@ const transactionsControllers = createSlice({
       state.error = null;
       state.transactionsControllers = action.payload;
     },
+    [addTransactionUser.rejected]: state => {
+      state.error = null;
+    },
     [getTransactionUser.pending]: state => {
       state.isLoading = true;
       state.error = null;
     },
     [getTransactionUser.fulfilled]: (state, action) => {
       state.allTransactions = action.payload.reverse();
+    },
+    [getTransactionUser.rejected]: state => {
+      state.error = null;
     },
   },
 });
