@@ -32,27 +32,28 @@ export const Table = () => {
   const category = useSelector(getSelects);
   
   
-  function SortTransaction(input) {
-    SetfilterTogle(!filterTogle)
+  function SortTransaction() {
+   
 
-    // if (filterFlag === "Sum") filterTogle ? [...items].sort((a, b) => b.amount - a.amount) : [...items].sort((a, b) => a.amount - b.amount)
-    // if (filterFlag === "Balance") filterTogle ? [...items].sort((a, b) => b.balanceAfter - a.balanceAfter) : [...items].sort((a, b) => a.balanceAfter - b.balanceAfter)
-    // if (filterFlag === "Comment") filterTogle ? [...items].sort((a, b) => b.comment - a.comment) : [...items].sort((a, b) => a.comment - b.comment)
-    // // if (item === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
-    // if (filterFlag === "Category") filterTogle ? [...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) ) : [...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId))
-    // if (filterFlag === "Data") filterTogle ? [...items].sort((a, b) => a.transactionDate - b.transactionDate ) : [...items].sort((a, b) => b.transactionDate - a.transactionDate)
-    // if (filterFlag === "Type") filterTogle ? [...items].sort((a, b) => a.type.localeCompare(b.type) ) : [...items].sort((a, b) => b.type.localeCompare(a.type))
-    
-    if (input === "Sum") filterTogle ? SetFiltered([...items].sort((a, b) => b.amount - a.amount)) : SetFiltered([...items].sort((a, b) => a.amount - b.amount))
-    if (input === "Balance") filterTogle ? SetFiltered([...items].sort((a, b) => b.balanceAfter - a.balanceAfter)) : SetFiltered([...items].sort((a, b) => a.balanceAfter - b.balanceAfter))
-    if (input === "Comment") filterTogle ? SetFiltered([...items].sort((a, b) => b.comment - a.comment)) : SetFiltered([...items].sort((a, b) => a.comment - b.comment))
-    // if (item === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
-    if (input === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) )) : SetFiltered([...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId)))
-    if (input === "Data") filterTogle ? SetFiltered([...items].sort((a, b) => a.transactionDate - b.transactionDate )) : SetFiltered([...items].sort((a, b) => b.transactionDate - a.transactionDate))
-    if (input === "Type") filterTogle ? SetFiltered([...items].sort((a, b) => a.type.localeCompare(b.type) )) : SetFiltered([...items].sort((a, b) => b.type.localeCompare(a.type)))
-   if (input === "") {return items}
+    if (filterFlag === "Sum") return filterTogle ? [...items].sort((a, b) => b.amount - a.amount) : [...items].sort((a, b) => a.amount - b.amount)
+    if (filterFlag === "Balance") return filterTogle ? [...items].sort((a, b) => b.balanceAfter - a.balanceAfter) : [...items].sort((a, b) => a.balanceAfter - b.balanceAfter)
+    if (filterFlag === "Comment") return filterTogle ? [...items].sort((a, b) => b.comment - a.comment) : [...items].sort((a, b) => a.comment - b.comment)
+    // if (filterFlag === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
+    if (filterFlag === "Category") return filterTogle ? [...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) ) : [...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId))
+    if (filterFlag === "Date") return filterTogle ? SetFiltered([...items].sort((a, b) => a.transactionDate.split("-").join("") - b.transactionDate.split("-").join(""))) : SetFiltered([...items].sort((a, b) => b.transactionDate.split("-").join("") - a.transactionDate.split("-").join("")))
+     if (filterFlag === "Type") return filterTogle ? [...items].sort((a, b) => a.type.localeCompare(b.type) ) : [...items].sort((a, b) => b.type.localeCompare(a.type))
+     if (filterFlag === "") {return items}
+  //   if (input === "Sum") filterTogle ? SetFiltered([...items].sort((a, b) => b.amount - a.amount)) : SetFiltered([...items].sort((a, b) => a.amount - b.amount))
+  //   if (input === "Balance") filterTogle ? SetFiltered([...items].sort((a, b) => b.balanceAfter - a.balanceAfter)) : SetFiltered([...items].sort((a, b) => a.balanceAfter - b.balanceAfter))
+  //   if (input === "Comment") filterTogle ? SetFiltered([...items].sort((a, b) => b.comment - a.comment)) : SetFiltered([...items].sort((a, b) => a.comment - b.comment))
+  //   // if (item === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
+  //   if (input === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) )) : SetFiltered([...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId)))
+  //   if (input === "Date") filterTogle ? SetFiltered([...items].sort((a, b) => a.transactionDate.split("-").join("")  - b.transactionDate.split("-").join("") )) : SetFiltered([...items].sort((a, b) => b.transactionDate.split("-").join("") - a.transactionDate.split("-").join("") ))
+  //   if (input === "Type") filterTogle ? SetFiltered([...items].sort((a, b) => a.type.localeCompare(b.type) )) : SetFiltered([...items].sort((a, b) => b.type.localeCompare(a.type)))
+  //  if (input === "") {return items}
 
   }
+  console.log(SortTransaction())
   
   const styles = {
     display: 'flex',
@@ -90,7 +91,7 @@ export const Table = () => {
       ) : (
         <TableMain>
           <TableHeader>
-            <TableHeaderRow onClick={(e)=> SortTransaction(e.target.innerText)}>
+              <TableHeaderRow onClick={(e) => { setFilterFlag(e.target.innerText); SetfilterTogle(!filterTogle)} }>
               <TableHeadCell> </TableHeadCell>
               <TableHeadCell>date</TableHeadCell>
               <TableHeadCell>type</TableHeadCell>
@@ -103,8 +104,8 @@ export const Table = () => {
           </TableHeader>
           <TableBody>
               {
-                (filtered.length !== 0 ? filtered : items)
-                // SortTransaction(filterFlag, items)
+                // (filtered.length !== 0 ? filtered : items)
+                SortTransaction()
                   .map(
               ({
                 id,
