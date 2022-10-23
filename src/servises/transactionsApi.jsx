@@ -49,8 +49,8 @@ export const removeTransaction = async id => {
 
 export const editTransaction = async (id,data) => {
   try {
-    const editItem = await axios.patch(`transactions/${id}`,data);
-    return editItem
+    const r = await axios.patch(`transactions/${id}`,data);
+    return r
   } catch (error) {
     throw error;
   }

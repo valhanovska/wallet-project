@@ -18,7 +18,7 @@ const HomeTab = () => {
 
   return (
     <>
-      <Media queries={{ small: { maxWidth: 767 } }}>
+      <Media queries={{ small: { maxWidth: 769 } }}>
         {matches =>
           matches.small ? (
             <>

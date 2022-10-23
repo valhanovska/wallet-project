@@ -34,6 +34,7 @@ import { schema } from './Validation';
 
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       amount: '',
@@ -58,6 +59,8 @@ const ModalAddTransaction = ({ handleClick }) => {
       transactionDate: moment(date).format('YYYY-MM-DD'),
     }));
   };
+ 
+
   const setCategory = category => {
     
     formik.setValues(prev => ({
@@ -67,29 +70,29 @@ const ModalAddTransaction = ({ handleClick }) => {
     return category;
   };
   // const OnChangeTogle = (e) => {
-  //   console.log(e.target.checked); 
-  //   //   === "INCOME" && formik.setValues(prev => ({
-  //   //   ...prev,
-  //   //   categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
-  //   // }))
-    
-  // } 
-// if (formik.values.type === 'INCOME') {
-//       formik.setValues(prev => ({
-//         ...prev,
-//         categoryId: '',
-//       }))
-  
-  const positiveSum = formik => {
-    if (formik.values.type === 'EXPENSE') {
-      if (formik.values.amount > 0) {
-        return formik.values.amount * -1;
-      } else {
-        return formik.values.amount;
-      }
-    }
-    if (formik.values.type === 'INCOME') {
-      if (formik.values.amount < 0) {
+    //   console.log(e.target.checked); 
+    //   //   === "INCOME" && formik.setValues(prev => ({
+      //   //   ...prev,
+      //   //   categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
+      //   // }))
+      
+      // } 
+      // if (formik.values.type === 'INCOME') {
+        //       formik.setValues(prev => ({
+          //         ...prev,
+          //         categoryId: '',
+          //       }))
+          
+          const positiveSum = formik => {
+            if (formik.values.type === 'EXPENSE') {
+              if (formik.values.amount > 0) {
+                return formik.values.amount * -1;
+              } else {
+                return formik.values.amount;
+              }
+            }
+            if (formik.values.type === 'INCOME') {
+              if (formik.values.amount < 0) {
         return formik.values.amount * -1;
       }
     } else {
