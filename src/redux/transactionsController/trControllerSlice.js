@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addTransactionUser,
+  editTransactionUser,
   getTransactionUser,
   removeTransactionUser,
 } from './trControllerOpertaion';
@@ -58,6 +59,19 @@ const transactionsControllers = createSlice({
       );
     },
     [removeTransactionUser.rejected]: state => {
+      state.error = null;
+    },
+    [editTransactionUser.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [editTransactionUser.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      // state.allTransactions =
+      console.log(action.fulfilled);
+    },
+    [editTransactionUser.rejected]: state => {
       state.error = null;
     },
   },
