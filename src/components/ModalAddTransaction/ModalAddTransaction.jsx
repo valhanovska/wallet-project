@@ -41,8 +41,7 @@ const ModalAddTransaction = ({ handleClick }) => {
       type: 'EXPENSE',
       transactionDate: '',
       comment: '',
-      categoryId: (formik.values.type === 'EXPENSE')?setCategory():'063f1132-ba5d-42b4-951d-44011ca46262'
-      ,
+      categoryId: '',
     },
     validationSchema: schema,
     onSubmit: values => {
