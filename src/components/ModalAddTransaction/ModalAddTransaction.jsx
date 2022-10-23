@@ -34,13 +34,14 @@ import { schema } from './Validation';
 
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
+
   const formik = useFormik({
     initialValues: {
       amount: '',
       type: 'EXPENSE',
       transactionDate: '',
       comment: '',
-      categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+      categoryId: '',
     },
     validationSchema: schema,
     onSubmit: values => {
@@ -56,6 +57,7 @@ const ModalAddTransaction = ({ handleClick }) => {
       transactionDate: moment(date).format('YYYY-MM-DD'),
     }));
   };
+
   const setCategory = category => {
     formik.setValues(prev => ({
       ...prev,
@@ -94,10 +96,14 @@ const ModalAddTransaction = ({ handleClick }) => {
               type="checkbox"
               name="transactionType"
               checked={formik.values.type === 'EXPENSE'}
+              // onClick={e=>OnChangeTogle(e)}
               onChange={e => {
                 formik.setValues(prev => ({
                   ...prev,
                   type: e.target.checked ? 'EXPENSE' : 'INCOME',
+                  categoryId: e.target.checked
+                    ? ''
+                    : '063f1132-ba5d-42b4-951d-44011ca46262',
                 }));
               }}
             />
@@ -114,11 +120,13 @@ const ModalAddTransaction = ({ handleClick }) => {
         </TransactionType>
         <DivInput>
           {formik.values.type === 'EXPENSE' && (
-            <SelectCategory setCategory={setCategory} />
+            <div>
+              <SelectCategory setCategory={setCategory} />
+              {!formik.values.categoryId && formik.touched.categoryId ? (
+                <Validation>{formik.errors.categoryId}</Validation>
+              ) : null}
+            </div>
           )}
-          {!formik.values.categoryId && formik.touched.categoryId ? (
-            <Validation>{formik.errors.categoryId}</Validation>
-          ) : null}
         </DivInput>
         <ContainerSumData>
           <Sum
@@ -127,7 +135,6 @@ const ModalAddTransaction = ({ handleClick }) => {
             value={positiveSum(formik)}
             onChange={formik.handleChange}
             placeholder="0.00"
-            required
           />
           <ContainerDate>
             <DataModal setDate={setDate} />
