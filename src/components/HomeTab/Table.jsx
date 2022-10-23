@@ -13,6 +13,7 @@ import {
   Trash,
 } from './Table.styled';
 
+import editSvg from '../../assets/icons/symbol-defs.svg';
 import trashSvg from '../../assets/icons/trash.svg';
 import noTransactionsImg from '../../assets/images/no-record-available.png';
 import spaceCreator from 'servises/spaceCreator';
@@ -160,7 +161,7 @@ export const Table = () => {
 										<ButtonDelete
                     //  onClick={() => onDelete(_id)}
                      >
-											<Trash src={trashSvg} alt="trash" />
+											<Trash src={editSvg} alt="trash" />
 										</ButtonDelete>
 									</TableCell>
                 </TableRow>
