@@ -19,10 +19,9 @@ import noTransactionsImg from '../../assets/images/no-record-available.png';
 import spaceCreator from 'servises/spaceCreator';
 
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { removeTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 import { editeNewContact } from 'redux/transactionsController/trControllerSlice';
-import { refreshUser } from 'redux/auth/operationsAuth';
 // import { editTransaction } from 'servises/transactionsApi';
 // import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
@@ -91,6 +90,8 @@ export const Table = () => {
     alignItems: 'center',
     gap: '20px',
     color: '#4A56E2',
+    width: '715px',
+    height: '545px',
   };
 
   const normTime = data => {

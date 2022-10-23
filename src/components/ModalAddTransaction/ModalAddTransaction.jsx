@@ -25,7 +25,10 @@ import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
-import { addTransactionUser, getTransactionUser, } from 'redux/transactionsController/trControllerOpertaion';
+import {
+  addTransactionUser,
+  getTransactionUser,
+} from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
 import { schema } from './Validation';
 
@@ -37,7 +40,7 @@ const ModalAddTransaction = ({ handleClick }) => {
       type: 'EXPENSE',
       transactionDate: '',
       comment: '',
-      categoryId: '',
+      categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
     },
     validationSchema: schema,
     onSubmit: values => {
@@ -61,7 +64,7 @@ const ModalAddTransaction = ({ handleClick }) => {
     return category;
   };
 
-const positiveSum = formik => {
+  const positiveSum = formik => {
     if (formik.values.type === 'EXPENSE') {
       if (formik.values.amount > 0) {
         return formik.values.amount * -1;
@@ -109,7 +112,7 @@ const positiveSum = formik => {
             Expense
           </TextType>
         </TransactionType>
-  <DivInput>
+        <DivInput>
           {formik.values.type === 'EXPENSE' && (
             <SelectCategory setCategory={setCategory} />
           )}
