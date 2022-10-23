@@ -1,6 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { addTransaction, getAllTransactions } from 'servises/transactionsApi';
+import {
+  addTransaction,
+  getAllTransactions,
+  removeTransaction,
+} from 'servises/transactionsApi';
 
 export const addTransactionUser = createAsyncThunk(
   'transactionsControllers/addTransactionUser',
@@ -21,6 +25,18 @@ export const getTransactionUser = createAsyncThunk(
     try {
       const r = await getAllTransactions();
       return r;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const removeTransactionUser = createAsyncThunk(
+  'transactionsControllers/removeTransactionUser',
+  async (id, thunkApi) => {
+    try {
+      await removeTransaction(id);
+      return id;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

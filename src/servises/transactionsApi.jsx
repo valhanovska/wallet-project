@@ -38,3 +38,11 @@ export const getAllTransactionsForPeriod = async (month, year) => {
     throw error;
   }
 };
+
+export const removeTransaction = async id => {
+  try {
+    await axios.delete(`transactions/${id}`);
+  } catch (error) {
+    throw error;
+  }
+};
