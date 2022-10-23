@@ -25,10 +25,7 @@ import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
-import {
-  addTransactionUser,
-  getTransactionUser,
-} from 'redux/transactionsController/trControllerOpertaion';
+import { addTransactionUser, getTransactionUser, } from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
 import { schema } from './Validation';
 
@@ -64,6 +61,23 @@ const ModalAddTransaction = ({ handleClick }) => {
     return category;
   };
 
+const positiveSum = formik => {
+    if (formik.values.type === 'EXPENSE') {
+      if (formik.values.amount > 0) {
+        return formik.values.amount * -1;
+      } else {
+        return formik.values.amount;
+      }
+    }
+    if (formik.values.type === 'INCOME') {
+      if (formik.values.amount < 0) {
+        return formik.values.amount * -1;
+      }
+    } else {
+      return formik.values.amount;
+    }
+  };
+
   return (
     <ModalWrapper handleClick={handleClick}>
       <Form onSubmit={formik.handleSubmit}>
@@ -95,7 +109,7 @@ const ModalAddTransaction = ({ handleClick }) => {
             Expense
           </TextType>
         </TransactionType>
-        <DivInput>
+  <DivInput>
           {formik.values.type === 'EXPENSE' && (
             <SelectCategory setCategory={setCategory} />
           )}
@@ -104,19 +118,14 @@ const ModalAddTransaction = ({ handleClick }) => {
           ) : null}
         </DivInput>
         <ContainerSumData>
-          <DivInput>
-            <Sum
-              name="amount"
-              type="number"
-              onChange={formik.handleChange}
-              placeholder="0.00"
-              required
-              values={formik.values.amount}
-            />
-            {formik.errors.amount && formik.touched.amount ? (
-              <Validation>{formik.errors.amount}</Validation>
-            ) : null}
-          </DivInput>
+          <Sum
+            name="amount"
+            type="number"
+            value={positiveSum(formik)}
+            onChange={formik.handleChange}
+            placeholder="0.00"
+            required
+          />
           <ContainerDate>
             <DataModal setDate={setDate} />
             <Calendar />

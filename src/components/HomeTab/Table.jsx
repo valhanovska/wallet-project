@@ -156,11 +156,13 @@ export const Table = () => {
                     )}
                   </TableCell>
 
-                  {/* <TableCell>
-										<ButtonDelete onClick={() => onDelete(_id)}>
+                  <TableCell>
+										<ButtonDelete
+                    //  onClick={() => onDelete(_id)}
+                     >
 											<Trash src={trashSvg} alt="trash" />
 										</ButtonDelete>
-									</TableCell> */}
+									</TableCell>
                 </TableRow>
               )
             )}

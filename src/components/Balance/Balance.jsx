@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
-import { getSelects } from "redux/transactionCategories/selectorsTransactions";
+import { getAllTransactions } from "redux/transactionsController/trControllerSelector";
 import { Container, Title, Result, Box } from "./Balance.styled";
 
 const Balance = () => {
 
-    const allTransaction = useSelector(state=>state.transactionsControllers.allTransactions);
+    const allTransaction = useSelector(getAllTransactions);
     return ( 
         <Container>
             <Box>
