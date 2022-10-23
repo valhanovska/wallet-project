@@ -18,6 +18,7 @@ export const Div = styled.div`
 
   @media screen and (min-width: 1280px) {
     padding: 61px 0 61px 0;
+    z-index: 1;
   }
 `;
 
