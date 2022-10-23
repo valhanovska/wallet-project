@@ -8,22 +8,18 @@ import {
 const transactionsControllers = createSlice({
   name: 'transactionsControllers',
   initialState: {
-    transactionsControllers: {
-      id: '',
-      transactionDate: '',
-      type: '',
-      categoryId: '',
-      userId: '',
-      comment: '',
-      amount: null,
-    },
+    transactionsControllers: {},
     isLoading: false,
     error: null,
     allTransactions: [],
     // allFilteredTransaction: [],
     // filterFlag: "",
   },
-  reducers: {},
+  reducers: {
+    editeNewContact: (state, { payload }) => {
+      state.transactionsControllers = payload;
+    },
+  },
   extraReducers: {
     [addTransactionUser.pending]: state => {
       state.isLoading = true;
@@ -68,8 +64,7 @@ const transactionsControllers = createSlice({
     [editTransactionUser.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.error = null;
-      // state.allTransactions =
-      console.log(action.fulfilled);
+      state.transactionsControllers = action.paiload;
     },
     [editTransactionUser.rejected]: state => {
       state.error = null;
@@ -78,3 +73,4 @@ const transactionsControllers = createSlice({
 });
 
 export const transactionsControllersReducer = transactionsControllers.reducer;
+export const { editeNewContact } = transactionsControllers.actions;

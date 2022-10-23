@@ -19,9 +19,9 @@ import spaceCreator from 'servises/spaceCreator';
 
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 import { useState } from 'react';
-import { onDelete } from './TableOperations';
 import { removeTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
-import { editTransaction } from 'servises/transactionsApi';
+import { editeNewContact } from 'redux/transactionsController/trControllerSlice';
+// import { editTransaction } from 'servises/transactionsApi';
 // import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
 export const Table = () => {
@@ -29,7 +29,6 @@ export const Table = () => {
   const items = useSelector(
     state => state.transactionsControllers.allTransactions
   );
-  const [filtered, SetFiltered] = useState([]);
   const [filterFlag, setFilterFlag] = useState('');
   const [filterTogle, SetfilterTogle] = useState(true);
   console.log(items);
@@ -105,7 +104,8 @@ export const Table = () => {
   // 	dispatch(transactionsOperation.deleteTransactions(_id));
   // };
   const onEditBatton = (id) => {
-    editTransaction = items.filter(item => item.)
+    const data = items.filter(item => item.id === id)
+    dispatch(editeNewContact(data))
   }
 
   return (
