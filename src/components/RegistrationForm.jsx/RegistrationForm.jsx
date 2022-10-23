@@ -17,10 +17,22 @@ import { registerUser } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux';
 import Logo from 'components/Logo/Logo';
 import { BorderLinearProgress, schema } from './Validation';
+import { useState } from 'react';
+import { ShowPasswordButton } from 'components/Common/ShowPasswordButton';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [inputType, setInputType] = useState('password');
+  const switchPasswordVisibility = () => {
+    if (!showPassword) {
+      setShowPassword(true);
+      setInputType('text');
+      return;
+    }
+    setShowPassword(false);
+    setInputType('password');
+  };
   const progresLine = () => {
     const configPass = formik.values.confirmPassword;
     const pass = formik.values.password;
@@ -35,7 +47,7 @@ const RegistrationForm = () => {
       return 30;
     }
   };
- 
+
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -54,7 +66,7 @@ const RegistrationForm = () => {
     },
   });
 
-return (
+  return (
     <>
       <Div>
         <Logo />
@@ -83,13 +95,18 @@ return (
               <svg>
                 <use href={icon + '#icon-icon-Lock'}></use>
               </svg>
+
               <Input
                 placeholder="Password"
                 id="password"
                 name="password"
-                type="password"
+                type={inputType}
                 onChange={formik.handleChange}
                 value={formik.values.password}
+              />
+              <ShowPasswordButton
+                showPassword={showPassword}
+                onClick={switchPasswordVisibility}
               />
             </Label>
             {formik.errors.password && formik.touched.password ? (
@@ -105,12 +122,16 @@ return (
                 placeholder="Confirm password"
                 id="confirmPassword"
                 name="confirmPassword"
-                type="password"
+                type={inputType}
                 onChange={formik.handleChange}
                 value={formik.values.confirmPassword}
               />
             </Label>
-          <BorderLinearProgress formik={ formik } variant="determinate" value={progresLine()} />
+            <BorderLinearProgress
+              formik={formik}
+              variant="determinate"
+              value={progresLine()}
+            />
           </DivInput>
           <DivInput>
             <Label>
