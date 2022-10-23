@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+
 import {
   Button,
   Form,
@@ -14,18 +14,10 @@ import { useDispatch } from 'react-redux';
 import { logInUser } from '../../redux/auth/operationsAuth';
 import icon from '../../assets/icons/sprite.svg';
 import Logo from 'components/Logo/Logo';
+import { schema } from './Validation';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-
-  const schema = yup.object().shape({
-    email: yup.string().email().required('enter your E-mail, please'),
-    password: yup
-      .string()
-      .min(6, 'min Password 6 simvols')
-      .max(12, 'max Password 12 simvols')
-      .required('enter your Password, please'),
-  });
 
   const formik = useFormik({
     initialValues: {
@@ -38,6 +30,8 @@ const LoginForm = () => {
       dispatch(logInUser(values));
     },
   });
+
+  
 
   return (
     <Div>
@@ -57,9 +51,6 @@ const LoginForm = () => {
               value={formik.values.email}
             />
           </Label>
-          {formik.errors.email && formik.touched.email ? (
-            <Validation>{formik.errors.email}</Validation>
-          ) : null}
         </DivInput>
         <DivInput>
           <Label>

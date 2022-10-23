@@ -1,28 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   addTransactionUser,
+  editTransactionUser,
   getTransactionUser,
   removeTransactionUser,
 } from './trControllerOpertaion';
 const transactionsControllers = createSlice({
   name: 'transactionsControllers',
   initialState: {
-    transactionsControllers: {
-      id: '',
-      transactionDate: '',
-      type: '',
-      categoryId: '',
-      userId: '',
-      comment: '',
-      amount: null,
-    },
+    transactionsControllers: {},
     isLoading: false,
     error: null,
     allTransactions: [],
     // allFilteredTransaction: [],
     // filterFlag: "",
   },
-  reducers: {},
+  reducers: {
+    editeNewContact: (state, { payload }) => {
+      state.transactionsControllers = payload;
+    },
+  },
   extraReducers: {
     [addTransactionUser.pending]: state => {
       state.isLoading = true;
@@ -60,7 +57,20 @@ const transactionsControllers = createSlice({
     [removeTransactionUser.rejected]: state => {
       state.error = null;
     },
+    [editTransactionUser.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [editTransactionUser.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.transactionsControllers = action.paiload;
+    },
+    [editTransactionUser.rejected]: state => {
+      state.error = null;
+    },
   },
 });
 
 export const transactionsControllersReducer = transactionsControllers.reducer;
+export const { editeNewContact } = transactionsControllers.actions;
