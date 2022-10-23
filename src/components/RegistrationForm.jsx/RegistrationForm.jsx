@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
-import * as yup from 'yup';
-import { styled } from '@mui/material/styles';
+
 // import Box from '@mui/material/Box';
 import {
   Button,
@@ -11,16 +10,13 @@ import {
   Label,
   Validation,
   DivInput,
-  BorderProgress,
 } from './RegistrationForm.styled';
-import LinearProgress, {
-  linearProgressClasses,
-} from '@mui/material/LinearProgress';
 
 import icon from '../../assets/icons/sprite.svg';
 import { registerUser } from '../../redux/auth/operationsAuth';
 import { useDispatch } from 'react-redux';
 import Logo from 'components/Logo/Logo';
+import { BorderLinearProgress, schema } from './Validation';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();
@@ -38,45 +34,8 @@ const RegistrationForm = () => {
     } else if (pass.includes(configPass)) {
       return 30;
     }
-    // pass.includes(configPass) && configPass !== "" ? (configPass === pass ? 100 : 30) : 0
-    // const sum = pass.includes(configPass) && configPass !== "" ? 30 && (configPass > 6 ? 60 && (configPass === pass ? 100: 60): 30 ) : 0
-    // return sum
   };
-  const schema = yup.object().shape({
-    email: yup.string().email().required('enter your E-mail, please'),
-    password: yup
-      .string()
-      .min(6, 'min Password 6 simvols')
-      .max(12, 'max Password 12 simvols')
-      .required('enter your Password, please'),
-    firstName: yup.string().required('enter your First Name, please'),
-    confirmPassword: yup
-      .string()
-      .oneOf([yup.ref('password'), null], 'Passwords must match'),
-  });
-
-  const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
-    
-    height: 5,
-    borderRadius: 4,
-    marginTop: 8,
-    [`&.${linearProgressClasses.colorPrimary}`]: {
-      backgroundColor:
-        theme.palette.grey[theme.palette.mode === 'light' ? 200 : 800],
-    },
-    [`& .${linearProgressClasses.bar}`]: {
-      borderRadius: 5,
-      backgroundColor:
-        formik.errors.confirmPassword && formik.touched.confirmPassword
-          ? theme.palette.mode === 'light'
-            ? '#ff4747;'
-            : '#ff4747;'
-          : null || theme.palette.mode === 'light'
-          ? '#24CCA7'
-          : '#24CCA7',
-    },
-  }));
-
+ 
   const formik = useFormik({
     initialValues: {
       email: '',
@@ -151,7 +110,7 @@ return (
                 value={formik.values.confirmPassword}
               />
             </Label>
-            <BorderLinearProgress variant="determinate" value={progresLine()} />
+          <BorderLinearProgress formik={ formik } variant="determinate" value={progresLine()} />
           </DivInput>
           <DivInput>
             <Label>

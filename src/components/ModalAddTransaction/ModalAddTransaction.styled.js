@@ -40,8 +40,6 @@ export const Form = styled.form`
     top: auto;
     max-width: 540px;
     border-radius: 20px;
- 
-
 
     animation: scale-up-center 0.7s cubic-bezier(0.39, 0.575, 0.565, 1) both;
 
@@ -331,4 +329,19 @@ export const Svg = styled.svg`
     width: 16px;
     height: 16px;
   }
+`;
+
+export const Validation = styled.p`
+  position: absolute;
+  margin: 5px 0 0 0;
+  color: #ff4747;
+  margin-left: 15px;
+  font-size: ${props => props.theme.fontSizes.s};
+  font-weight: ${props => props.theme.fontWeights.normal};
+  line-height: ${props => props.theme.lineHeights.body};
+  font-family: ${props => props.theme.fonts.circe};
+`;
+
+export const DivInput = styled.div`
+  position: relative;
 `;

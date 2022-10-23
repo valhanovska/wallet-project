@@ -40,7 +40,7 @@ export const Table = () => {
     if (filterFlag === "Comment") return filterTogle ? [...items].sort((a, b) => b.comment - a.comment) : [...items].sort((a, b) => a.comment - b.comment)
     // if (filterFlag === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
     if (filterFlag === "Category") return filterTogle ? [...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) ) : [...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId))
-    if (filterFlag === "Date") return filterTogle ? SetFiltered([...items].sort((a, b) => a.transactionDate.split("-").join("") - b.transactionDate.split("-").join(""))) : SetFiltered([...items].sort((a, b) => b.transactionDate.split("-").join("") - a.transactionDate.split("-").join("")))
+    if (filterFlag === "Date") return filterTogle ? [...items].sort((a, b) => a.transactionDate.split("-").join("") - b.transactionDate.split("-").join("")) : [...items].sort((a, b) => b.transactionDate.split("-").join("") - a.transactionDate.split("-").join(""))
      if (filterFlag === "Type") return filterTogle ? [...items].sort((a, b) => a.type.localeCompare(b.type) ) : [...items].sort((a, b) => b.type.localeCompare(a.type))
      if (filterFlag === "") {return items}
   //   if (input === "Sum") filterTogle ? SetFiltered([...items].sort((a, b) => b.amount - a.amount)) : SetFiltered([...items].sort((a, b) => a.amount - b.amount))

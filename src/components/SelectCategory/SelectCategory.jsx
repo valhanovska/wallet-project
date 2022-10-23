@@ -5,12 +5,13 @@ import DropdownIndicator from './DropdownIndicator';
 import { useSelector } from 'react-redux';
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 
-export function SelectCategory({ setCategory }) {
+export function SelectCategory({ setCategory, values }) {
   const selects = useSelector(getSelects);
 
   return (
     <SelectContainer>
       <Select
+        value={values}
         onChange={e => setCategory(e.categoryId)}
         key={true}
         styles={selectStyles(true)}

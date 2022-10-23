@@ -10,6 +10,8 @@ import {
   TextType,
   TransactionType,
   NavLink,
+  Validation,
+  DivInput,
 } from './ModalAddTransaction.styled';
 
 import { ReactComponent as Plus } from '../../assets/icons/Plus.svg';
@@ -23,8 +25,12 @@ import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
-import { addTransactionUser, getTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+import {
+  addTransactionUser,
+  getTransactionUser,
+} from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
+import { schema } from './Validation';
 
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
@@ -34,11 +40,12 @@ const ModalAddTransaction = ({ handleClick }) => {
       type: 'EXPENSE',
       transactionDate: '',
       comment: '',
-      categoryId: '063f1132-ba5d-42b4-951d-44011ca46262',
+      categoryId: '',
     },
+    validationSchema: schema,
     onSubmit: values => {
       dispatch(addTransactionUser(values));
-      dispatch(getTransactionUser())
+      dispatch(getTransactionUser());
       handleClick();
     },
   });
@@ -56,8 +63,6 @@ const ModalAddTransaction = ({ handleClick }) => {
     }));
     return category;
   };
-
-
 
   return (
     <ModalWrapper handleClick={handleClick}>
@@ -90,33 +95,46 @@ const ModalAddTransaction = ({ handleClick }) => {
             Expense
           </TextType>
         </TransactionType>
-
-        {formik.values.type === 'EXPENSE' && (
-          <SelectCategory setCategory={setCategory} />
-        )}
-
+        <DivInput>
+          {formik.values.type === 'EXPENSE' && (
+            <SelectCategory setCategory={setCategory} />
+          )}
+          {!formik.values.categoryId && formik.touched.categoryId ? (
+            <Validation>{formik.errors.categoryId}</Validation>
+          ) : null}
+        </DivInput>
         <ContainerSumData>
-          <Sum
-            name="amount"
-            type="number"
-            onChange={formik.handleChange}
-            placeholder="0.00"
-            required
-          />
+          <DivInput>
+            <Sum
+              name="amount"
+              type="number"
+              onChange={formik.handleChange}
+              placeholder="0.00"
+              required
+              values={formik.values.amount}
+            />
+            {formik.errors.amount && formik.touched.amount ? (
+              <Validation>{formik.errors.amount}</Validation>
+            ) : null}
+          </DivInput>
           <ContainerDate>
             <DataModal setDate={setDate} />
             <Calendar />
           </ContainerDate>
         </ContainerSumData>
-
-        <Comment
-          name="comment"
-          rows="5"
-          cols="10"
-          placeholder="Comment"
-          onChange={formik.handleChange}
-        ></Comment>
-
+        <DivInput>
+          <Comment
+            values={formik.values.comment}
+            name="comment"
+            rows="5"
+            cols="10"
+            placeholder="Comment"
+            onChange={formik.handleChange}
+          ></Comment>
+          {formik.errors.comment && formik.touched.comment ? (
+            <Validation>{formik.errors.comment}</Validation>
+          ) : null}
+        </DivInput>
         <ContainerBtn>
           <Button type="submit">Add</Button>
           <NavLink type="button" to="/transactions/home" onClick={handleClick}>
@@ -130,7 +148,7 @@ const ModalAddTransaction = ({ handleClick }) => {
           </Svg>
         </CloseBtn>
       </Form>
-      </ModalWrapper>
+    </ModalWrapper>
   );
 };
 
