@@ -1,9 +1,8 @@
 import Balance from 'components/Balance/Balance';
 import CurrencyExchange from 'components/CurrencyExchange';
-import Loader from 'components/Loader/Loader';
 import Navigations from 'components/Navigation/Navigation';
 import { useIsMobile } from 'hooks/useIsMobile';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
@@ -59,9 +58,7 @@ const DashboardPage = () => {
               {!isMobile && <CurrencyExchange />}
             </Wrapper>
             <WrapperOutlet>
-              <Suspense fallback={<Loader />}>
-                <Outlet />
-              </Suspense>
+              <Outlet />
             </WrapperOutlet>
           </Box>
         </Blur>

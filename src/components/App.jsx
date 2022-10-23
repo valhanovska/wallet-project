@@ -6,6 +6,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { isValidTokin } from 'redux/auth/sliceAuth';
 import { isToken } from 'redux/auth/selectorsAuth';
+import Loader from './Loader/Loader';
 
 const CurrencyExchange = lazy(() =>
 import('./CurrencyExchange/CurrencyExchange'))
@@ -32,7 +33,7 @@ export const App = () => {
   }, []);
 
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loader/>}>
       <Routes>
         <Route
           path="/login"
