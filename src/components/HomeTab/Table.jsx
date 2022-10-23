@@ -12,20 +12,22 @@ import {
   ButtonDelete,
   Trash,
 } from './Table.styled';
+import editSvg from '../../assets/icons/symbol-defs.svg';
 
 import trashSvg from '../../assets/icons/trash.svg';
 import noTransactionsImg from '../../assets/images/no-record-available.png';
 import spaceCreator from 'servises/spaceCreator';
 
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { removeTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 import { editeNewContact } from 'redux/transactionsController/trControllerSlice';
+import { refreshUser } from 'redux/auth/operationsAuth';
 // import { editTransaction } from 'servises/transactionsApi';
 // import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
 export const Table = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const items = useSelector(
     state => state.transactionsControllers.allTransactions
   );
@@ -35,24 +37,24 @@ export const Table = () => {
   const category = useSelector(getSelects);
 
   function SortTransaction() {
-    if (filterFlag === 'Sum')
+    if (filterFlag.innerText === 'Sum')
       return filterTogle
         ? [...items].sort((a, b) => b.amount - a.amount)
         : [...items].sort((a, b) => a.amount - b.amount);
-    if (filterFlag === 'Balance')
+    if (filterFlag.innerText === 'Balance')
       return filterTogle
         ? [...items].sort((a, b) => b.balanceAfter - a.balanceAfter)
         : [...items].sort((a, b) => a.balanceAfter - b.balanceAfter);
-    if (filterFlag === 'Comment')
+    if (filterFlag.innerText === 'Comment')
       return filterTogle
         ? [...items].sort((a, b) => b.comment - a.comment)
         : [...items].sort((a, b) => a.comment - b.comment);
     // if (filterFlag === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
-    if (filterFlag === 'Category')
+    if (filterFlag.innerText === 'Category')
       return filterTogle
         ? [...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId))
         : [...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId));
-    if (filterFlag === 'Date')
+    if (filterFlag.innerText === 'Date')
       return filterTogle
         ? [...items].sort(
             (a, b) =>
@@ -64,13 +66,12 @@ export const Table = () => {
               b.transactionDate.split('-').join('') -
               a.transactionDate.split('-').join('')
           );
-    if (filterFlag === 'Type')
+    if (filterFlag.innerText === 'Type')
       return filterTogle
         ? [...items].sort((a, b) => a.type.localeCompare(b.type))
         : [...items].sort((a, b) => b.type.localeCompare(a.type));
-    if (filterFlag === '') {
-      return items;
-    }
+
+    return items;
     //   if (input === "Sum") filterTogle ? SetFiltered([...items].sort((a, b) => b.amount - a.amount)) : SetFiltered([...items].sort((a, b) => a.amount - b.amount))
     //   if (input === "Balance") filterTogle ? SetFiltered([...items].sort((a, b) => b.balanceAfter - a.balanceAfter)) : SetFiltered([...items].sort((a, b) => a.balanceAfter - b.balanceAfter))
     //   if (input === "Comment") filterTogle ? SetFiltered([...items].sort((a, b) => b.comment - a.comment)) : SetFiltered([...items].sort((a, b) => a.comment - b.comment))
@@ -103,10 +104,10 @@ export const Table = () => {
   // const onDelete = _id => {
   // 	dispatch(transactionsOperation.deleteTransactions(_id));
   // };
-  const onEditBatton = (id) => {
-    const data = items.filter(item => item.id === id)
-    dispatch(editeNewContact(data))
-  }
+  const onEditBatton = id => {
+    const data = items.filter(item => item.id === id);
+    dispatch(editeNewContact(data));
+  };
 
   return (
     <>
@@ -123,8 +124,9 @@ export const Table = () => {
         <TableMain>
           <TableHeader>
             <TableHeaderRow
+              data-tipe
               onClick={e => {
-                setFilterFlag(e.target.innerText);
+                setFilterFlag(e.target);
                 SetfilterTogle(!filterTogle);
               }}
             >
@@ -141,7 +143,7 @@ export const Table = () => {
           <TableBody>
             {
               // (filtered.length !== 0 ? filtered : items)
-              SortTransaction().map(
+              SortTransaction()?.map(
                 ({
                   id,
                   transactionDate,
@@ -195,9 +197,14 @@ export const Table = () => {
                         <Trash src={trashSvg} alt="trash" id={id} />
                       </ButtonDelete>
                     </TableCell>
-                    <TableCell id={id} onClick={e => dispatch(removeTransactionUser(e.target.id))}>
+                    <TableCell
+                      id={id}
+                      onClick={e =>
+                        dispatch(removeTransactionUser(e.target.id))
+                      }
+                    >
                       <ButtonDelete>
-                        <Trash src={trashSvg} alt="trash" id={id} />
+                        <Trash src={editSvg} alt="trash" id={id} />
                       </ButtonDelete>
                     </TableCell>
                   </TableRow>
