@@ -12,10 +12,13 @@ export const Div = styled.div`
     padding: 40px 0 61px 0;
     max-width: 533px;
     border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   @media screen and (min-width: 1280px) {
     padding: 61px 0 61px 0;
+    z-index: 1;
   }
 `;
 

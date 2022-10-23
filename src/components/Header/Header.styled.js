@@ -4,19 +4,28 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 export const Head = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   padding: 15px 20px;
-  background-color: ${p=>p.theme.colors.white};
+  background-color: ${p => p.theme.colors.white};
 
   @media screen and (min-width: 768px) {
+    width: 768px;
     padding: 20px 32px;
   }
   @media screen and (min-width: 1280px) {
+    width: 1280px;
     padding: 20px 16px;
+    z-index: 1;
   }
 `;
 

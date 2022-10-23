@@ -20,7 +20,6 @@ import {
 
 const DashboardPage = () => {
   const isTabletOrDesctop = useMediaQuery({ query: '(min-width:768px)' });
-  // const isMobile = useMediaQuery({ query: '(max-width:767px)' });
   const isMobile = useIsMobile();
 
   const location = useLocation();
@@ -47,12 +46,6 @@ const DashboardPage = () => {
             <Wrapper>
               <BoxAsaid>
                 <Navigations />
-                {/* {(isMobile && location.pathname === '/transactions/diagram') ||
-                (isMobile && location.pathname === '/transactions/currency') ||
-                (isMobile &&
-                  location.pathname === '/transactions/home') ? null : (
-                  <Balance />
-                )} */}
                 {!isMobile && <Balance />}
               </BoxAsaid>
               {!isMobile && <CurrencyExchange />}
