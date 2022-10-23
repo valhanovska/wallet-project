@@ -135,6 +135,9 @@ const ModalAddTransaction = ({ handleClick }) => {
         <DivInput>
           {formik.values.type === 'EXPENSE' && (
             <div>
+              <SelectCategory setCategory={setCategory} />
+              {!formik.values.categoryId && formik.touched.categoryId ? (
+                <Validation>{formik.errors.categoryId}</Validation>
               ) : null}
             </div>
           )}
