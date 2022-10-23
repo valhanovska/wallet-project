@@ -8,7 +8,7 @@ import {
 const transactionsControllers = createSlice({
   name: 'transactionsControllers',
   initialState: {
-    transactionsControllers: {},
+    transactionsControllers: null,
     isLoading: false,
     error: null,
     allTransactions: [],
@@ -58,13 +58,14 @@ const transactionsControllers = createSlice({
       state.error = null;
     },
     [editTransactionUser.pending]: state => {
+      state.transactionsControllers=null;
       state.isLoading = true;
       state.error = null;
     },
     [editTransactionUser.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.transactionsControllers = action.paiload;
+      state.transactionsControllers = action.payload;
     },
     [editTransactionUser.rejected]: state => {
       state.error = null;

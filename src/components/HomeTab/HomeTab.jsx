@@ -23,10 +23,10 @@ const HomeTab = () => {
           matches.small ? (
             <>
               <Balance />
-              {allTransaction && <MobileTab items={allTransaction} />}
+              {allTransaction && <MobileTab items={allTransaction} handleClick={handleClick}/>}
             </>
           ) : (
-            allTransaction && <Table />
+            allTransaction && <Table handleClick={handleClick} />
           )
         }
       </Media>

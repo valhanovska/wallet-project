@@ -24,16 +24,20 @@ import close from '../../assets/icons/sprite.svg';
 import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionUser,
   getTransactionUser,
 } from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
 import { schema } from './Validation';
+import { useEffect, useState } from 'react';
+import { getTransactionsEdit } from 'redux/transactionsController/trControllerSelector';
 
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
+  const transactionEdit = useSelector(getTransactionsEdit)
+  const [comment, setComment] = useState();
 
   const formik = useFormik({
     initialValues: {
@@ -50,6 +54,7 @@ const ModalAddTransaction = ({ handleClick }) => {
       handleClick();
     },
   });
+
 
   const setDate = date => {
     formik.setValues(prev => ({
@@ -83,6 +88,28 @@ const ModalAddTransaction = ({ handleClick }) => {
     }
   };
 
+  const onForm =(transactionEdit) => {
+    formik.setValues(prev => ({
+      ...prev,
+
+      type:  transactionEdit[0].type,
+      categoryId: transactionEdit[0].categoryId,
+      amount: transactionEdit[0].amount,
+      transactionDate: transactionEdit[0].transactionDate,
+      comment: transactionEdit[0].comment,
+     id: transactionEdit[0].id,
+    }));
+  }
+
+  useEffect(()=>{
+    console.log(transactionEdit);
+    if(transactionEdit){
+     return  onForm(transactionEdit)
+    } 
+    
+     
+      },[ transactionEdit])
+
   return (
     <ModalWrapper handleClick={handleClick}>
       <Form onSubmit={formik.handleSubmit}>
@@ -104,6 +131,7 @@ const ModalAddTransaction = ({ handleClick }) => {
                   categoryId: e.target.checked
                     ? ''
                     : '063f1132-ba5d-42b4-951d-44011ca46262',
+                   
                 }));
               }}
             />
@@ -143,7 +171,8 @@ const ModalAddTransaction = ({ handleClick }) => {
         </ContainerSumData>
         <DivInput>
           <Comment
-            values={formik.values.comment}
+         
+            value={formik.values.comment}
             name="comment"
             rows="5"
             cols="10"

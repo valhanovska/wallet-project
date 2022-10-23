@@ -24,7 +24,7 @@ import { editeNewContact } from 'redux/transactionsController/trControllerSlice'
 // import { editTransaction } from 'servises/transactionsApi';
 // import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
-export const Table = () => {
+export const Table = ({handleClick}) => {
   const dispatch = useDispatch();
   const items = useSelector(
     state => state.transactionsControllers.allTransactions
@@ -105,6 +105,8 @@ export const Table = () => {
   // 	dispatch(transactionsOperation.deleteTransactions(_id));
   // };
   const onEditBatton = id => {
+    handleClick();
+    
     const data = items.filter(item => item.id === id);
     dispatch(editeNewContact(data));
   };
@@ -194,7 +196,7 @@ export const Table = () => {
 
                     <TableCell id={id} onClick={e => onEditBatton(e.target.id)}>
                       <ButtonDelete>
-                        <Trash src={editSvg} alt="trash" id={id} />
+                        <Trash src={editSvg} alt="trash" id={id}  />
                       </ButtonDelete>
                     </TableCell>
                     <TableCell
