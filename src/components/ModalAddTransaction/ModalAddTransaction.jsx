@@ -25,7 +25,10 @@ import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch } from 'react-redux';
-import { addTransactionUser, getTransactionUser, } from 'redux/transactionsController/trControllerOpertaion';
+import {
+  addTransactionUser,
+  getTransactionUser,
+} from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
 import { schema } from './Validation';
 
@@ -46,6 +49,8 @@ const ModalAddTransaction = ({ handleClick }) => {
       handleClick();
     },
   });
+  
+
 
   const setDate = date => {
     formik.setValues(prev => ({
@@ -54,14 +59,28 @@ const ModalAddTransaction = ({ handleClick }) => {
     }));
   };
   const setCategory = category => {
+    
     formik.setValues(prev => ({
       ...prev,
       categoryId: category,
     }));
     return category;
   };
-
-const positiveSum = formik => {
+  // const OnChangeTogle = (e) => {
+  //   console.log(e.target.checked); 
+  //   //   === "INCOME" && formik.setValues(prev => ({
+  //   //   ...prev,
+  //   //   categoryId: "063f1132-ba5d-42b4-951d-44011ca46262",
+  //   // }))
+    
+  // } 
+// if (formik.values.type === 'INCOME') {
+//       formik.setValues(prev => ({
+//         ...prev,
+//         categoryId: '',
+//       }))
+  
+  const positiveSum = formik => {
     if (formik.values.type === 'EXPENSE') {
       if (formik.values.amount > 0) {
         return formik.values.amount * -1;
@@ -91,11 +110,15 @@ const positiveSum = formik => {
               type="checkbox"
               name="transactionType"
               checked={formik.values.type === 'EXPENSE'}
+              // onClick={e=>OnChangeTogle(e)}
               onChange={e => {
                 formik.setValues(prev => ({
                   ...prev,
                   type: e.target.checked ? 'EXPENSE' : 'INCOME',
+                  categoryId: e.target.checked ? '' : '063f1132-ba5d-42b4-951d-44011ca46262'
+
                 }));
+
               }}
             />
             <div className="thumb">
@@ -109,13 +132,12 @@ const positiveSum = formik => {
             Expense
           </TextType>
         </TransactionType>
-  <DivInput>
+        <DivInput>
           {formik.values.type === 'EXPENSE' && (
-            <SelectCategory setCategory={setCategory} />
+            <div>
+              ) : null}
+            </div>
           )}
-          {!formik.values.categoryId && formik.touched.categoryId ? (
-            <Validation>{formik.errors.categoryId}</Validation>
-          ) : null}
         </DivInput>
         <ContainerSumData>
           <Sum
@@ -124,7 +146,6 @@ const positiveSum = formik => {
             value={positiveSum(formik)}
             onChange={formik.handleChange}
             placeholder="0.00"
-            required
           />
           <ContainerDate>
             <DataModal setDate={setDate} />
