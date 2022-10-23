@@ -46,3 +46,12 @@ export const removeTransaction = async id => {
     throw error;
   }
 };
+
+export const editTransaction = async (id,data) => {
+  try {
+    const editItem = await axios.patch(`transactions/${id}`,data);
+    return editItem
+  } catch (error) {
+    throw error;
+  }
+};
