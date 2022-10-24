@@ -55,7 +55,7 @@ export const editTransactionUser = createAsyncThunk(
         "comment": data.comment,
         "amount": data.amount,
       });
-      return r;
+      return r.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

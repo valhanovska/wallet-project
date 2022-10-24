@@ -5,6 +5,7 @@ import {
   getTransactionUser,
   removeTransactionUser,
 } from './trControllerOpertaion';
+
 const transactionsControllers = createSlice({
   name: 'transactionsControllers',
   initialState: {
@@ -15,11 +16,16 @@ const transactionsControllers = createSlice({
     // allFilteredTransaction: [],
     // filterFlag: "",
   },
+
   reducers: {
     editeNewContact: (state, { payload }) => {
       state.transactionsControllers = payload;
     },
+    clearEditeNewContact: (state, { payload })=> {
+      state.transactionsControllers = null;
+    },
   },
+  
   extraReducers: {
     [addTransactionUser.pending]: state => {
       state.isLoading = true;
@@ -28,7 +34,7 @@ const transactionsControllers = createSlice({
     [addTransactionUser.fulfilled]: (state, action) => {
       state.isLoading = true;
       state.error = null;
-      state.transactionsControllers = action.payload;
+      // state.transactionsControllers = action.payload;
     },
     [addTransactionUser.rejected]: state => {
       state.error = null;
@@ -65,13 +71,17 @@ const transactionsControllers = createSlice({
     [editTransactionUser.fulfilled]: (state, action) => {
       state.isLoading = false;
       state.error = null;
-      state.transactionsControllers = action.payload;
+    state.transactionsControllers = state.allTransactions.map(item =>
+          item.id === action.payload.id ? action.payload : item
+        );
+      },
+  
     },
     [editTransactionUser.rejected]: state => {
       state.error = null;
     },
-  },
+  
 });
 
 export const transactionsControllersReducer = transactionsControllers.reducer;
-export const { editeNewContact } = transactionsControllers.actions;
+export const { editeNewContact, clearEditeNewContact } = transactionsControllers.actions;

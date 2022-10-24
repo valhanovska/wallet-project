@@ -27,20 +27,20 @@ import { SelectCategory } from 'components/SelectCategory/SelectCategory';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionUser,
+  editTransactionUser,
   getTransactionUser,
 } from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
 import { schema } from './Validation';
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import { getTransactionsEdit } from 'redux/transactionsController/trControllerSelector';
 
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
   const transactionEdit = useSelector(getTransactionsEdit)
-  const [comment, setComment] = useState();
 
   const formik = useFormik({
-    initialValues: {
+    initialValues:{
       amount: '',
       type: 'EXPENSE',
       transactionDate: '',
@@ -49,12 +49,19 @@ const ModalAddTransaction = ({ handleClick }) => {
     },
     validationSchema: schema,
     onSubmit: values => {
-      dispatch(addTransactionUser(values));
-      dispatch(getTransactionUser());
-      handleClick();
+      if(transactionEdit){
+        dispatch(editTransactionUser(values));
+        dispatch(getTransactionUser());
+        handleClick();
+      } else {
+        dispatch(addTransactionUser(values));
+        dispatch(getTransactionUser());
+        handleClick();
+      }
+
+     
     },
   });
-
 
   const setDate = date => {
     formik.setValues(prev => ({
@@ -79,16 +86,18 @@ const ModalAddTransaction = ({ handleClick }) => {
         return formik.values.amount;
       }
     }
-    if (formik.values.type === 'INCOME') {
+    else {
       if (formik.values.amount < 0) {
         return formik.values.amount * -1;
-      }
     } else {
       return formik.values.amount;
     }
   };
+  }
 
   const onForm =(transactionEdit) => {
+    
+
     formik.setValues(prev => ({
       ...prev,
 
@@ -102,12 +111,9 @@ const ModalAddTransaction = ({ handleClick }) => {
   }
 
   useEffect(()=>{
-    console.log(transactionEdit);
     if(transactionEdit){
      return  onForm(transactionEdit)
-    } 
-    
-     
+    } // eslint-disable-next-line 
       },[ transactionEdit])
 
   return (
@@ -149,7 +155,7 @@ const ModalAddTransaction = ({ handleClick }) => {
         <DivInput>
           {formik.values.type === 'EXPENSE' && (
             <div>
-              <SelectCategory setCategory={setCategory} />
+              <SelectCategory setCategory={setCategory} value={formik.values.categoryId} />
               {!formik.values.categoryId && formik.touched.categoryId ? (
                 <Validation>{formik.errors.categoryId}</Validation>
               ) : null}

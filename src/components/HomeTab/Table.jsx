@@ -24,14 +24,13 @@ import { editeNewContact } from 'redux/transactionsController/trControllerSlice'
 // import { editTransaction } from 'servises/transactionsApi';
 // import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
-export const Table = ({handleClick}) => {
+export const Table = ({ handleClick }) => {
   const dispatch = useDispatch();
   const items = useSelector(
     state => state.transactionsControllers.allTransactions
   );
   const [filterFlag, setFilterFlag] = useState('');
   const [filterTogle, SetfilterTogle] = useState(true);
-  console.log(items);
   const category = useSelector(getSelects);
 
   function SortTransaction() {
@@ -79,7 +78,6 @@ export const Table = ({handleClick}) => {
     //   if (input === "Type") filterTogle ? SetFiltered([...items].sort((a, b) => a.type.localeCompare(b.type) )) : SetFiltered([...items].sort((a, b) => b.type.localeCompare(a.type)))
     //  if (input === "") {return items}
   }
-  console.log(SortTransaction());
 
   const styles = {
     display: 'flex',
@@ -106,7 +104,7 @@ export const Table = ({handleClick}) => {
   // };
   const onEditBatton = id => {
     handleClick();
-    
+
     const data = items.filter(item => item.id === id);
     dispatch(editeNewContact(data));
   };
@@ -196,7 +194,7 @@ export const Table = ({handleClick}) => {
 
                     <TableCell id={id} onClick={e => onEditBatton(e.target.id)}>
                       <ButtonDelete>
-                        <Trash src={editSvg} alt="trash" id={id}  />
+                        <Trash src={editSvg} alt="trash" id={id} />
                       </ButtonDelete>
                     </TableCell>
                     <TableCell
