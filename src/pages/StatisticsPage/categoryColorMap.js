@@ -1,6 +1,6 @@
 export const categoryColorMap = {
   'Main expenses': '#FED057',
-  Products: '#FFD8D0',
+  Products: '#EBA395',
   Car: '#FD9498',
   'Self care': '#C5BAFF',
   'Child care': '#6E78E8',
