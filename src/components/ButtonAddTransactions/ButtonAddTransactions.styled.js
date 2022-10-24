@@ -14,6 +14,8 @@ export const Button = styled.button`
   background: #24cca7;
   z-index: 4;
 
+  cursor: pointer;
+
   @media screen and (min-width: 768px) {
     position: absolute;
     bottom: -20px;

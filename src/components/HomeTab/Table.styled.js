@@ -35,10 +35,13 @@ export const TableHeadCell = styled.th`
   font-weight: 700;
   font-size: 18px;
   line-height: 27px;
+  display: flex;
+  cursor: pointer;
   /* identical to box height */
 
   color: #000000;
-  &:first-of-type {
+
+  /* &:first-of-type {
     text-align: start;
   }
 
@@ -67,9 +70,9 @@ export const TableHeadCell = styled.th`
     text-align: start;
   }
   &:last-of-type {
-    /* width: 100px; */
+    width: 100px;
     text-align: center;
-  }
+  } */
 `;
 
 export const TableBody = styled.tbody`
@@ -86,7 +89,7 @@ export const TableBody = styled.tbody`
 
   color: #000000;
   &::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0px 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0px 6px 15px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
   }
   &::-webkit-scrollbar {
