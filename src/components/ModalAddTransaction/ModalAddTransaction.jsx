@@ -97,7 +97,7 @@ const ModalAddTransaction = ({ handleClick }) => {
       amount: transactionEdit[0].amount,
       transactionDate: transactionEdit[0].transactionDate,
       comment: transactionEdit[0].comment,
-     id: transactionEdit[0].id,
+      id: transactionEdit[0].id,
     }));
   }
 
