@@ -1,5 +1,5 @@
 import Media from 'react-media';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MobileTab } from './MobileTab';
 import { Table } from './Table';
 import Balance from '../Balance/Balance';
@@ -7,12 +7,16 @@ import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTra
 import ModalAddTransaction from 'components/ModalAddTransaction';
 import { useState } from 'react';
 import { getAllTransactions } from 'redux/transactionsController/trControllerSelector';
+import { clearEditeNewContact } from 'redux/transactionsController/trControllerSlice';
+
 
 const HomeTab = () => {
   const allTransaction = useSelector(getAllTransactions);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const handleClick = () => {
+    dispatch(clearEditeNewContact());
     setIsModalOpen(!isModalOpen);
   };
 
@@ -23,10 +27,10 @@ const HomeTab = () => {
           matches.small ? (
             <>
               <Balance />
-              {allTransaction && <MobileTab items={allTransaction} />}
+              {allTransaction && <MobileTab items={allTransaction} handleClick={handleClick}/>}
             </>
           ) : (
-            allTransaction && <Table />
+            allTransaction && <Table handleClick={handleClick} />
           )
         }
       </Media>

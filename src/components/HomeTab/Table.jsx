@@ -26,7 +26,7 @@ import { editeNewContact } from 'redux/transactionsController/trControllerSlice'
 
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
-export const Table = () => {
+export const Table = ({ handleClick }) => {
   const dispatch = useDispatch();
   const items = useSelector(
     state => state.transactionsControllers.allTransactions
@@ -105,6 +105,8 @@ export const Table = () => {
   // 	dispatch(transactionsOperation.deleteTransactions(_id));
   // };
   const onEditBatton = id => {
+    handleClick();
+
     const data = items.filter(item => item.id === id);
     dispatch(editeNewContact(data));
   };

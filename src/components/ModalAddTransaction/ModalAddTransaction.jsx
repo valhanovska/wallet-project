@@ -24,19 +24,23 @@ import close from '../../assets/icons/sprite.svg';
 import { CloseBtn } from './ModalAddTransaction.styled';
 import { Svg } from './ModalAddTransaction.styled';
 import { SelectCategory } from 'components/SelectCategory/SelectCategory';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addTransactionUser,
+  editTransactionUser,
   getTransactionUser,
 } from 'redux/transactionsController/trControllerOpertaion';
 import ModalWrapper from './ModalWrapper';
 import { schema } from './Validation';
+import { useEffect} from 'react';
+import { getTransactionsEdit } from 'redux/transactionsController/trControllerSelector';
 
 const ModalAddTransaction = ({ handleClick }) => {
   const dispatch = useDispatch();
+  const transactionEdit = useSelector(getTransactionsEdit)
 
   const formik = useFormik({
-    initialValues: {
+    initialValues:{
       amount: '',
       type: 'EXPENSE',
       transactionDate: '',
@@ -45,9 +49,17 @@ const ModalAddTransaction = ({ handleClick }) => {
     },
     validationSchema: schema,
     onSubmit: values => {
-      dispatch(addTransactionUser(values));
-      dispatch(getTransactionUser());
-      handleClick();
+      if(transactionEdit){
+        dispatch(editTransactionUser(values));
+        dispatch(getTransactionUser());
+        handleClick();
+      } else {
+        dispatch(addTransactionUser(values));
+        dispatch(getTransactionUser());
+        handleClick();
+      }
+
+     
     },
   });
 
@@ -74,14 +86,35 @@ const ModalAddTransaction = ({ handleClick }) => {
         return formik.values.amount;
       }
     }
-    if (formik.values.type === 'INCOME') {
+    else {
       if (formik.values.amount < 0) {
         return formik.values.amount * -1;
-      }
     } else {
       return formik.values.amount;
     }
   };
+  }
+
+  const onForm =(transactionEdit) => {
+    
+
+    formik.setValues(prev => ({
+      ...prev,
+
+      type:  transactionEdit[0].type,
+      categoryId: transactionEdit[0].categoryId,
+      amount: transactionEdit[0].amount,
+      transactionDate: transactionEdit[0].transactionDate,
+      comment: transactionEdit[0].comment,
+      id: transactionEdit[0].id,
+    }));
+  }
+
+  useEffect(()=>{
+    if(transactionEdit){
+     return  onForm(transactionEdit)
+    } // eslint-disable-next-line 
+      },[ transactionEdit])
 
   return (
     <ModalWrapper handleClick={handleClick}>
@@ -104,6 +137,7 @@ const ModalAddTransaction = ({ handleClick }) => {
                   categoryId: e.target.checked
                     ? ''
                     : '063f1132-ba5d-42b4-951d-44011ca46262',
+                   
                 }));
               }}
             />
@@ -121,7 +155,7 @@ const ModalAddTransaction = ({ handleClick }) => {
         <DivInput>
           {formik.values.type === 'EXPENSE' && (
             <div>
-              <SelectCategory setCategory={setCategory} />
+              <SelectCategory setCategory={setCategory} value={formik.values.categoryId} />
               {!formik.values.categoryId && formik.touched.categoryId ? (
                 <Validation>{formik.errors.categoryId}</Validation>
               ) : null}
@@ -143,7 +177,8 @@ const ModalAddTransaction = ({ handleClick }) => {
         </ContainerSumData>
         <DivInput>
           <Comment
-            values={formik.values.comment}
+         
+            value={formik.values.comment}
             name="comment"
             rows="5"
             cols="10"

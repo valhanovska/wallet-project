@@ -46,10 +46,16 @@ export const removeTransactionUser = createAsyncThunk(
 
 export const editTransactionUser = createAsyncThunk(
   'transactionsControllers/editTransactionUser',
-  async (_, thunkApi) => {
+  async (data, thunkApi) => {
     try {
-      const r = await editTransaction();
-      return r;
+      const r = await editTransaction(data.id,{
+        "transactionDate": data.transactionDate,
+        "type": data.type,
+        "categoryId": data.categoryId,
+        "comment": data.comment,
+        "amount": data.amount,
+      });
+      return r.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }

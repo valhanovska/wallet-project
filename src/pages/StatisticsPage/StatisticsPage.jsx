@@ -11,11 +11,11 @@ const DiagramTab = () => {
   const allTransationsForPeriod = useSelector(getAllTransactionsForPeriod);
   const { categoriesSummary, expenseSummary, incomeSummary, periodTotal } =
     allTransationsForPeriod;
-  const showStatistics = Boolean(expenseSummary && incomeSummary);
+  const showStatistics = Boolean(expenseSummary || incomeSummary);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllTransactionsForPeriodUser({ month: 10, year: 2022 }));
+    dispatch(getAllTransactionsForPeriodUser({ month: new Date().getMonth()+1, year: new Date().getFullYear() }));
   }, [dispatch]);
 
   return categoriesSummary ? (

@@ -49,8 +49,8 @@ const StatisticsTable = ({
   const expenseCategoriesSummary = categoriesSummary.filter(
     x => x.type !== 'INCOME'
   );
-  const [year, setYear] = useState('');
-  const [month, setMonth] = useState('');
+  const [year, setYear] = useState(String(new Date().getFullYear()));
+  const [month, setMonth] = useState(String(new Date().getMonth() + 1));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -62,7 +62,7 @@ const StatisticsTable = ({
         })
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line 
   }, [year, month]);
 
   return (
