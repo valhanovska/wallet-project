@@ -24,6 +24,8 @@ import { editeNewContact } from 'redux/transactionsController/trControllerSlice'
 // import { editTransaction } from 'servises/transactionsApi';
 // import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
+import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
+
 export const Table = ({ handleClick }) => {
   const dispatch = useDispatch();
   const items = useSelector(
@@ -44,8 +46,8 @@ export const Table = ({ handleClick }) => {
         : [...items].sort((a, b) => a.balanceAfter - b.balanceAfter);
     if (filterFlag.innerText === 'Comment')
       return filterTogle
-        ? [...items].sort((a, b) => b.comment - a.comment)
-        : [...items].sort((a, b) => a.comment - b.comment);
+        ? [...items].sort((a, b) => b.comment.localeCompare(a.comment))
+        : [...items].sort((a, b) => a.comment.localeCompare(b.comment));
     // if (filterFlag === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
     if (filterFlag.innerText === 'Category')
       return filterTogle
@@ -131,12 +133,25 @@ export const Table = ({ handleClick }) => {
               }}
             >
               <TableHeadCell> </TableHeadCell>
-              <TableHeadCell>date</TableHeadCell>
-              <TableHeadCell>type</TableHeadCell>
-              <TableHeadCell>category</TableHeadCell>
-              <TableHeadCell>comment</TableHeadCell>
-              <TableHeadCell>sum</TableHeadCell>
-              <TableHeadCell>balance</TableHeadCell>
+              <TableHeadCell>
+                date <UnfoldMoreIcon />
+              </TableHeadCell>
+              <TableHeadCell>
+                type <UnfoldMoreIcon />
+              </TableHeadCell>
+              <TableHeadCell>
+                category <UnfoldMoreIcon />
+              </TableHeadCell>
+              <TableHeadCell>
+                comment <UnfoldMoreIcon />
+              </TableHeadCell>
+              <TableHeadCell>
+                sum <UnfoldMoreIcon />
+              </TableHeadCell>
+              <TableHeadCell>
+                balance <UnfoldMoreIcon />
+              </TableHeadCell>
+              <TableHeadCell>Editing</TableHeadCell>
               <TableHeadCell> </TableHeadCell>
             </TableHeaderRow>
           </TableHeader>
