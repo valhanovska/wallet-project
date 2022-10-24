@@ -4,6 +4,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
   margin-left: auto;
   margin-right: auto;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: white;
 
   @media screen and (min-width: 768px) {
     display: flex;

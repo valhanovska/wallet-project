@@ -9,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   padding-top: 107px;
 
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding: 0;
     position: relative;
     min-height: 1024px;
@@ -21,11 +21,14 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 0;
     position: relative;
     display: flex;
+    justify-content: flex-start;
+    padding: 0;
+    padding-left: 60px;
     min-height: 100vh;
-    justify-content: flex-end;
+    min-height: 100vh;
+
     background-color: #e7eaf2;
 
     background-image: url(${splashOrangeBlur}), url(${splashBlueDesktop});
@@ -36,7 +39,7 @@ export const Container = styled.div`
 `;
 
 export const Page = styled.div`
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -46,7 +49,6 @@ export const Page = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    position: relative;
     display: flex;
     gap: 40px;
     align-items: center;

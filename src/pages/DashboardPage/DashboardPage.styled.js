@@ -6,11 +6,16 @@ import splashBlueDesktop from '../../assets/images/BG/Ellipse-db-bluex1-desktop.
 
 export const Div = styled.div`
   background-color: #e7eaf2;
-  min-height: 1024px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (max-width: 767px) {
+    min-height: 1024px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     position: relative;
-    height: 100vh;
+    min-height: 1024px;
+
+    /* height: 100vh; */
 
     background-image: url(${splashBlueTablet}), url(${splashOrangeTablet});
     background-repeat: no-repeat;
@@ -20,7 +25,7 @@ export const Div = styled.div`
   @media screen and (min-width: 1280px) {
     position: relative;
     min-width: 768px;
-    min-height: 720px;
+    height: 100vh;
 
     background-image: url(${splashBlueDesktop}), url(${splashOrangeDesktop});
     background-repeat: no-repeat;
@@ -34,6 +39,7 @@ export const Blur = styled.div`
     backdrop-filter: blur(25px);
   }
   @media screen and (min-width: 1280px) {
+    height: 100vh;
     backdrop-filter: blur(25px);
   }
 `;
@@ -88,7 +94,7 @@ export const Wrapper = styled.div`
       width: 100%;
       height: 1px;
       transform: rotateZ(90deg);
-      top: 600px;
+      top: -15%;
       right: 159px;
       background-color: #e7e5f2;
       box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),

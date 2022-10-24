@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-// import GirlTablet from '../../assets/images/Main-IMG/GirlMain-img-Md_x1.png';
-// import GirlDesktop from '../../assets/images/Main-IMG/GirlMain-img-Lg_x1.png';
 import splashBlue from '../../assets/images/BG/Ellipse-blue.png';
 import splashOrange from '../../assets/images/BG/Ellipse-orange.png';
 import splashOrangeBlur from '../../assets/images/BG/Ellipse-orange-blur.png';
@@ -11,7 +9,7 @@ export const Container = styled.div`
   justify-content: center;
   padding-top: 32px;
 
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     padding: 0;
 
     position: relative;
@@ -26,11 +24,14 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    padding: 0;
     position: relative;
     display: flex;
     min-height: 100vh;
-    justify-content: flex-end;
+    min-width: 100vw;
+    justify-content: flex-start;
+    padding: 0;
+    padding-left: 60px;
+    /* justify-content: flex-end; */
     background-color: #e7eaf2;
     /* padding: 0;
 
@@ -48,7 +49,7 @@ export const Container = styled.div`
 `;
 
 export const Page = styled.div`
-  @media screen and (min-width: 768px) and (max-width: 1280px) {
+  @media screen and (min-width: 768px) and (max-width: 1279px) {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -58,7 +59,7 @@ export const Page = styled.div`
   }
 
   @media screen and (min-width: 1280px) {
-    position: relative;
+    /* position: relative; */
     display: flex;
     gap: 40px;
     align-items: center;
@@ -69,7 +70,7 @@ export const Page = styled.div`
 `;
 
 export const Blur = styled.div`
-  /* @media screen and (min-width: 768px) and (max-width: 1280px) {
+  /* @media screen and (min-width: 768px) and (max-width: 1279px) {
     display: flex;
     justify-content: center;
     margin-top: 360px;

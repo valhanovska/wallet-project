@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 
 export const Overlay = styled.div`
+  width: 100vw;
+  height: 90vh;
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  z-index: 5;
+
   @media screen and (min-width: 768px) {
     position: fixed;
     /* top: 0; */
@@ -29,13 +36,13 @@ export const Form = styled.form`
   left: 0;
   width: 100%;
   max-height: 100vh;
-  padding: 20px 0;
+  padding: 40px 0;
   z-index: 15;
-
+  /* height: 100vh; */
   gap: 40px;
 
   @media screen and (min-width: 768px) {
-    max-height: calc(100vh - 24px);
+    max-height: 600px;
     left: auto;
     top: auto;
     max-width: 540px;
