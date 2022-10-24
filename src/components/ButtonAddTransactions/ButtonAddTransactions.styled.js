@@ -12,9 +12,11 @@ export const Button = styled.button`
   border-radius: 50%;
   border: 0;
   background: #24cca7;
-  z-index: 10;
+  z-index: 4;
 
   @media screen and (min-width: 768px) {
     position: absolute;
+    bottom: -20px;
+    right: 20px;
   }
 `;
