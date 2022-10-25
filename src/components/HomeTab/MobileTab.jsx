@@ -8,15 +8,19 @@ import {
   RowValue,
   SumRow,
   MobileButtonDelete,
+  MobileButtonEdit,
   Trash,
+  Edit,
 } from './MobileTab.styled';
 import spaceCreator from 'servises/spaceCreator';
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 import trashSvg from '../../assets/icons/trash.svg';
+import editSvg from '../../assets/icons/symbol-defs.svg';
 import noTransactionsImg from '../../assets/images/no-record-available.png';
 import { removeTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
+import { editeNewContact } from 'redux/transactionsController/trControllerSlice';
 
-export const MobileTab = ({ items }) => {
+export const MobileTab = ({ items, handleClick }) => {
   const dispatch = useDispatch();
 
   const category = useSelector(getSelects);
@@ -39,6 +43,13 @@ export const MobileTab = ({ items }) => {
     const day = data?.slice(8, 10);
 
     return `${day}.${month}.${year}`;
+  };
+
+  const onEditBatton = id => {
+    handleClick();
+
+    const data = items.filter(item => item.id === id);
+    dispatch(editeNewContact(data));
   };
 
   return (
@@ -123,6 +134,12 @@ export const MobileTab = ({ items }) => {
                 >
                   <Trash src={trashSvg} alt="trash" />
                 </MobileButtonDelete>
+                <MobileButtonEdit
+                  id={id}
+                  onClick={e => onEditBatton(e.target.id)}
+                >
+                  <Edit src={editSvg} alt="trash" id={id} />
+                </MobileButtonEdit>
               </MobileTableBox>
             )
           )}
