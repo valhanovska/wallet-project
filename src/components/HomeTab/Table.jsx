@@ -21,8 +21,6 @@ import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 import { useState } from 'react';
 import { removeTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 import { editeNewContact } from 'redux/transactionsController/trControllerSlice';
-// import { editTransaction } from 'servises/transactionsApi';
-// import { getTransaction } from 'redux/transactionsController/trControllerSelector';
 
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
 
@@ -48,7 +46,6 @@ export const Table = ({ handleClick }) => {
       return filterTogle
         ? [...items].sort((a, b) => b.comment.localeCompare(a.comment))
         : [...items].sort((a, b) => a.comment.localeCompare(b.comment));
-    // if (filterFlag === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
     if (filterFlag.innerText === 'Category')
       return filterTogle
         ? [...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId))
@@ -71,14 +68,6 @@ export const Table = ({ handleClick }) => {
         : [...items].sort((a, b) => b.type.localeCompare(a.type));
 
     return items;
-    //   if (input === "Sum") filterTogle ? SetFiltered([...items].sort((a, b) => b.amount - a.amount)) : SetFiltered([...items].sort((a, b) => a.amount - b.amount))
-    //   if (input === "Balance") filterTogle ? SetFiltered([...items].sort((a, b) => b.balanceAfter - a.balanceAfter)) : SetFiltered([...items].sort((a, b) => a.balanceAfter - b.balanceAfter))
-    //   if (input === "Comment") filterTogle ? SetFiltered([...items].sort((a, b) => b.comment - a.comment)) : SetFiltered([...items].sort((a, b) => a.comment - b.comment))
-    //   // if (item === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => b.find(item => item.categoryId === category.categoryId)?.name.localeCompare(a.find(item => item.categoryId === category.categoryId)?.name))) : SetFiltered([...items].sort((a, b) => a.find(item => item.categoryId === category.categoryId)?.name.localeCompare(b.find(item => item.categoryId === category.categoryId)?.name)))
-    //   if (input === "Category") filterTogle ? SetFiltered([...items].sort((a, b) => a.categoryId.localeCompare(b.categoryId) )) : SetFiltered([...items].sort((a, b) => b.categoryId.localeCompare(a.categoryId)))
-    //   if (input === "Date") filterTogle ? SetFiltered([...items].sort((a, b) => a.transactionDate.split("-").join("")  - b.transactionDate.split("-").join("") )) : SetFiltered([...items].sort((a, b) => b.transactionDate.split("-").join("") - a.transactionDate.split("-").join("") ))
-    //   if (input === "Type") filterTogle ? SetFiltered([...items].sort((a, b) => a.type.localeCompare(b.type) )) : SetFiltered([...items].sort((a, b) => b.type.localeCompare(a.type)))
-    //  if (input === "") {return items}
   }
 
   const styles = {
@@ -101,9 +90,6 @@ export const Table = ({ handleClick }) => {
     return `${day}.${month}.${year}`;
   };
 
-  // const onDelete = _id => {
-  // 	dispatch(transactionsOperation.deleteTransactions(_id));
-  // };
   const onEditBatton = id => {
     handleClick();
 
@@ -157,7 +143,6 @@ export const Table = ({ handleClick }) => {
           </TableHeader>
           <TableBody>
             {
-              // (filtered.length !== 0 ? filtered : items)
               SortTransaction()?.map(
                 ({
                   id,

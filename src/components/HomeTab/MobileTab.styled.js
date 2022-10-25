@@ -64,11 +64,10 @@ export const MobileButtonDelete = styled.button`
   background: red;
   object-fit: fill;
   border: none;
-  width: 30px;
-  height: 30px;
-
-  top: -10px;
-  right: -10px;
+  width: 35px;
+    height: 35px;
+    top: -11px;
+    right: -9px;
   border-color: transparent;
   border-radius: 50%;
   outline: none;
@@ -84,14 +83,39 @@ export const MobileButtonDelete = styled.button`
     transform: scale(0.9);
   }
 `;
+export const MobileButtonEdit = styled(MobileButtonDelete)`
+
+top: -9px;
+left: -11px;
+    color:  #fff;
+    background: #24CCA7;
+
+  &:hover {
+    transform: scale(1.02) translate(-5px, 3px);
+  }
+  &:active {
+    transform: scale(0.9);
+  }
+`;
 
 export const Trash = styled.img`
-  margin-top: 6px;
-  margin-left: 5px;
-  width: 10px;
-  height: 10px;
+    margin-top: 14px;
+    margin-left: -3px;
+    width: 14px;
+    height: 14px;
   transition: all 250ms linear;
   &:hover {
     transform: scale(1.5);
   }
 `;
+export const Edit = styled(Trash)`
+margin-top: 10px;
+margin-left: 8px;
+    width: 14px;
+    height: 14px;
+  transition: all 250ms linear;
+  &:hover {
+    transform: scale(1.5);
+  }
+`;
+
