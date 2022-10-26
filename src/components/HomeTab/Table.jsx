@@ -11,7 +11,7 @@ import {
   TableCellColor,
   ButtonDelete,
   Trash,
-  H2
+  Title
 } from './Table.styled';
 import editSvg from '../../assets/icons/symbol-defs.svg';
 import trashSvg from '../../assets/icons/trash.svg';
@@ -101,7 +101,7 @@ export const Table = ({ handleClick }) => {
     <>
       {items?.length === 0 ? (
         <div style={styles}>
-          <H2> Sorry, you don't have any transactions yet</H2>
+          <Title> Sorry, you don't have any transactions yet</Title>
           <img
             src={noTransactionsImg}
             alt="no record available"

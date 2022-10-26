@@ -179,7 +179,7 @@ export const Trash = styled.img`
   }
 `;
 
-export const H2 = styled.p`
+export const Title = styled.h2`
   margin: 0px;
   padding: 0px;
   max-height: 60vh;

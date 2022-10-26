@@ -65,9 +65,9 @@ export const MobileButtonDelete = styled.button`
   object-fit: fill;
   border: none;
   width: 35px;
-    height: 35px;
-    top: -11px;
-    right: -9px;
+  height: 35px;
+  top: -11px;
+  right: -9px;
   border-color: transparent;
   border-radius: 50%;
   outline: none;
@@ -84,11 +84,10 @@ export const MobileButtonDelete = styled.button`
   }
 `;
 export const MobileButtonEdit = styled(MobileButtonDelete)`
-
-top: -9px;
-left: -11px;
-    color:  #fff;
-    background: #24CCA7;
+  top: -9px;
+  left: -11px;
+  color: #fff;
+  background: #24cca7;
 
   &:hover {
     transform: scale(1.02) translate(-5px, 3px);
@@ -99,23 +98,34 @@ left: -11px;
 `;
 
 export const Trash = styled.img`
-    margin-top: 14px;
-    margin-left: -3px;
-    width: 14px;
-    height: 14px;
+  margin-top: 14px;
+  margin-left: -3px;
+  width: 14px;
+  height: 14px;
   transition: all 250ms linear;
   &:hover {
     transform: scale(1.5);
   }
 `;
 export const Edit = styled(Trash)`
-margin-top: 10px;
-margin-left: 8px;
-    width: 14px;
-    height: 14px;
+  margin-top: 10px;
+  margin-left: 8px;
+  width: 14px;
+  height: 14px;
   transition: all 250ms linear;
   &:hover {
     transform: scale(1.5);
   }
 `;
 
+export const Title = styled.h2`
+  margin: 0px;
+  padding: 0px;
+  max-height: 60vh;
+  padding: 5px 20px 15px 20px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 24px;
+`;

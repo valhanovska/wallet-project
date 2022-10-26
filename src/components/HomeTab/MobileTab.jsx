@@ -11,6 +11,7 @@ import {
   MobileButtonEdit,
   Trash,
   Edit,
+  Title,
 } from './MobileTab.styled';
 import spaceCreator from 'servises/spaceCreator';
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
@@ -61,7 +62,7 @@ export const MobileTab = ({ items, handleClick }) => {
             alt="no record available"
             width="250px"
           />
-          <h2>Sorry, you don't have any transactions yet</h2>
+          <Title>Sorry, you don't have any transactions yet</Title>
           
         </div>
       ) : (
