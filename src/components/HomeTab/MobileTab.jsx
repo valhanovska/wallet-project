@@ -16,7 +16,7 @@ import spaceCreator from 'servises/spaceCreator';
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
 import trashSvg from '../../assets/icons/trash.svg';
 import editSvg from '../../assets/icons/symbol-defs.svg';
-import noTransactionsImg from '../../assets/images/no-record-available.png';
+import noTransactionsImg from '../../assets/images/Main-IMG/noTransactionsImg.png'
 import { removeTransactionUser } from 'redux/transactionsController/trControllerOpertaion';
 import { editeNewContact } from 'redux/transactionsController/trControllerSlice';
 
@@ -56,12 +56,13 @@ export const MobileTab = ({ items, handleClick }) => {
     <>
       {items?.length === 0 ? (
         <div style={styles}>
-          <h2>Sorry, you don't have any transactions yet</h2>
           <img
             src={noTransactionsImg}
             alt="no record available"
             width="250px"
           />
+          <h2>Sorry, you don't have any transactions yet</h2>
+          
         </div>
       ) : (
         <MobileTransactions>
