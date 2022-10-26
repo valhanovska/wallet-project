@@ -11,10 +11,11 @@ import {
   TableCellColor,
   ButtonDelete,
   Trash,
+  Title
 } from './Table.styled';
 import editSvg from '../../assets/icons/symbol-defs.svg';
 import trashSvg from '../../assets/icons/trash.svg';
-import noTransactionsImg from '../../assets/images/no-record-available.png';
+import noTransactionsImg from '../../assets/images/Main-IMG/noTransactionsImg.png'
 import spaceCreator from 'servises/spaceCreator';
 
 import { getSelects } from 'redux/transactionCategories/selectorsTransactions';
@@ -23,7 +24,6 @@ import { removeTransactionUser } from 'redux/transactionsController/trController
 import { editeNewContact } from 'redux/transactionsController/trControllerSlice';
 
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore';
-
 export const Table = ({ handleClick }) => {
   const dispatch = useDispatch();
   const items = useSelector(
@@ -73,7 +73,7 @@ export const Table = ({ handleClick }) => {
   const styles = {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: '50px',
+    marginTop: '',
     justifyContentItems: 'center',
     alignItems: 'center',
     gap: '20px',
@@ -101,7 +101,7 @@ export const Table = ({ handleClick }) => {
     <>
       {items?.length === 0 ? (
         <div style={styles}>
-          <h2>Sorry, you don't have any transactions yet</h2>
+          <Title> Sorry, you don't have any transactions yet</Title>
           <img
             src={noTransactionsImg}
             alt="no record available"

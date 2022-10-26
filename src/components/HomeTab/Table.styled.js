@@ -178,3 +178,15 @@ export const Trash = styled.img`
     transform: scale(1.4);
   }
 `;
+
+export const Title = styled.h2`
+  margin: 0px;
+  padding: 0px;
+  max-height: 60vh;
+  padding: 5px 20px 15px 20px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 24px;
+`;

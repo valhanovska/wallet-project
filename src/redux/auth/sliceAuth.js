@@ -36,6 +36,10 @@ const authSlice = createSlice({
     [registerUser.rejected]: (state, action) => {
       state.isAuth = false;
       state.error = action.payload;
+      if (action.payload === 'Request failed with status code 409') {
+        return alert('User with email qwerrewq@ham.lo already exists.');
+      }
+      alert('Sorry, error registration, repiat plice');
     },
     /////////////
     [logInUser.pending]: state => {
